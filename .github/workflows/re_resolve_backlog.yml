@@ -1,0 +1,65 @@
+name: Migrate and Re-resolve Releases
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_lookups:
+        description: "Number of lookups to run (batch size)"
+        required: true
+        default: "40"
+      run_migration:
+        description: "Run migration to purge track-only IDs first?"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  migrate-and-resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install ytmusicapi>=1.8.0
+          fi
+
+      - name: Run migration script
+        if: ${{ inputs.run_migration }}
+        run: |
+          if [ -f scripts/migrate_old_ytm.py ]; then
+            python scripts/migrate_old_ytm.py
+          else
+            echo "scripts/migrate_old_ytm.py not found, skipping."
+          fi
+
+      - name: Resolve YouTube Music album IDs
+        run: python resolve_ytm_ids.py --max-lookups ${{ inputs.max_lookups }} --delay 0.7
+
+      - name: Rebuild index.html
+        run: python build_site.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases.json ytmusic_cache.json index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: migrate and re-resolve YTM album IDs [skip ci]"
+            git push
+          fi
