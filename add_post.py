@@ -11,30 +11,58 @@ def parse_lines(raw_text: str) -> list[dict]:
     items = []
     seen = set()
 
-    for raw_line in raw_text.splitlines():
+    # If lines lack newlines (e.g., flattened copy-paste), split before URLs or bullet markers
+    normalized_text = re.sub(r"(https?://\S+)", r"\n\1\n", raw_text)
+
+    for raw_line in normalized_text.splitlines():
         line = re.sub(r"\s+", " ", raw_line).strip()
-        cleaned = re.sub(r"^[-*•\d\.\)\]]+\s*", "", line).strip()
-        if not cleaned or cleaned.startswith(("http://", "https://")):
+        if not line or line.startswith(("http://", "https://")):
             continue
 
-        notes_match = re.search(r"\(([^)]+)\)", cleaned)
-        notes = notes_match.group(1).strip() if notes_match else ""
+        # Skip Reddit UI boilerplate lines if copied from a webpage
+        if line.lower() in {
+            "upvote", "downvote", "go to comments", "share", "locked post",
+            "stickied post", "archived post", "open", "sort by:", "best", "top", "new"
+        }:
+            continue
 
-        candidate = re.sub(r"\s*\([^)]*\)\s*", " ", cleaned)
+        cleaned = re.sub(r"^[-*•\d\.\)\]]+\s*", "", line).strip()
+        cleaned = re.sub(r"\s*https?://\S+", "", cleaned).strip()
+        if not cleaned:
+            continue
+
+        # Capture bracketed [location/notes] or parenthetical (notes)
+        notes_parts = []
+        for match in re.findall(r"\[([^\]]+)\]|\(([^)]+)\)", cleaned):
+            note = (match[0] or match[1]).strip()
+            if note and not note.lower().startswith("http"):
+                notes_parts.append(note)
+        notes = " | ".join(notes_parts)
+
+        candidate = re.sub(r"\[[^\]]*\]|\([^)]*\)", " ", cleaned)
         candidate = re.sub(r"\s+", " ", candidate).strip(" -–—•*")
 
-        parts = re.split(r"\s*[-–—]+\s*", candidate, maxsplit=1)
+        # Split on the first dash separator to preserve titles/labels containing extra hyphens
+        parts = re.split(r"\s+[-–—]+\s+", candidate, maxsplit=1)
         if len(parts) == 2:
             artist, title = parts[0].strip(), parts[1].strip()
-            if 2 <= len(artist) <= 80 and 2 <= len(title) <= 120:
-                key = f"{artist.lower()}::{title.lower()}"
-                if key not in seen:
-                    seen.add(key)
-                    items.append({
-                        "artist": artist,
-                        "title": title,
-                        "notes": notes,
-                    })
+        else:
+            # Fallback for entries with compact "Artist - Title" spacing
+            compact = re.split(r"\s*[-–—]\s*", candidate, maxsplit=1)
+            if len(compact) != 2:
+                continue
+            artist, title = compact[0].strip(), compact[1].strip()
+
+        if 1 <= len(artist) <= 100 and 1 <= len(title) <= 160:
+            key = f"{artist.lower()}::{title.lower()}"
+            if key not in seen:
+                seen.add(key)
+                items.append({
+                    "artist": artist,
+                    "title": title,
+                    "notes": notes,
+                })
+
     return items
 
 
@@ -54,6 +82,12 @@ def main() -> None:
         else {"source_user": "sepdri", "subreddit": "Hardcore", "posts": []}
     )
 
+    # Replace existing post with the same title so re-ingesting updates it cleanly instead of skipping
+    store["posts"] = [
+        p for p in store.get("posts", [])
+        if str(p.get("post_title", "")).strip().lower() != post_title.lower()
+    ]
+
     store["posts"].insert(0, {
         "post_title": post_title,
         "post_url": post_url,
@@ -62,7 +96,7 @@ def main() -> None:
     })
     store["updated_at"] = datetime.now(timezone.utc).isoformat()
     RELEASES_FILE.write_text(json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Added {len(releases)} releases under '{post_title}' to {RELEASES_FILE}.")
+    print(f"Saved {len(releases)} releases under '{post_title}' into {RELEASES_FILE}.")
 
 
 if __name__ == "__main__":
