@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>u/sepdri Hardcore Releases — Parser</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #181b22;
+      --surface-alt: #13161c;
+      --border: #272c38;
+      --text-main: #f0f2f5;
+      --text-sub: #9ca3af;
+      --accent: #e11d48;
+      --badge-bg: #222734;
+      --badge-text: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem 1rem 4rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .subtitle {
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    .subtitle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="search"],
+    textarea {
+      width: 100%;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      padding: 0.6rem 0.75rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #232836;
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      border-color: #4b5563;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    button.danger {
+      background: transparent;
+      color: #fca5a5;
+      border-color: #7f1d1d;
+    }
+
+    .stats {
+      margin-top: 0.75rem;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .post-group {
+      margin-bottom: 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .post-header {
+      padding: 0.9rem 1.15rem;
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .post-header h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.83rem;
+      color: var(--text-sub);
+    }
+
+    .post-meta a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .del-post-btn {
+      padding: 0.25rem 0.55rem;
+      font-size: 0.75rem;
+      background: transparent;
+      color: #fca5a5;
+      border-color: #7f1d1d;
+    }
+
+    .card {
+      padding: 0.8rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card:last-child {
+      border-bottom: none;
+    }
+
+    .card.hidden {
+      display: none;
+    }
+
+    .card-info {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .artist {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .divider {
+      color: var(--text-sub);
+    }
+
+    .badge {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.74rem;
+      padding: 0.12rem 0.48rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .btn-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .btn-ytm {
+      background: #ff0000;
+      color: #fff;
+    }
+
+    .btn-yt {
+      background: #27272a;
+      color: #e4e4e7;
+      border: 1px solid #3f3f46;
+    }
+
+    .empty {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: var(--text-sub);
+    }
+
+    @media (max-width: 640px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card-links {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>r/Hardcore Releases — Parser</h1>
+      <p class="subtitle">
+        Paste roundup text from <a href="https://www.reddit.com/user/sepdri/" target="_blank" rel="noopener noreferrer">u/sepd
