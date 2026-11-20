@@ -1,27 +1,17 @@
 {
   "source_user": "sepdri",
   "subreddit": "Hardcore",
-  "updated_at": "2026-11-20T23:07:22.940130+00:00",
+  "updated_at": "2026-11-20T23:25:55.890Z",
   "posts": [
     {
       "post_title": "new releases November Pt 3",
-      "post_url": "https://www.reddit.com/r/Hardcore/comments/1y191rf/new_releases_november_pt_3/",
+      "post_url": "https://www.reddit.com/user/sepdri/",
       "added_at": "2026-11-20",
       "releases": [
         {
-          "artist": "Disfear",
-          "title": "The Last Nail",
-          "notes": "LP, Sweden"
-        },
-        {
           "artist": "Bad Beat",
           "title": "LP",
-          "notes": ""
-        },
-        {
-          "artist": "No Retreat",
-          "title": "Rise Of The Underdog (Quarter Century Warfare Edition)",
-          "notes": "LP"
+          "notes": "Detroit, Michigan"
         },
         {
           "artist": "Disfear",
@@ -267,23 +257,520 @@
       "releases": [
         {
           "artist": "Lethal Method",
-          "title": "The Method",
-          "notes": "LP, Nashville, TN"
+          "title": "The Method LP",
+          "notes": "Nashville, Tennessee"
         },
         {
           "artist": "Walls Of Jericho",
-          "title": "System Error: Humanity",
-          "notes": "LP, Detroit, MI"
+          "title": "System Error: Humanity LP",
+          "notes": "Detroit, Michigan"
         },
         {
           "artist": "Headbussa",
-          "title": "Survival Measures",
-          "notes": "LP"
+          "title": "Survival Measures LP",
+          "notes": "Paris, France"
+        },
+        {
+          "artist": "Maniac",
+          "title": "Forward Onto Annihilation LP",
+          "notes": "Massachusetts"
+        },
+        {
+          "artist": "Gold Attempt",
+          "title": "Still In Game EP",
+          "notes": "Mie, Japan"
+        },
+        {
+          "artist": "Depletion",
+          "title": "Demo",
+          "notes": "Vancouver, Canada"
+        },
+        {
+          "artist": "Bayway",
+          "title": "Bayway Lives EP",
+          "notes": "New Jersey"
+        },
+        {
+          "artist": "Life Sentence",
+          "title": "Orange Blossom Tales EP",
+          "notes": "Orlando, Florida"
+        },
+        {
+          "artist": "Demeanour",
+          "title": "True Ultimate Evil EP",
+          "notes": "Birkenhead, UK"
+        },
+        {
+          "artist": "Truest Form",
+          "title": "Truest Form EP",
+          "notes": "Syracuse / Columbus"
         },
         {
           "artist": "Skinhead",
           "title": "The Plan: 2",
+          "notes": "California"
+        },
+        {
+          "artist": "Master Killer",
+          "title": "Burn This Mixtape EP",
+          "notes": "Örebro, Sweden"
+        },
+        {
+          "artist": "Justice For The Damned",
+          "title": "Torn In Two",
+          "notes": "Sydney, Australia"
+        },
+        {
+          "artist": "Pointing Fingers",
+          "title": "Demo",
+          "notes": "Germany"
+        },
+        {
+          "artist": "Compilation",
+          "title": "Where Do We Go? Vol 2",
+          "notes": "Northwest Hardcore"
+        },
+        {
+          "artist": "Compilation",
+          "title": "A Call For Blood - A Tribute To Hatebreed - 8991 Records",
           "notes": ""
+        },
+        {
+          "artist": "Totaled",
+          "title": "Dead End EP",
+          "notes": "Peoria, Illinois"
+        },
+        {
+          "artist": "Nebulam",
+          "title": "Objections To Humanism EP",
+          "notes": "Melbourne, Australia"
+        },
+        {
+          "artist": "Eternal Enemy",
+          "title": "Promo",
+          "notes": "Hannover, Germany"
+        },
+        {
+          "artist": "Street Justice",
+          "title": "For A Better World EP",
+          "notes": "Toronto, Canada"
+        },
+        {
+          "artist": "Concussed",
+          "title": "Promo",
+          "notes": "Cottbus, Germany"
+        },
+        {
+          "artist": "TwoPointOne",
+          "title": "Demonstrate",
+          "notes": "Yogyakarta, Indonesia"
+        },
+        {
+          "artist": "Rugged",
+          "title": "Deeper Than Blood LP",
+          "notes": "Sofia, Bulgaria"
+        },
+        {
+          "artist": "Misprize",
+          "title": "Eternal Damnation EP",
+          "notes": "East Java, Indonesia"
+        },
+        {
+          "artist": "Formed Against God",
+          "title": "Ruptured Utopia EP",
+          "notes": "Kansas City, Missouri"
+        },
+        {
+          "artist": "Saint Violence",
+          "title": "Martyr Of Testament EP",
+          "notes": "Indonesia"
+        },
+        {
+          "artist": "Lifetrial",
+          "title": "Demo",
+          "notes": "Kankakee, Illinois"
+        },
+        {
+          "artist": "Lawdown",
+          "title": "Lawdown EP",
+          "notes": "France"
+        },
+        {
+          "artist": "Torment",
+          "title": "Demo",
+          "notes": "Germany"
+        },
+        {
+          "artist": "Beyond My Rage",
+          "title": "New World Chaos LP",
+          "notes": "Kota Kinabalu, Malaysia"
+        },
+        {
+          "artist": "Blind",
+          "title": "A Silver Pendulum Swung In Darkness EP",
+          "notes": "Oklahoma City, Oklahoma"
+        },
+        {
+          "artist": "Recluse",
+          "title": "An Eternal Escape EP",
+          "notes": "Padang Panjang, Indonesia"
+        },
+        {
+          "artist": "Twentyinchburial",
+          "title": "How Much Will We Laugh And Smile?",
+          "notes": "Remastered | Lisbon, Portugal"
+        },
+        {
+          "artist": "Negative Mental State",
+          "title": "Promo",
+          "notes": "Canberra, Australia"
+        },
+        {
+          "artist": "Mortal Ruin",
+          "title": "Into The Depths EP",
+          "notes": "Sherman, Texas"
+        },
+        {
+          "artist": "Heaven's Blaze",
+          "title": "Day Of Flight EP",
+          "notes": "Tacoma, Washington"
+        },
+        {
+          "artist": "PrayForPeace",
+          "title": "Embrace EP",
+          "notes": "Ohio"
+        },
+        {
+          "artist": "WithPaperWings",
+          "title": "Luxuries Of Depravity EP",
+          "notes": "Orlando, Florida"
+        },
+        {
+          "artist": "Wings Of Azareth",
+          "title": "Epitaph Of The Fallen Demo",
+          "notes": "Indonesia"
+        },
+        {
+          "artist": "Unwavering",
+          "title": "Liminal LP",
+          "notes": "Nagoya Japan"
+        },
+        {
+          "artist": "Swampfoot",
+          "title": "Swampfoot LP",
+          "notes": "New York"
+        },
+        {
+          "artist": "Heel Turn",
+          "title": "Promo",
+          "notes": "Norwich, UK"
+        },
+        {
+          "artist": "Hard-Code",
+          "title": "Enemy EP",
+          "notes": "Bad Ragaz, Switzerland"
+        },
+        {
+          "artist": "Sacrament",
+          "title": "Sonnnets Of Salvation EP",
+          "notes": "Portland, Oregon"
+        },
+        {
+          "artist": "Helvetica",
+          "title": "Inheritance EP",
+          "notes": "Orlando, Florida"
+        },
+        {
+          "artist": "Guard Dog",
+          "title": "Guard Dog EP",
+          "notes": "North Carolina"
+        },
+        {
+          "artist": "Keep The Promise",
+          "title": "Seven To Hate EP",
+          "notes": "Italy"
+        },
+        {
+          "artist": "My Hands Were Tied",
+          "title": "The Gathering",
+          "notes": "North Shore, Massachusetts"
+        }
+      ]
+    },
+    {
+      "post_title": "new releases November Pt 1",
+      "post_url": "https://www.reddit.com/user/sepdri/",
+      "added_at": "2026-11-20",
+      "releases": [
+        {
+          "artist": "Siege Weapon",
+          "title": "The Great Equalizer EP",
+          "notes": "Florida"
+        },
+        {
+          "artist": "Comeback Kid",
+          "title": "Chosen Hell LP",
+          "notes": "Winnipeg, Canada"
+        },
+        {
+          "artist": "Hatebreed",
+          "title": "Fatal Paradox LP",
+          "notes": "Connecticut"
+        },
+        {
+          "artist": "Moral Law",
+          "title": "Solemn Vows To A World Deplored LP",
+          "notes": "Denver, Colorado"
+        },
+        {
+          "artist": "Chain Of Fools",
+          "title": "Vulture EP",
+          "notes": "Melbourne, Australia"
+        },
+        {
+          "artist": "Cosmic Joke",
+          "title": "Suburban Decay LP",
+          "notes": "Los Angeles, California"
+        },
+        {
+          "artist": "Lockslip",
+          "title": "The Conversation LP",
+          "notes": "Los Angeles, California"
+        },
+        {
+          "artist": "Highest Torch",
+          "title": "Fight Back LP",
+          "notes": "Germany"
+        },
+        {
+          "artist": "Fatal Move",
+          "title": "Fubar EP",
+          "notes": "Antwerp, Belgium"
+        },
+        {
+          "artist": "Thrown",
+          "title": "Unwanted LP",
+          "notes": "Sweden"
+        },
+        {
+          "artist": "Headstone",
+          "title": "Promo",
+          "notes": "London, UK"
+        },
+        {
+          "artist": "Volcano",
+          "title": "Ear 2 Ear EP",
+          "notes": "Ohio"
+        },
+        {
+          "artist": "Vow Of Hatred",
+          "title": "Look What Loyalty Got Us EP",
+          "notes": "Pittsburgh, Pennsylvania"
+        },
+        {
+          "artist": "Iron Deficiency",
+          "title": "Endure, O Heart LP",
+          "notes": "Lyon, France"
+        },
+        {
+          "artist": "Take Back",
+          "title": "Self-Reflection EP",
+          "notes": "São João Da Madeira, Portugal"
+        },
+        {
+          "artist": "Against The World",
+          "title": "Promo",
+          "notes": "Virginia"
+        },
+        {
+          "artist": "xFortunex",
+          "title": "Recompense EP",
+          "notes": "Portland, Oregon"
+        },
+        {
+          "artist": "Maldito Dios",
+          "title": "Conditioned To Hate EP",
+          "notes": "El Paso"
+        },
+        {
+          "artist": "Mass Appeal",
+          "title": "Promo",
+          "notes": "Dallas, Texas"
+        },
+        {
+          "artist": "One Eight Seven",
+          "title": "Into The Deepest Valley EP",
+          "notes": "Fresno, California"
+        },
+        {
+          "artist": "Annihilation",
+          "title": "The Seventh Seal EP",
+          "notes": "Portland, Oregon"
+        },
+        {
+          "artist": "Gagger",
+          "title": "Fated To Bleed EP",
+          "notes": "Indiana"
+        },
+        {
+          "artist": "Dirty Work",
+          "title": "All Too Cold Promo",
+          "notes": "Lappeenranta, Finland"
+        },
+        {
+          "artist": "Duel",
+          "title": "Necessary Evil EP",
+          "notes": "New Jersey"
+        },
+        {
+          "artist": "Jealous God",
+          "title": "Every Garden Is Worthless LP",
+          "notes": "Richmond, Virginia"
+        },
+        {
+          "artist": "Blood Will Tell vs Eyes Sewn Shut",
+          "title": "Carnage in Collusion SPLIT EP",
+          "notes": "Sweden vs Finland"
+        },
+        {
+          "artist": "Hope Collapse",
+          "title": "Age Of Heathens LP",
+          "notes": "New York"
+        },
+        {
+          "artist": "Painstrike",
+          "title": "Commit Eternal Sin Demo",
+          "notes": "Texas"
+        },
+        {
+          "artist": "Konquer",
+          "title": "Demonstration",
+          "notes": "California"
+        },
+        {
+          "artist": "Crime Of Passion",
+          "title": "You'll Fall In Love With... EP",
+          "notes": "Boston, Massachusetts"
+        },
+        {
+          "artist": "Foreshadow",
+          "title": "Unheal EP",
+          "notes": "Orange, California"
+        },
+        {
+          "artist": "Silence",
+          "title": "Bitter Remains EP",
+          "notes": "Menjalin, West Borneo Indonesia"
+        },
+        {
+          "artist": "Conceive",
+          "title": "Changes In Perspective LP",
+          "notes": "Athens, Greece"
+        },
+        {
+          "artist": "Versus God",
+          "title": "Versus God EP",
+          "notes": "Regensburg, Germany"
+        },
+        {
+          "artist": "Short Fused",
+          "title": "Rise Above All EP",
+          "notes": "France"
+        },
+        {
+          "artist": "Deadweight",
+          "title": "The Cabotage Collapse EP",
+          "notes": "Umeå, Sweden"
+        },
+        {
+          "artist": "Faith In Refusal",
+          "title": "Every Tomorrow Sentenced Yesterday EP",
+          "notes": "Austin, Texas"
+        },
+        {
+          "artist": "Hard Facts",
+          "title": "Demo",
+          "notes": "UK"
+        },
+        {
+          "artist": "Getalife!",
+          "title": "Demo XXMMVI",
+          "notes": "Bandung, Indonesia"
+        },
+        {
+          "artist": "Embrace The Misery",
+          "title": "Negativos De Un Cielo Fragmentado EP",
+          "notes": "Valparaíso, Chile"
+        },
+        {
+          "artist": "Fragmentation",
+          "title": "Schema Collapse EP",
+          "notes": "Tampa, Florida"
+        },
+        {
+          "artist": "Disarray",
+          "title": "Enemies Of Scene EP",
+          "notes": "Batam, Indonesia"
+        },
+        {
+          "artist": "Break Rank",
+          "title": "Demo",
+          "notes": "Essex, UK"
+        },
+        {
+          "artist": "Tomorrow First",
+          "title": "Off The Chest EP",
+          "notes": "Graz, Austria"
+        },
+        {
+          "artist": "xNecessaryDemisex",
+          "title": "Demo",
+          "notes": "Manchester, UK"
+        },
+        {
+          "artist": "Corrodes",
+          "title": "Sacrificed To Endless Greed EP",
+          "notes": "Cirebon, Indonesia"
+        },
+        {
+          "artist": "Volatile Ways",
+          "title": "Is Going To Kill You EP",
+          "notes": "Newcastle, Australia"
+        },
+        {
+          "artist": "ƵAŁOBA",
+          "title": "Will We Act This Time? LP",
+          "notes": "London, UK"
+        },
+        {
+          "artist": "Depravity",
+          "title": "Heavens Gate EP",
+          "notes": "Michigan"
+        },
+        {
+          "artist": "Ravine",
+          "title": "Autopsy Of Violence EP",
+          "notes": "Italy"
+        },
+        {
+          "artist": "xEdenisgonex",
+          "title": "The Spell Within Tragic Nightmares",
+          "notes": ""
+        },
+        {
+          "artist": "Level Threat",
+          "title": "Volume 2",
+          "notes": "Bristol, UK"
+        },
+        {
+          "artist": "So It Ends",
+          "title": "Expect Nothing EP",
+          "notes": "Indonesia"
+        },
+        {
+          "artist": "Knockoutz",
+          "title": "Discography",
+          "notes": "Paris, France"
         }
       ]
     }
