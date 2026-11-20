@@ -1,0 +1,62 @@
+name: Publish u/sepdri Releases from Pasted Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_title:
+        description: 'Roundup title (e.g., "new releases November Pt 3")'
+        required: true
+        type: string
+      post_url:
+        description: 'Reddit thread URL (optional)'
+        required: false
+        type: string
+        default: "https://www.reddit.com/user/sepdri/"
+      raw_post_text:
+        description: "Paste the full roundup post text here"
+        required: true
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - "releases.json"
+      - "build_site.py"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ingest pasted roundup into releases.json
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          POST_TITLE: ${{ inputs.post_title }}
+          POST_URL: ${{ inputs.post_url }}
+          RAW_POST_TEXT: ${{ inputs.raw_post_text }}
+        run: python ingest_pasted_post.py
+
+      - name: Render index.html from releases.json
+        run: python build_site.py
+
+      - name: Commit and push releases.json and index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases.json index.html
+          if git diff --staged --quiet; then
+            echo "No changes to releases.json or index.html"
+          else
+            git commit -m "chore: update releases.json and index.html [skip ci]"
+            git push
+          fi
