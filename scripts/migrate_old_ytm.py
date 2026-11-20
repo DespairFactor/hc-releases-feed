@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Migrate legacy track-only entries in releases.json and ytmusic_cache.json.
-
-Clears track-only video_id assignments on items without a browse_id so
-resolve_ytm_ids.py can re-resolve them toward full albums/playlists, and
-purges null cache entries so previously unmatched items get another pass.
-"""
+"""Migrate legacy track-only entries in releases.json and ytmusic_cache.json."""
 
 from __future__ import annotations
 
@@ -55,7 +50,6 @@ def main() -> None:
         if isinstance(cache, dict):
             cleaned_cache = {}
             for key, val in cache.items():
-                # Drop null entries or cached entries that only had video_id without browse_id
                 if val is None:
                     purged_cache += 1
                     continue
