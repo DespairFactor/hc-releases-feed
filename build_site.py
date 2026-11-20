@@ -1,5 +1,6 @@
 import html
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote_plus
@@ -12,6 +13,41 @@ def load_data(path: Path) -> dict:
     if not path.exists():
         return {"source_user": "sepdri", "subreddit": "Hardcore", "posts": []}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def clean_search_query(artist: str, title: str) -> str:
+    # Remove parenthetical/bracketed notes and trailing standalone format labels
+    core_title = re.sub(r"\[[^\]]*\]|\([^)]*\)", " ", title)
+    core_title = re.sub(r"\b(LP|EP|Demo|Split|Single|Promo|Reissue)\b\.?$", "", core_title, flags=re.IGNORECASE)
+    core_title = re.sub(r"\s+", " ", core_title).strip(" -–—:/")
+    core_artist = re.sub(r"\s+", " ", artist).strip(" -–—:/")
+    return f"{core_artist} {core_title or title}".strip()
+
+
+def resolve_links(rel: dict) -> tuple[str, str, bool]:
+    """Return (ytm_url, yt_url, is_direct_link)."""
+    video_id = str(rel.get("video_id", "")).strip()
+    ytm_url = str(rel.get("ytm_url", "")).strip()
+    yt_url = str(rel.get("yt_url", "")).strip()
+
+    if video_id:
+        ytm_url = ytm_url or f"https://music.youtube.com/watch?v={video_id}"
+        yt_url = yt_url or f"https://www.youtube.com/watch?v={video_id}"
+
+    if ytm_url or yt_url:
+        q = quote_plus(clean_search_query(str(rel.get("artist", "")), str(rel.get("title", ""))))
+        return (
+            ytm_url or f"https://music.youtube.com/search?q={q}",
+            yt_url or f"https://www.youtube.com/results?search_query={q}",
+            True,
+        )
+
+    q = quote_plus(clean_search_query(str(rel.get("artist", "")), str(rel.get("title", ""))))
+    return (
+        f"https://music.youtube.com/search?q={q}",
+        f"https://www.youtube.com/results?search_query={q}",
+        False,
+    )
 
 
 def build_html(data: dict) -> str:
@@ -35,11 +71,10 @@ def build_html(data: dict) -> str:
             if not artist or not title:
                 continue
 
-            query = quote_plus(f"{artist} {title} hardcore")
-            ytm_url = f"https://music.youtube.com/search?q={query}"
-            yt_url = f"https://www.youtube.com/results?search_query={query}"
+            ytm_url, yt_url, is_direct = resolve_links(rel)
             search_blob = html.escape(f"{artist} {title} {notes} {post_title}".lower())
             badge = f'<span class="badge">{html.escape(notes)}</span>' if notes else ""
+            link_tag = '<span class="badge badge-direct">Direct Link</span>' if is_direct else '<span class="badge badge-search">Search</span>'
 
             cards.append(f"""
             <div class="card" data-search="{search_blob}">
@@ -48,10 +83,11 @@ def build_html(data: dict) -> str:
                     <span class="divider">—</span>
                     <span class="title">{html.escape(title)}</span>
                     {badge}
+                    {link_tag}
                 </div>
                 <div class="card-links">
-                    <a href="{ytm_url}" target="_blank" rel="noopener noreferrer" class="btn btn-ytm">YouTube Music</a>
-                    <a href="{yt_url}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">YouTube</a>
+                    <a href="{html.escape(ytm_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-ytm">YouTube Music</a>
+                    <a href="{html.escape(yt_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">YouTube</a>
                 </div>
             </div>
             """)
@@ -174,6 +210,13 @@ def build_html(data: dict) -> str:
             padding: 0.15rem 0.5rem;
             border-radius: 4px;
             border: 1px solid var(--border);
+        }}
+        .badge-direct {{
+            border-color: #15803d;
+            color: #86efac;
+        }}
+        .badge-search {{
+            color: var(--text-sub);
         }}
         .card-links {{ display: flex; gap: 0.5rem; flex-shrink: 0; }}
         .btn {{
