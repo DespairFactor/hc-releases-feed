@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -12,7 +13,21 @@ RELEASES_FILE = REPO_ROOT / "releases.json"
 CACHE_FILE = REPO_ROOT / "ytmusic_cache.json"
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Migrate legacy entries and optionally reset playlist IDs in releases.json."
+    )
+    parser.add_argument(
+        "--reset-playlists",
+        action="store_true",
+        help="Remove ytm_playlist_id and ytm_playlist_url from all posts in releases.json.",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+
     if not RELEASES_FILE.exists():
         print(f"Error: {RELEASES_FILE} not found.", file=sys.stderr)
         sys.exit(1)
@@ -22,8 +37,15 @@ def main() -> None:
 
     reset_releases = 0
     kept_albums = 0
+    cleared_playlists = 0
 
     for post in posts:
+        if args.reset_playlists:
+            if "ytm_playlist_id" in post or "ytm_playlist_url" in post:
+                post.pop("ytm_playlist_id", None)
+                post.pop("ytm_playlist_url", None)
+                cleared_playlists += 1
+
         for rel in post.get("releases", []):
             browse_id = (rel.get("browse_id") or "").strip()
             video_id = (rel.get("video_id") or "").strip()
@@ -66,6 +88,7 @@ def main() -> None:
     print(
         f"Migration complete: reset {reset_releases} track-only release(s), "
         f"kept {kept_albums} album/playlist release(s), "
+        f"cleared {cleared_playlists} post playlist(s), "
         f"purged {purged_cache} stale cache entry/entries."
     )
 
