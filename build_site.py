@@ -2,8 +2,8 @@
 """Build a static index.html from releases.json for GitHub Pages.
 
 Supports full albums (browse_id -> /browse/MPREb_...), single tracks
-(video_id -> /watch?v=...), query search fallbacks, and per-post
-YouTube Music playlist links.
+(video_id -> /watch?v=...), query search fallbacks, and a per-post
+in-page queue to step through releases in YouTube Music.
 """
 
 from __future__ import annotations
@@ -74,29 +74,34 @@ def render_html(store: dict) -> str:
     total_releases = sum(len(p.get("releases", [])) for p in posts if isinstance(p.get("releases"), list))
 
     post_sections = []
-    for post in posts:
+    for post_idx, post in enumerate(posts):
         post_title = html.escape(str(post.get("post_title", "Untitled Roundup")))
         post_url = html.escape(str(post.get("post_url", f"https://www.reddit.com/user/{source_user}/")))
         added_at = html.escape(str(post.get("added_at", "")))
         releases = post.get("releases", [])
 
-        ytm_playlist_url = (post.get("ytm_playlist_url") or "").strip()
-        playlist_badge_html = ""
-        if ytm_playlist_url:
-            playlist_badge_html = (
-                f'<a href="{html.escape(ytm_playlist_url)}" target="_blank" '
-                f'rel="noopener noreferrer" class="btn btn-playlist">▶ Play Roundup Playlist</a>'
-            )
-
+        queue_items = []
         cards = []
         for rel in releases:
-            artist = html.escape(str(rel.get("artist", "")))
-            title = html.escape(str(rel.get("title", "")))
-            notes = html.escape(str(rel.get("notes", "")))
+            artist_raw = str(rel.get("artist", ""))
+            title_raw = str(rel.get("title", ""))
+            notes_raw = str(rel.get("notes", ""))
+
+            artist = html.escape(artist_raw)
+            title = html.escape(title_raw)
+            notes = html.escape(notes_raw)
 
             ytm_url, ytm_badge = get_ytm_url(rel)
-            yt_query = quote_plus(clean_search_query(rel.get("artist", ""), rel.get("title", "")))
+            yt_query = quote_plus(clean_search_query(artist_raw, title_raw))
             yt_url = f"https://www.youtube.com/results?search_query={yt_query}"
+
+            queue_items.append({
+                "artist": artist_raw,
+                "title": title_raw,
+                "notes": notes_raw,
+                "badge": ytm_badge,
+                "ytm_url": ytm_url,
+            })
 
             notes_markup = f'<span class="badge notes-badge">{notes}</span>' if notes else ""
             type_markup = f'<span class="badge type-badge">{ytm_badge}</span>'
@@ -122,19 +127,26 @@ def render_html(store: dict) -> str:
 """)
 
         cards_html = "\n".join(cards) if cards else '<p class="empty-text">No releases tracked in this post.</p>'
+        queue_json = html.escape(json.dumps(queue_items, ensure_ascii=False))
+        queue_btn_html = (
+            f'<button type="button" class="btn btn-queue" data-post-idx="{post_idx}">'
+            f'▶ Queue ({len(queue_items)})'
+            f'</button>'
+            if queue_items
+            else ""
+        )
 
         post_sections.append(f"""
-      <section class="post-group">
+      <section class="post-group" data-post-idx="{post_idx}" data-queue="{queue_json}">
         <header class="post-header">
-          <div class="post-title-block">
-            <h2>{post_title}</h2>
-            {playlist_badge_html}
-          </div>
+          <h2>{post_title}</h2>
           <div class="post-info">
             <span>{added_at}</span>
-            <a href="{post_url}" target="_blank" rel="noopener noreferrer">Reddit Thread ↗</a>
+            {queue_btn_html}
+            <a href="{post_url}" target="_blank" rel="noopener noreferrer" class="thread-link">Reddit Thread ↗</a>
           </div>
         </header>
+        <div class="queue-panel" hidden></div>
         <div class="cards-list">
           {cards_html}
         </div>
@@ -244,14 +256,7 @@ def render_html(store: dict) -> str:
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-    }}
-
-    .post-title-block {{
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
     }}
 
     .post-header h2 {{
@@ -267,10 +272,74 @@ def render_html(store: dict) -> str:
       color: var(--text-sub);
     }}
 
-    .post-info a {{
+    .thread-link {{
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+    }}
+
+    .queue-panel {{
+      background: #141820;
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.15rem;
+    }}
+
+    .queue-controls {{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }}
+
+    .queue-nav {{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }}
+
+    .queue-current {{
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      margin-bottom: 0.65rem;
+    }}
+
+    .queue-current strong {{
+      color: #fff;
+    }}
+
+    .queue-list {{
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface-alt);
+    }}
+
+    .queue-row {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }}
+
+    .queue-row:last-child {{
+      border-bottom: none;
+    }}
+
+    .queue-row.active {{
+      background: #1e2433;
+      border-left: 3px solid var(--accent);
+    }}
+
+    .queue-row.played .queue-row-title {{
+      color: var(--text-sub);
+      text-decoration: line-through;
     }}
 
     .release-card {{
@@ -334,18 +403,28 @@ def render_html(store: dict) -> str:
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      cursor: pointer;
+      border: none;
     }}
 
-    .btn-playlist {{
-      background: #10b981;
-      color: #ffffff;
+    .btn-queue {{
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      padding: 0.28rem 0.65rem;
       font-size: 0.76rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 4px;
     }}
 
-    .btn-playlist:hover {{
-      background: #059669;
+    .btn-queue:hover {{
+      border-color: var(--accent);
+    }}
+
+    .btn-action {{
+      background: #222734;
+      color: #f0f2f5;
+      border: 1px solid #363d4f;
+      padding: 0.32rem 0.65rem;
+      font-size: 0.75rem;
     }}
 
     .btn-ytm {{
@@ -412,6 +491,131 @@ def render_html(store: dict) -> str:
         }});
 
         group.style.display = (visibleCount > 0 || !query) ? "block" : "none";
+      }});
+    }});
+
+    const queueState = new Map();
+
+    function getState(group) {{
+      const idx = group.getAttribute("data-post-idx");
+      if (!queueState.has(idx)) {{
+        let items = [];
+        try {{
+          items = JSON.parse(group.getAttribute("data-queue") || "[]");
+        }} catch {{
+          items = [];
+        }}
+        queueState.set(idx, {{
+          items,
+          currentIdx: 0,
+          played: new Set(),
+        }});
+      }}
+      return queueState.get(idx);
+    }}
+
+    function escapeText(s) {{
+      return String(s ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }}
+
+    function openInYtmTab(url) {{
+      window.open(url, "ytm_queue_player", "noopener,noreferrer");
+    }}
+
+    function renderQueuePanel(group) {{
+      const panel = group.querySelector(".queue-panel");
+      const state = getState(group);
+      if (!panel || !state.items.length) return;
+
+      const cur = state.items[state.currentIdx] || state.items[0];
+      const rowsHtml = state.items.map((item, i) => {{
+        const isActive = i === state.currentIdx;
+        const isPlayed = state.played.has(i);
+        const cls = ["queue-row", isActive ? "active" : "", isPlayed ? "played" : ""].filter(Boolean).join(" ");
+        return `
+          <div class="${{cls}}" data-row-idx="${{i}}">
+            <span class="queue-row-title">${{i + 1}}. <strong>${{escapeText(item.artist)}}</strong> — ${{escapeText(item.title)}} <em>(${{escapeText(item.badge)}})</em></span>
+            <a href="${{escapeText(item.ytm_url)}}" target="ytm_queue_player" rel="noopener noreferrer" class="btn btn-ytm" data-play-idx="${{i}}">Open in YTM</a>
+          </div>
+        `;
+      }}).join("");
+
+      panel.innerHTML = `
+        <div class="queue-controls">
+          <div class="queue-nav">
+            <button type="button" class="btn btn-action" data-q-action="prev">← Prev</button>
+            <button type="button" class="btn btn-ytm" data-q-action="open-current">Open Current in YTM</button>
+            <button type="button" class="btn btn-action" data-q-action="next">Next &amp; Open →</button>
+            <button type="button" class="btn btn-action" data-q-action="copy-urls">Copy All YTM URLs</button>
+          </div>
+          <button type="button" class="btn btn-action" data-q-action="close">Hide Queue</button>
+        </div>
+        <div class="queue-current">
+          Up next (${{state.currentIdx + 1}} / ${{state.items.length}}): <strong>${{escapeText(cur.artist)}} — ${{escapeText(cur.title)}}</strong>
+        </div>
+        <div class="queue-list">${{rowsHtml}}</div>
+      `;
+
+      panel.querySelectorAll("[data-play-idx]").forEach((link) => {{
+        link.addEventListener("click", () => {{
+          const i = Number(link.getAttribute("data-play-idx"));
+          state.currentIdx = i;
+          state.played.add(i);
+          renderQueuePanel(group);
+        }});
+      }});
+
+      panel.querySelectorAll("[data-q-action]").forEach((btn) => {{
+        btn.addEventListener("click", () => {{
+          const action = btn.getAttribute("data-q-action");
+          if (action === "close") {{
+            panel.hidden = true;
+            return;
+          }}
+          if (action === "prev") {{
+            state.currentIdx = (state.currentIdx - 1 + state.items.length) % state.items.length;
+            renderQueuePanel(group);
+            return;
+          }}
+          if (action === "open-current") {{
+            const item = state.items[state.currentIdx];
+            state.played.add(state.currentIdx);
+            openInYtmTab(item.ytm_url);
+            renderQueuePanel(group);
+            return;
+          }}
+          if (action === "next") {{
+            state.played.add(state.currentIdx);
+            state.currentIdx = (state.currentIdx + 1) % state.items.length;
+            const nextItem = state.items[state.currentIdx];
+            openInYtmTab(nextItem.ytm_url);
+            renderQueuePanel(group);
+            return;
+          }}
+          if (action === "copy-urls") {{
+            const urls = state.items.map((it) => it.ytm_url).join("\\n");
+            if (navigator.clipboard && navigator.clipboard.writeText) {{
+              navigator.clipboard.writeText(urls).catch(() => {{}});
+            }}
+          }}
+        }});
+      }});
+    }}
+
+    document.querySelectorAll(".btn-queue").forEach((btn) => {{
+      btn.addEventListener("click", () => {{
+        const group = btn.closest(".post-group");
+        if (!group) return;
+        const panel = group.querySelector(".queue-panel");
+        if (!panel) return;
+        panel.hidden = !panel.hidden;
+        if (!panel.hidden) {{
+          renderQueuePanel(group);
+        }}
       }});
     }});
   </script>
