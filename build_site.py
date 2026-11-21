@@ -2,7 +2,8 @@
 """Build a static index.html from releases.json for GitHub Pages.
 
 Supports full albums (browse_id -> /browse/MPREb_...), single tracks
-(video_id -> /watch?v=...), and query search fallbacks.
+(video_id -> /watch?v=...), query search fallbacks, and per-post
+YouTube Music playlist links.
 """
 
 from __future__ import annotations
@@ -79,6 +80,14 @@ def render_html(store: dict) -> str:
         added_at = html.escape(str(post.get("added_at", "")))
         releases = post.get("releases", [])
 
+        ytm_playlist_url = (post.get("ytm_playlist_url") or "").strip()
+        playlist_badge_html = ""
+        if ytm_playlist_url:
+            playlist_badge_html = (
+                f'<a href="{html.escape(ytm_playlist_url)}" target="_blank" '
+                f'rel="noopener noreferrer" class="btn btn-playlist">▶ Play Roundup Playlist</a>'
+            )
+
         cards = []
         for rel in releases:
             artist = html.escape(str(rel.get("artist", "")))
@@ -117,7 +126,10 @@ def render_html(store: dict) -> str:
         post_sections.append(f"""
       <section class="post-group">
         <header class="post-header">
-          <h2>{post_title}</h2>
+          <div class="post-title-block">
+            <h2>{post_title}</h2>
+            {playlist_badge_html}
+          </div>
           <div class="post-info">
             <span>{added_at}</span>
             <a href="{post_url}" target="_blank" rel="noopener noreferrer">Reddit Thread ↗</a>
@@ -232,7 +244,14 @@ def render_html(store: dict) -> str:
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
+    }}
+
+    .post-title-block {{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }}
 
     .post-header h2 {{
@@ -313,6 +332,20 @@ def render_html(store: dict) -> str:
       padding: 0.4rem 0.75rem;
       border-radius: 4px;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }}
+
+    .btn-playlist {{
+      background: #10b981;
+      color: #ffffff;
+      font-size: 0.76rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+    }}
+
+    .btn-playlist:hover {{
+      background: #059669;
     }}
 
     .btn-ytm {{
