@@ -3,8 +3,10 @@
 
 Supports both browser header auth files (e.g., browser.json) and OAuth token
 files (e.g., oauth.json) with OAuthCredentials. Iterates posts starting with
-the newest entry, retries rate-limit/transient API errors with backoff, and
-writes 'playlist_id' and 'playlist_url' into releases.json.
+the newest entry, logs releases/tracks missing video IDs, adds tracks in
+chunks with retry backoff, falls back to single-track inserts if a chunk
+fails, and saves 'playlist_id' and 'playlist_url' into releases.json
+immediately after each playlist is created.
 """
 
 from __future__ import annotations
@@ -75,31 +77,77 @@ HARD_QUOTA_MARKERS = (
 )
 
 
-def extract_post_video_ids(post: dict[str, Any]) -> list[str]:
-    """Collect all valid track video IDs for a post."""
+def _extract_vid_from_url(url: Any) -> str:
+    text = str(url or "")
+    if "v=" not in text:
+        return ""
+    return text.split("v=", 1)[1].split("&", 1)[0].strip()
+
+
+def extract_post_video_ids(post: dict[str, Any], post_label: str = "") -> list[str]:
+    """Collect unique video IDs for a post while logging missing or duplicate entries."""
     video_ids: list[str] = []
     seen: set[str] = set()
+    releases = post.get("releases", [])
+    if not isinstance(releases, list):
+        return video_ids
 
-    for rel in post.get("releases", []):
+    for rel_idx, rel in enumerate(releases):
         if not isinstance(rel, dict):
+            logger.warning("[%s] Release [%d] is not a dict; skipping.", post_label, rel_idx)
             continue
 
+        rel_name = (
+            str(rel.get("title") or rel.get("release_title") or rel.get("artist") or f"release[{rel_idx}]")
+            .strip()
+        )
         tracks = rel.get("tracks")
+        rel_ids: list[str] = []
+
         if isinstance(tracks, list) and tracks:
-            for tr in tracks:
+            for tr_idx, tr in enumerate(tracks):
                 if not isinstance(tr, dict):
+                    logger.warning(
+                        "[%s] Release '%s' track [%d] is invalid; skipping.",
+                        post_label,
+                        rel_name,
+                        tr_idx,
+                    )
                     continue
-                url = str(tr.get("url") or "")
-                if "v=" in url:
-                    vid = url.split("v=")[1].split("&")[0].strip()
-                    if vid and vid not in seen:
-                        seen.add(vid)
-                        video_ids.append(vid)
+                vid = _extract_vid_from_url(tr.get("url")) or str(tr.get("video_id") or "").strip()
+                if not vid:
+                    tr_title = str(tr.get("title") or tr.get("name") or f"track[{tr_idx}]").strip()
+                    logger.warning(
+                        "[%s] Missing video ID for '%s' in release '%s' (url=%r).",
+                        post_label,
+                        tr_title,
+                        rel_name,
+                        tr.get("url"),
+                    )
+                    continue
+                rel_ids.append(vid)
         else:
-            vid = str(rel.get("video_id") or "").strip()
-            if vid and vid not in seen:
-                seen.add(vid)
-                video_ids.append(vid)
+            vid = str(rel.get("video_id") or "").strip() or _extract_vid_from_url(rel.get("url"))
+            if not vid:
+                logger.warning(
+                    "[%s] Missing video ID for release '%s' (no tracks with v= and no video_id).",
+                    post_label,
+                    rel_name,
+                )
+                continue
+            rel_ids.append(vid)
+
+        for vid in rel_ids:
+            if vid in seen:
+                logger.debug(
+                    "[%s] Duplicate video_id '%s' in release '%s'; skipping duplicate.",
+                    post_label,
+                    vid,
+                    rel_name,
+                )
+                continue
+            seen.add(vid)
+            video_ids.append(vid)
 
     return video_ids
 
@@ -193,6 +241,96 @@ def call_with_retry(
             time.sleep(sleep_for)
 
 
+def append_chunk_with_fallback(
+    ytm: YTMusic,
+    playlist_id: str,
+    chunk: list[str],
+    *,
+    post_label: str,
+    chunk_num: int,
+    max_retries: int,
+    base_delay: float,
+    single_track_fallback: bool,
+) -> tuple[int, bool]:
+    """Append a chunk of video IDs, optionally retrying one-by-one if the batch fails."""
+    try:
+        call_with_retry(
+            lambda c=chunk: ytm.add_playlist_items(
+                playlistId=playlist_id,
+                videoIds=c,
+                duplicates=False,
+            ),
+            label=f"{post_label}[chunk={chunk_num}]",
+            max_retries=max_retries,
+            base_delay=base_delay,
+        )
+        return len(chunk), False
+    except Exception as chunk_err:
+        if is_hard_quota_error(chunk_err):
+            logger.warning(
+                "[%s] Hard API quota reached on chunk %d (%d track(s)): %s",
+                post_label,
+                chunk_num,
+                len(chunk),
+                chunk_err,
+            )
+            return 0, True
+
+        if not single_track_fallback or len(chunk) <= 1:
+            logger.warning(
+                "[%s] Failed appending chunk %d (%d track(s)): %s",
+                post_label,
+                chunk_num,
+                len(chunk),
+                chunk_err,
+            )
+            return 0, False
+
+        logger.warning(
+            "[%s] Chunk %d (%d track(s)) failed (%s); falling back to one-by-one insert.",
+            post_label,
+            chunk_num,
+            len(chunk),
+            chunk_err,
+        )
+        added_individually = 0
+        for vid in chunk:
+            try:
+                call_with_retry(
+                    lambda single_id=vid: ytm.add_playlist_items(
+                        playlistId=playlist_id,
+                        videoIds=[single_id],
+                        duplicates=False,
+                    ),
+                    label=f"{post_label}[vid={vid}]",
+                    max_retries=max_retries,
+                    base_delay=base_delay,
+                )
+                added_individually += 1
+                time.sleep(0.4)
+            except Exception as track_err:
+                logger.warning(
+                    "[%s] Skipping video_id '%s' after single-track insert failed: %s",
+                    post_label,
+                    vid,
+                    track_err,
+                )
+                if is_hard_quota_error(track_err):
+                    return added_individually, True
+
+        return added_individually, False
+
+
+def save_releases_store(releases_path: Path, store: dict[str, Any]) -> None:
+    """Persist updated releases.json atomically via a temporary file in the same directory."""
+    tmp_path = releases_path.with_suffix(f"{releases_path.suffix}.tmp")
+    tmp_path.write_text(
+        json.dumps(store, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    os.replace(tmp_path, releases_path)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Create public YTM playlists for posts in releases.json."
@@ -226,6 +364,17 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=None,
         help="Maximum number of playlists to create in this run (default: unlimited).",
+    )
+    parser.add_argument(
+        "--chunk-size",
+        type=int,
+        default=25,
+        help="Number of tracks per chunk when creating and appending to a playlist (default: 25).",
+    )
+    parser.add_argument(
+        "--no-single-track-fallback",
+        action="store_true",
+        help="Disable one-by-one track retry when a batch chunk fails.",
     )
     parser.add_argument(
         "--max-retries",
@@ -275,8 +424,11 @@ def main() -> None:
 
     store = json.loads(RELEASES_FILE.read_text(encoding="utf-8"))
     posts = store.get("posts", [])
-    updated = False
     created_count = 0
+    chunk_size = max(1, args.chunk_size)
+    single_track_fallback = not args.no_single_track_fallback
+    retries = max(0, args.max_retries)
+    delay = max(0.5, args.retry_base_delay)
 
     indices = (
         [args.post_idx]
@@ -299,57 +451,101 @@ def main() -> None:
             continue
 
         title = str(post.get("post_title") or f"Hardcore Releases {post.get('added_at', '')}").strip()
+        post_label = f"post[{idx}] {title}"
         reddit_url = str(post.get("post_url") or "").strip()
         desc = f"Curated hardcore releases from {title} on r/Hardcore."
         if reddit_url:
             desc += f" Reddit thread: {reddit_url}"
 
-        video_ids = extract_post_video_ids(post)
+        video_ids = extract_post_video_ids(post, post_label=post_label)
         if not video_ids:
-            logger.warning("Post [%d] '%s' has 0 resolved video IDs. Skipping.", idx, title)
+            logger.warning("[%s] Has 0 resolved video IDs. Skipping playlist creation.", post_label)
             continue
 
-        logger.info("Creating public playlist [%d] '%s' with %d tracks...", idx, title, len(video_ids))
+        initial_ids = video_ids[:chunk_size]
+        remaining_ids = video_ids[chunk_size:]
+
+        logger.info(
+            "[%s] Creating public playlist with %d initial track(s) (%d total resolved)...",
+            post_label,
+            len(initial_ids),
+            len(video_ids),
+        )
         try:
             pl_id = call_with_retry(
                 lambda: ytm.create_playlist(
                     title=title[:150],
                     description=desc[:5000],
                     privacy_status="PUBLIC",
-                    video_ids=video_ids,
+                    video_ids=initial_ids,
                 ),
                 label=f"create_playlist[{idx}]",
-                max_retries=max(0, args.max_retries),
-                base_delay=max(0.5, args.retry_base_delay),
+                max_retries=retries,
+                base_delay=delay,
             )
             if isinstance(pl_id, dict):
                 pl_id = pl_id.get("id") or pl_id.get("playlistId")
 
+            if not pl_id:
+                raise RuntimeError("create_playlist returned an empty playlist ID")
+
+            added_so_far = len(initial_ids)
+            stop_due_to_quota = False
+
+            for chunk_num, offset in enumerate(range(0, len(remaining_ids), chunk_size), start=1):
+                chunk = remaining_ids[offset : offset + chunk_size]
+                logger.info(
+                    "[%s] Appending chunk %d (%d track(s), %d/%d queued)...",
+                    post_label,
+                    chunk_num,
+                    len(chunk),
+                    added_so_far + len(chunk),
+                    len(video_ids),
+                )
+                added_in_chunk, hit_quota = append_chunk_with_fallback(
+                    ytm,
+                    str(pl_id),
+                    chunk,
+                    post_label=post_label,
+                    chunk_num=chunk_num,
+                    max_retries=retries,
+                    base_delay=delay,
+                    single_track_fallback=single_track_fallback,
+                )
+                added_so_far += added_in_chunk
+                if hit_quota:
+                    stop_due_to_quota = True
+                    break
+                time.sleep(1.0)
+
             pl_url = f"https://music.youtube.com/playlist?list={pl_id}"
             post["playlist_id"] = pl_id
             post["playlist_url"] = pl_url
-            updated = True
+            save_releases_store(RELEASES_FILE, store)
             created_count += 1
-            logger.info("Successfully published [%d]: %s", idx, pl_url)
+            logger.info(
+                "[%s] Published and saved %s (%d/%d resolved tracks added).",
+                post_label,
+                pl_url,
+                added_so_far,
+                len(video_ids),
+            )
+            if stop_due_to_quota:
+                logger.error("[%s] Hard API quota reached during chunk append; stopping run.", post_label)
+                break
             time.sleep(1.5)
         except Exception as err:
             if is_hard_quota_error(err):
                 logger.error(
-                    "Daily/hard API quota hit while creating playlist for [%d] '%s': %s. "
+                    "[%s] Daily/hard API quota hit while creating playlist: %s. "
                     "Stopping remaining posts for this run.",
-                    idx,
-                    title,
+                    post_label,
                     err,
                 )
                 break
-            logger.error("Failed creating playlist for [%d] '%s': %s", idx, title, err)
+            logger.error("[%s] Failed creating playlist: %s", post_label, err)
 
-    if updated:
-        RELEASES_FILE.write_text(
-            json.dumps(store, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
-        logger.info("Updated %s with %d new playlist link(s).", RELEASES_FILE, created_count)
+    logger.info("Finished publishing run. Total new playlist(s) created: %d.", created_count)
 
 
 if __name__ == "__main__":
