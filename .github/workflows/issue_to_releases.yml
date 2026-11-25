@@ -27,7 +27,7 @@ jobs:
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            pip install ytmusicapi>=1.8.0
+            pip install "ytmusicapi>=1.8.0"
           fi
 
       - name: Parse issue body and append to releases.json
