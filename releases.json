@@ -10,12 +10,12 @@
       "releases": [
         {
           "artist": "Bad Beat",
-          "title": "LP",
+          "title": "LP 2026",
           "notes": "Detroit, Michigan",
           "browse_id": "MPREb_DoSLVHSIEJH",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "LP 2025",
+          "ytm_matched_title": "LP 2026",
           "tracks": [
             {
               "artist": "Bad Beat",
@@ -3963,7 +3963,8 @@
             }
           ]
         }
-      ],
+      ]
+    },
       "playlist_id": "PLLJw_lUnW19E",
       "playlist_url": "https://music.youtube.com/playlist?list=PLLJw_lUnW19E"
     },
