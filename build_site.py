@@ -2,8 +2,8 @@
 """Build a static index.html from releases.json for GitHub Pages.
 
 Supports full albums, single tracks, in-page queueing, and client-side
-Google OAuth to let visitors export any post directly into their own
-YouTube / YouTube Music account as a playlist.
+Google OAuth to let visitors sign in and export any post directly into
+their own YouTube / YouTube Music account as a playlist.
 """
 
 from __future__ import annotations
@@ -258,22 +258,19 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       font-size: 0.85rem;
     }}
 
-    .oauth-inputs {{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      flex-grow: 1;
+    .oauth-copy {{
+      color: var(--text-sub);
     }}
 
-    .oauth-inputs input {{
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 5px;
+    .oauth-copy strong {{
       color: var(--text-main);
-      padding: 0.4rem 0.65rem;
-      font-size: 0.82rem;
-      width: min(340px, 100%);
+    }}
+
+    .oauth-actions {{
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }}
 
     .filter-panel {{
@@ -295,8 +292,7 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       outline: none;
     }}
 
-    input[type="search"]:focus,
-    .oauth-inputs input:focus {{
+    input[type="search"]:focus {{
       border-color: var(--accent);
     }}
 
@@ -532,9 +528,6 @@ def render_html(store: dict, default_client_id: str = "") -> str:
         width: 100%;
         justify-content: flex-end;
       }}
-      .oauth-inputs input {{
-        width: 100%;
-      }}
     }}
   </style>
 </head>
@@ -548,15 +541,13 @@ def render_html(store: dict, default_client_id: str = "") -> str:
     </header>
 
     <section class="oauth-panel">
-      <div class="oauth-inputs">
-        <label for="clientIdInput"><strong>Your Google Client ID:</strong></label>
-        <input type="text" id="clientIdInput" placeholder="xxxx.apps.googleusercontent.com" spellcheck="false" />
-        <button type="button" class="btn btn-action" id="saveClientIdBtn">Save</button>
+      <div class="oauth-copy">
+        <strong>YouTube Music Playlist Export:</strong> Sign in with Google to export any post into a playlist on your account.
       </div>
-      <div>
-        <span id="oauthStatus" style="color: var(--text-sub); margin-right: 0.5rem;">Not Connected</span>
-        <button type="button" class="btn btn-ytm" id="loginBtn">Connect YouTube</button>
-        <button type="button" class="btn btn-action" id="logoutBtn" style="display: none;">Disconnect</button>
+      <div class="oauth-actions">
+        <span id="oauthStatus" style="color: var(--text-sub);">Signed out</span>
+        <button type="button" class="btn btn-ytm" id="loginBtn">Sign in with Google</button>
+        <button type="button" class="btn btn-action" id="logoutBtn" style="display: none;">Sign out</button>
       </div>
     </section>
 
@@ -590,23 +581,12 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       }});
     }});
 
-    const STORAGE_CLIENT_ID = "yt_oauth_client_id";
     const SESSION_TOKEN = "yt_oauth_access_token";
-    const DEFAULT_CLIENT_ID = {default_client_id_js};
+    const OAUTH_CLIENT_ID = {default_client_id_js};
 
-    const clientIdInput = document.getElementById("clientIdInput");
-    const saveClientIdBtn = document.getElementById("saveClientIdBtn");
     const loginBtn = document.getElementById("loginBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const oauthStatus = document.getElementById("oauthStatus");
-
-    clientIdInput.value = localStorage.getItem(STORAGE_CLIENT_ID) || DEFAULT_CLIENT_ID || "";
-
-    saveClientIdBtn.addEventListener("click", () => {{
-      const val = clientIdInput.value.trim();
-      localStorage.setItem(STORAGE_CLIENT_ID, val);
-      alert(val ? "Google Client ID saved locally in your browser." : "Client ID cleared.");
-    }});
 
     if (window.location.hash) {{
       const params = new URLSearchParams(window.location.hash.substring(1));
@@ -620,39 +600,40 @@ def render_html(store: dict, default_client_id: str = "") -> str:
     function updateAuthUi() {{
       const token = sessionStorage.getItem(SESSION_TOKEN);
       if (token) {{
-        oauthStatus.textContent = "Connected ✓";
+        oauthStatus.textContent = "Signed in ✓";
         oauthStatus.style.color = "#4ade80";
         loginBtn.style.display = "none";
         logoutBtn.style.display = "inline-flex";
       }} else {{
-        oauthStatus.textContent = "Not Connected";
+        oauthStatus.textContent = "Signed out";
         oauthStatus.style.color = "var(--text-sub)";
-        loginBtn.style.display = "inline-flex";
+        loginBtn.style.display = OAUTH_CLIENT_ID ? "inline-flex" : "none";
         logoutBtn.style.display = "none";
+        if (!OAUTH_CLIENT_ID) {{
+          oauthStatus.textContent = "OAuth sign-in not configured (YT_CLIENT_ID missing at build)";
+        }}
       }}
     }}
     updateAuthUi();
 
-    loginBtn.addEventListener("click", () => {{
-      const clientId = (localStorage.getItem(STORAGE_CLIENT_ID) || clientIdInput.value || DEFAULT_CLIENT_ID || "").trim();
-      if (!clientId) {{
-        alert("Please enter and save your Google Client ID first.");
-        clientIdInput.focus();
+    function promptGoogleLogin() {{
+      if (!OAUTH_CLIENT_ID) {{
+        alert("Google OAuth sign-in is not configured on this page because YT_CLIENT_ID was not set when building the site.");
         return;
       }}
-
       const redirectUri = window.location.origin + window.location.pathname;
       const scope = "https://www.googleapis.com/auth/youtube";
       const authUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + new URLSearchParams({{
-        client_id: clientId,
+        client_id: OAUTH_CLIENT_ID,
         redirect_uri: redirectUri,
         response_type: "token",
         scope: scope,
         include_granted_scopes: "true",
       }}).toString();
-
       window.location.href = authUrl;
-    }});
+    }}
+
+    loginBtn.addEventListener("click", promptGoogleLogin);
 
     logoutBtn.addEventListener("click", () => {{
       sessionStorage.removeItem(SESSION_TOKEN);
@@ -707,9 +688,13 @@ def render_html(store: dict, default_client_id: str = "") -> str:
 
     document.querySelectorAll('[data-action="export-playlist"]').forEach((btn) => {{
       btn.addEventListener("click", async () => {{
-        const token = sessionStorage.getItem(SESSION_TOKEN);
+        let token = sessionStorage.getItem(SESSION_TOKEN);
         if (!token) {{
-          alert("Please connect your YouTube account above using your Google Client ID first.");
+          if (!OAUTH_CLIENT_ID) {{
+            alert("Google OAuth sign-in is not configured on this page.");
+            return;
+          }}
+          promptGoogleLogin();
           return;
         }}
 
@@ -756,7 +741,7 @@ def render_html(store: dict, default_client_id: str = "") -> str:
           if (err.message.includes("401") || err.message.toLowerCase().includes("invalid credentials")) {{
             sessionStorage.removeItem(SESSION_TOKEN);
             updateAuthUi();
-            statusDiv.textContent = "Authentication expired. Please connect YouTube again.";
+            promptGoogleLogin();
           }} else {{
             statusDiv.textContent = "Failed to create playlist: " + err.message;
           }}
