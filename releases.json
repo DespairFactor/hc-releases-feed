@@ -1916,7 +1916,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLJfuezyPYYdg",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLJfuezyPYYdg"
     },
     {
       "post_title": "new releases November Pt 2",
@@ -3961,7 +3963,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLaLmF9Z8C5Hg",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLaLmF9Z8C5Hg"
     },
     {
       "post_title": "new releases November Pt 1",
@@ -6327,7 +6331,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLHdpW0XR2YQk",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLHdpW0XR2YQk"
     },
     {
       "post_title": "new releases October Pt 4",
@@ -6806,7 +6812,19 @@
           "browse_id": "MPREb_uWNfiUXTWYx",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "2026 PROMO"
+          "ytm_matched_title": "2026 PROMO",
+          "tracks": [
+            {
+              "artist": "AGONIZE",
+              "title": "VICTIM DISEASE",
+              "url": "https://music.youtube.com/watch?v=9jfzqcEQHAw"
+            },
+            {
+              "artist": "AGONIZE",
+              "title": "PICKED FROM THE BONE",
+              "url": "https://music.youtube.com/watch?v=nKbSfZ7ShWc"
+            }
+          ]
         },
         {
           "artist": "New Day Rising",
@@ -6815,7 +6833,34 @@
           "browse_id": "MPREb_5kS8BMO7HsC",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "It Will All Come To An End"
+          "ytm_matched_title": "It Will All Come To An End",
+          "tracks": [
+            {
+              "artist": "New Day Rising",
+              "title": "Deadbolt",
+              "url": "https://music.youtube.com/watch?v=fBrtUytVWrs"
+            },
+            {
+              "artist": "New Day Rising",
+              "title": "We All Came From This Machine",
+              "url": "https://music.youtube.com/watch?v=gS9VxN1xhAQ"
+            },
+            {
+              "artist": "New Day Rising",
+              "title": "One Of Us",
+              "url": "https://music.youtube.com/watch?v=kGt_0WYVqLk"
+            },
+            {
+              "artist": "New Day Rising",
+              "title": "Side By Side",
+              "url": "https://music.youtube.com/watch?v=Lls69bvVhDU"
+            },
+            {
+              "artist": "New Day Rising",
+              "title": "It Will All Come To An End",
+              "url": "https://music.youtube.com/watch?v=egt7C0v9N1w"
+            }
+          ]
         },
         {
           "artist": "Running Scared",
@@ -6824,7 +6869,29 @@
           "browse_id": "MPREb_fgzw77qHZuZ",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Crossed The Line"
+          "ytm_matched_title": "Crossed The Line",
+          "tracks": [
+            {
+              "artist": "Running Scared",
+              "title": "Unchained",
+              "url": "https://music.youtube.com/watch?v=xEn1GXa3Zzg"
+            },
+            {
+              "artist": "Running Scared",
+              "title": "Battles",
+              "url": "https://music.youtube.com/watch?v=T_piqeWPRTU"
+            },
+            {
+              "artist": "Running Scared",
+              "title": "Capsized",
+              "url": "https://music.youtube.com/watch?v=Qe1sj8Buc5g"
+            },
+            {
+              "artist": "Running Scared",
+              "title": "More Than Anything",
+              "url": "https://music.youtube.com/watch?v=VNvsbE1uprE"
+            }
+          ]
         },
         {
           "artist": "Foghorn",
@@ -6833,7 +6900,34 @@
           "browse_id": "MPREb_lCgGojOZXFf",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Hood Famous"
+          "ytm_matched_title": "Hood Famous",
+          "tracks": [
+            {
+              "artist": "Foghorn",
+              "title": "Fog City Stomp",
+              "url": "https://music.youtube.com/watch?v=PyFu0VIRXwM"
+            },
+            {
+              "artist": "Foghorn",
+              "title": "Fogging",
+              "url": "https://music.youtube.com/watch?v=mKNyRlROAho"
+            },
+            {
+              "artist": "Foghorn",
+              "title": "Fog of War",
+              "url": "https://music.youtube.com/watch?v=wwclArmlxjc"
+            },
+            {
+              "artist": "Foghorn",
+              "title": "Tumba Neblinosa (feat. Spinebreaker)",
+              "url": "https://music.youtube.com/watch?v=bsmDXvZMvIk"
+            },
+            {
+              "artist": "Foghorn",
+              "title": "Fogless Nightmare",
+              "url": "https://music.youtube.com/watch?v=BB4ixeVTKfw"
+            }
+          ]
         },
         {
           "artist": "Humiliate",
@@ -6842,25 +6936,101 @@
           "browse_id": "MPREb_83qDktG2g6U",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Sense in Belonging / On Contrition"
+          "ytm_matched_title": "Sense in Belonging / On Contrition",
+          "tracks": [
+            {
+              "artist": "Humiliate",
+              "title": "Sense in Belonging",
+              "url": "https://music.youtube.com/watch?v=4RNxPMuL7_M"
+            },
+            {
+              "artist": "Humiliate",
+              "title": "Sense in Belonging (Reprise)",
+              "url": "https://music.youtube.com/watch?v=9Fn3Qr_dr3Y"
+            },
+            {
+              "artist": "Humiliate",
+              "title": "On Contrition",
+              "url": "https://music.youtube.com/watch?v=TdgZWY5QMfY"
+            }
+          ]
         },
         {
           "artist": "Dead Justice",
           "title": "Still Pissed EP",
           "notes": "Tennessee",
-          "browse_id": "MPREb_lFdH0EqT0zy",
+          "browse_id": "MPREb_lcqnSZNYqfO",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Still Pissed"
+          "ytm_matched_title": "Isle of the Dead - EP",
+          "tracks": [
+            {
+              "artist": "Black People",
+              "title": "The Mad King",
+              "url": "https://music.youtube.com/watch?v=q19JN6dTgD8"
+            },
+            {
+              "artist": "Black People",
+              "title": "Other People",
+              "url": "https://music.youtube.com/watch?v=7QpXa0ZyFm4"
+            },
+            {
+              "artist": "Black People",
+              "title": "Multiple Division",
+              "url": "https://music.youtube.com/watch?v=DYvx4NKVbKY"
+            },
+            {
+              "artist": "Black People",
+              "title": "Isle of the Dead",
+              "url": "https://music.youtube.com/watch?v=m3bHPHyp-Qo"
+            },
+            {
+              "artist": "Black People",
+              "title": "Axeman",
+              "url": "https://music.youtube.com/watch?v=2ywbXCtpimI"
+            },
+            {
+              "artist": "Black People",
+              "title": "Mean Streets",
+              "url": "https://music.youtube.com/watch?v=yjAXlODeqV8"
+            },
+            {
+              "artist": "Black People",
+              "title": "The Mad King (Vocal Version)",
+              "url": "https://music.youtube.com/watch?v=S0eOCH1DmDs"
+            }
+          ]
         },
         {
           "artist": "Despondent",
           "title": "Despondent EP",
           "notes": "Nottingham, UK",
-          "browse_id": "MPREb_iK1o76yOEDY",
+          "browse_id": "MPREb_GEtNCYMo4S3",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "DESPONDENT"
+          "ytm_matched_title": "Despondent EP",
+          "tracks": [
+            {
+              "artist": "Arnab888",
+              "title": "Despondent",
+              "url": "https://music.youtube.com/watch?v=pFkHEJ0oxP8"
+            },
+            {
+              "artist": "Arnab888",
+              "title": "Midnight Melancholy",
+              "url": "https://music.youtube.com/watch?v=w8OH1oCgNSc"
+            },
+            {
+              "artist": "Arnab888, Amidsteverything",
+              "title": "Reminiscence (with Amidsteverything)",
+              "url": "https://music.youtube.com/watch?v=7sXVvNe8Uns"
+            },
+            {
+              "artist": "Arnab888",
+              "title": "Twilight Tears",
+              "url": "https://music.youtube.com/watch?v=PGXOYSKG4eA"
+            }
+          ]
         },
         {
           "artist": "Gibraltar",
@@ -7150,7 +7320,9 @@
           "ytm_type": "album",
           "ytm_matched_title": "Raw Orc, Vol. 2"
         }
-      ]
+      ],
+      "playlist_id": "PLELJAzNtEzhk",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLELJAzNtEzhk"
     },
     {
       "post_title": "new releases October Pt 3",
@@ -7684,37 +7856,110 @@
           "artist": "Scrape",
           "title": "Self Titled EP",
           "notes": "Netherlands/Canada",
-          "browse_id": "MPREb_VxTYbA2ltgQ",
+          "browse_id": "MPREb_FjiEnjkAXBb",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Self Titled"
+          "ytm_matched_title": "Self Titled EP",
+          "tracks": [
+            {
+              "artist": "Paper Cut Skyline",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=u2nmEmgBUsE"
+            },
+            {
+              "artist": "Paper Cut Skyline",
+              "title": "Landscapes",
+              "url": "https://music.youtube.com/watch?v=n-jwXqo6nqA"
+            },
+            {
+              "artist": "Paper Cut Skyline",
+              "title": "Exit7a",
+              "url": "https://music.youtube.com/watch?v=oZE2wjNPGHk"
+            },
+            {
+              "artist": "Paper Cut Skyline",
+              "title": "Life After Death (Live)",
+              "url": "https://music.youtube.com/watch?v=vUIEOsJM_is"
+            },
+            {
+              "artist": "Paper Cut Skyline",
+              "title": "More Hooks Than a Tackle Box",
+              "url": "https://music.youtube.com/watch?v=N3HfPCCjS2g"
+            }
+          ]
         },
         {
           "artist": "Skurge",
           "title": "Peace Through Absolution EP",
           "notes": "Melbourne, Australia",
-          "browse_id": "MPREb_d7EG8gW8LRx",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Peace Through Absolution"
+          "browse_id": null,
+          "video_id": "JyWKAGpNA0c",
+          "ytm_type": "song",
+          "ytm_matched_title": "Peace Through Absolution",
+          "tracks": [
+            {
+              "artist": "Skurge",
+              "title": "Peace Through Absolution EP",
+              "url": "https://music.youtube.com/watch?v=JyWKAGpNA0c"
+            }
+          ]
         },
         {
           "artist": "If It Rains",
           "title": "All We've Got EP",
           "notes": "Rhode Island/Massachusetts",
-          "browse_id": "MPREb_o7pil5wPgjI",
+          "browse_id": "MPREb_nhmeoSPsH2M",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "All We've Got"
+          "ytm_matched_title": "Toy - EP (‘You’ve got it made with all the toys’)",
+          "tracks": [
+            {
+              "artist": "David Bowie",
+              "title": "You've Got A Habit Of Leaving (Radio Edit)",
+              "url": "https://music.youtube.com/watch?v=LCOSLrHOkvk"
+            },
+            {
+              "artist": "David Bowie",
+              "title": "Shadow Man (Vocal and Piano Mix)",
+              "url": "https://music.youtube.com/watch?v=4uw6Y5lTR_8"
+            },
+            {
+              "artist": "David Bowie",
+              "title": "Silly Boy Blue (Alternative Ending Mix)",
+              "url": "https://music.youtube.com/watch?v=LNFdWtOzDoE"
+            },
+            {
+              "artist": "David Bowie",
+              "title": "Can't Help Thinking About Me (Live Mark Radcliffe Show BBC Radio 1 Session)",
+              "url": "https://music.youtube.com/watch?v=kGNQVlWVZvM"
+            },
+            {
+              "artist": "David Bowie",
+              "title": "I Dig Everything (Live at Roseland Ballroom, New York on 19th June, 2000)",
+              "url": "https://music.youtube.com/watch?v=wST50zVI4fc"
+            },
+            {
+              "artist": "David Bowie",
+              "title": "The London Boys (Live at Roseland Ballroom, New York on 19th June, 2000)",
+              "url": "https://music.youtube.com/watch?v=a9uEGoDmcsI"
+            }
+          ]
         },
         {
           "artist": "Encroachment",
           "title": "Dynasty EP",
           "notes": "Southwest Michigan",
-          "browse_id": "MPREb_QbcZvkSnZGp",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Dynasty"
+          "browse_id": null,
+          "video_id": "oPJXbUUORyc",
+          "ytm_type": "song",
+          "ytm_matched_title": "Dynasty II",
+          "tracks": [
+            {
+              "artist": "Encroachment",
+              "title": "Dynasty EP",
+              "url": "https://music.youtube.com/watch?v=oPJXbUUORyc"
+            }
+          ]
         },
         {
           "artist": "Teeth Out",
@@ -7723,43 +7968,263 @@
           "browse_id": "MPREb_XOVv6FjUeK1",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Promo 2026"
+          "ytm_matched_title": "Promo 2026",
+          "tracks": [
+            {
+              "artist": "Teeth Out",
+              "title": "Left to Rot",
+              "url": "https://music.youtube.com/watch?v=PI8VSZWAHOM"
+            },
+            {
+              "artist": "Teeth Out",
+              "title": "Dead Bodies",
+              "url": "https://music.youtube.com/watch?v=l-5291W47oE"
+            },
+            {
+              "artist": "Teeth Out",
+              "title": "Taste of Steel",
+              "url": "https://music.youtube.com/watch?v=H9b_o0foaJY"
+            }
+          ]
         },
         {
           "artist": "Eight Ounces",
           "title": "Nothing Remains EP",
           "notes": "Barcelona, Spain",
-          "browse_id": "MPREb_tkCr0yVSKNV",
+          "browse_id": "MPREb_78cZiOmrPmB",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Nothing Remains"
+          "ytm_matched_title": "All Eyez On Me",
+          "tracks": [
+            {
+              "artist": "2Pac",
+              "title": "Ambitionz Az A Ridah",
+              "url": "https://music.youtube.com/watch?v=77nB_9uIcN4"
+            },
+            {
+              "artist": "2Pac",
+              "title": "All About U (feat. Yaki Kadafi, Snoop Dogg, Nate Dogg & Fatal)",
+              "url": "https://music.youtube.com/watch?v=pjH5V5Tq_oE"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Skandalouz (feat. Nate Dogg)",
+              "url": "https://music.youtube.com/watch?v=-2bGyHt7sg8"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Got My Mind Made Up (feat. Daz Dillinger, Method Man, Redman & Kurupt)",
+              "url": "https://music.youtube.com/watch?v=1wIb1stiUcI"
+            },
+            {
+              "artist": "2Pac",
+              "title": "How Do U Want It (feat. K-Ci & JoJo)",
+              "url": "https://music.youtube.com/watch?v=jB4t4-4xHPA"
+            },
+            {
+              "artist": "2Pac",
+              "title": "2 Of Amerikaz Most Wanted (feat. Snoop Dogg)",
+              "url": "https://music.youtube.com/watch?v=9wVtWAwTMPU"
+            },
+            {
+              "artist": "2Pac",
+              "title": "No More Pain",
+              "url": "https://music.youtube.com/watch?v=BmKG73xCdd8"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Heartz Of Men",
+              "url": "https://music.youtube.com/watch?v=pXOuIqy0voQ"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Life Goes On",
+              "url": "https://music.youtube.com/watch?v=3HMRLEceXMM"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Only God Can Judge Me (feat. Rappin' 4-Tay)",
+              "url": "https://music.youtube.com/watch?v=5gLoEBbZNis"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Tradin' War Stories (feat. Storm, C-Bo, Outlawz & C-PO)",
+              "url": "https://music.youtube.com/watch?v=xeWtbDBkpec"
+            },
+            {
+              "artist": "2Pac",
+              "title": "California Love (Remix) (feat. Dr. Dre & Roger Troutman)",
+              "url": "https://music.youtube.com/watch?v=PK17simO-_g"
+            },
+            {
+              "artist": "2Pac",
+              "title": "I Ain't Mad At Cha (feat. Danny Boy)",
+              "url": "https://music.youtube.com/watch?v=LiCjD5qVV_U"
+            },
+            {
+              "artist": "2Pac",
+              "title": "What's Ya Phone # (feat. Danny Boy)",
+              "url": "https://music.youtube.com/watch?v=csGqOYi89Cg"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Can't C Me",
+              "url": "https://music.youtube.com/watch?v=GTFo0VKnNZY"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Shorty Wanna Be A Thug",
+              "url": "https://music.youtube.com/watch?v=nBPDy1pmwko"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Holla At Me",
+              "url": "https://music.youtube.com/watch?v=GH4jyEtueSQ"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Wonda Why They Call U Bytch",
+              "url": "https://music.youtube.com/watch?v=I5VL2sgjPjM"
+            },
+            {
+              "artist": "2Pac",
+              "title": "When We Ride (feat. Outlaw Immortals)",
+              "url": "https://music.youtube.com/watch?v=TILFtEj1gzM"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Thug Passion (feat. Jewell, Storm & Outlawz)",
+              "url": "https://music.youtube.com/watch?v=Q3mFeKSC66c"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Picture Me Rollin' (feat. Big Syke, C-PO & Danny Boy)",
+              "url": "https://music.youtube.com/watch?v=n8QurABRsqE"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Check Out Time",
+              "url": "https://music.youtube.com/watch?v=ovWDgOaxVP4"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Ratha Be Ya Nigga (feat. Richie Rich)",
+              "url": "https://music.youtube.com/watch?v=EzCR4CwEhac"
+            },
+            {
+              "artist": "2Pac",
+              "title": "All Eyez On Me (feat. Big Syke)",
+              "url": "https://music.youtube.com/watch?v=H1HdZFgR-aA"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Run Tha Streetz (feat. Storm, Mutah & Michel'le)",
+              "url": "https://music.youtube.com/watch?v=U6tbvDXx3j4"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Ain't Hard 2 Find (feat. E-40, Richie Rich, B-Legit & C-Bo)",
+              "url": "https://music.youtube.com/watch?v=Cn81XZQJmXE"
+            },
+            {
+              "artist": "2Pac",
+              "title": "Heaven Ain't Hard 2 Find",
+              "url": "https://music.youtube.com/watch?v=HqhP9HpvnpE"
+            }
+          ]
         },
         {
           "artist": "xMemoriestoburnx",
           "title": "Fall Promo",
           "notes": "Baltimore, Maryland",
           "browse_id": null,
-          "video_id": "Q1VJ9dDgHdA",
+          "video_id": "s06QjyS6jBs",
           "ytm_type": "video",
-          "ytm_matched_title": "[EGxHC] xmemoriestoburnx - Self-Portrait as Healing Wounds - 2026 (Full EP)"
+          "ytm_matched_title": "X MemoriesToBurn X - Fall Promo 2026 (Full Stream)",
+          "tracks": [
+            {
+              "artist": "xMemoriestoburnx",
+              "title": "Fall Promo",
+              "url": "https://music.youtube.com/watch?v=s06QjyS6jBs"
+            }
+          ]
         },
         {
           "artist": "Down Not Out",
           "title": "Demo",
           "notes": "Temecula, California",
-          "browse_id": "MPREb_yjN8VZINWRL",
+          "browse_id": "MPREb_87mUJDrJnBo",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Down and Out (Demo)"
+          "ytm_matched_title": "Both Demos",
+          "tracks": [
+            {
+              "artist": "Crawl Space",
+              "title": "Crawl Space",
+              "url": "https://music.youtube.com/watch?v=I1BTUhoZ5Qo"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Gun Shot",
+              "url": "https://music.youtube.com/watch?v=NpylvXneJpQ"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Not There",
+              "url": "https://music.youtube.com/watch?v=QaOhpQ6ToKA"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Shut You Down",
+              "url": "https://music.youtube.com/watch?v=BuclhCcPo3A"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Welcome Back",
+              "url": "https://music.youtube.com/watch?v=3_bDl8Vi0bA"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "No Virtue",
+              "url": "https://music.youtube.com/watch?v=aOC4dtJyUWI"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Life of Despise",
+              "url": "https://music.youtube.com/watch?v=ouPen9Gj9QY"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Ego Rat",
+              "url": "https://music.youtube.com/watch?v=1pKqBilKlDw"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Grim Outlook",
+              "url": "https://music.youtube.com/watch?v=YgVd3FA1bVs"
+            },
+            {
+              "artist": "Crawl Space",
+              "title": "Nuclear Reality",
+              "url": "https://music.youtube.com/watch?v=xmuqVhgfnRA"
+            }
+          ]
         },
         {
           "artist": "Here Comes Tha Pain",
           "title": "HCTP EP",
           "notes": "Adelaide, Australia",
-          "browse_id": "MPREb_1HwZmE4Piky",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "HCTP"
+          "browse_id": null,
+          "video_id": "chEQjlunQig",
+          "ytm_type": "video",
+          "ytm_matched_title": "Here Comes Tha Pain - HCTP 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Here Comes Tha Pain",
+              "title": "HCTP EP",
+              "url": "https://music.youtube.com/watch?v=chEQjlunQig"
+            }
+          ]
         },
         {
           "artist": "Do or Di3",
@@ -7768,7 +8233,14 @@
           "browse_id": "MPREb_JrKaIYlROKx",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Do or die (Demo)"
+          "ytm_matched_title": "Do or die (Demo)",
+          "tracks": [
+            {
+              "artist": "Shakiera Ramsey",
+              "title": "Do or die (Demo)",
+              "url": "https://music.youtube.com/watch?v=iLeZY_oDEXw"
+            }
+          ]
         },
         {
           "artist": "Common X Enemy",
@@ -7777,52 +8249,99 @@
           "browse_id": "MPREb_YgUCdntDOuU",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "DEMO"
+          "ytm_matched_title": "DEMO",
+          "tracks": [
+            {
+              "artist": "COMMONxENEMY",
+              "title": "Anti-venom",
+              "url": "https://music.youtube.com/watch?v=m4uWRTI5bWg"
+            },
+            {
+              "artist": "COMMONxENEMY",
+              "title": "COMMON ENEMY",
+              "url": "https://music.youtube.com/watch?v=CwWZB4jY6yc"
+            }
+          ]
         },
         {
           "artist": "Waste Of Space",
           "title": "The Bloody Hand Of The Healer EP",
           "notes": "Columbia, South Carolina",
-          "browse_id": "MPREb_xSWDqPB5dT2",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "The Bloody Hand Of The Healer"
+          "browse_id": null,
+          "video_id": "vemM9RaXTDQ",
+          "ytm_type": "video",
+          "ytm_matched_title": "Waste Of Space - The Bloody Hand Of The Healer 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Waste Of Space",
+              "title": "The Bloody Hand Of The Healer EP",
+              "url": "https://music.youtube.com/watch?v=vemM9RaXTDQ"
+            }
+          ]
         },
         {
           "artist": "Infight",
           "title": "True Together, True Forever EP",
           "notes": "Tacoma, Washington",
-          "browse_id": "MPREb_cAi8jWjn5P5",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "True Together, True Forever"
+          "browse_id": null,
+          "video_id": "H0FOeLm-Uwc",
+          "ytm_type": "video",
+          "ytm_matched_title": "Infight- True Together, True Forever EP",
+          "tracks": [
+            {
+              "artist": "Infight",
+              "title": "True Together, True Forever EP",
+              "url": "https://music.youtube.com/watch?v=H0FOeLm-Uwc"
+            }
+          ]
         },
         {
           "artist": "Crosshairs",
           "title": "Setback EP",
           "notes": "Ypres, Belgium",
-          "browse_id": "MPREb_nYUrvSTrdSC",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Setback"
+          "browse_id": null,
+          "video_id": "dPj658g8WMc",
+          "ytm_type": "video",
+          "ytm_matched_title": "Crosshairs - Setback 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Crosshairs",
+              "title": "Setback EP",
+              "url": "https://music.youtube.com/watch?v=dPj658g8WMc"
+            }
+          ]
         },
         {
           "artist": "Abscission",
           "title": "A Grief Of Who I Never Was EP",
           "notes": "Brighton, UK",
-          "browse_id": "MPREb_IHVgEbmgLsU",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "A Grief Of Who I Never Was"
+          "browse_id": null,
+          "video_id": "WuLUQVvghhw",
+          "ytm_type": "song",
+          "ytm_matched_title": "A Grief Of Who I Never Was",
+          "tracks": [
+            {
+              "artist": "Abscission",
+              "title": "A Grief Of Who I Never Was EP",
+              "url": "https://music.youtube.com/watch?v=WuLUQVvghhw"
+            }
+          ]
         },
         {
           "artist": "Anoint",
           "title": "Charred Body Eucharist EP",
           "notes": "Florida",
-          "browse_id": "MPREb_fiWH3vBBc7n",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Charred Body Eucharist"
+          "browse_id": null,
+          "video_id": "t9AsF_ckEGo",
+          "ytm_type": "song",
+          "ytm_matched_title": "Charred Body Eucharist",
+          "tracks": [
+            {
+              "artist": "Anoint",
+              "title": "Charred Body Eucharist EP",
+              "url": "https://music.youtube.com/watch?v=t9AsF_ckEGo"
+            }
+          ]
         },
         {
           "artist": "Crossed Out",
@@ -7831,34 +8350,407 @@
           "browse_id": "MPREb_DK6jpEFmpTZ",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "1990 - 1993"
+          "ytm_matched_title": "1990 - 1993",
+          "tracks": [
+            {
+              "artist": "Crossed Out",
+              "title": "Internal",
+              "url": "https://music.youtube.com/watch?v=d1kfbfFrxQ4"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "He-Man",
+              "url": "https://music.youtube.com/watch?v=Hj4gJ2IchBc"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Locked In",
+              "url": "https://music.youtube.com/watch?v=o12araomz2g"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Fraud",
+              "url": "https://music.youtube.com/watch?v=G5gAcS2jORM"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Crown Of Thorns",
+              "url": "https://music.youtube.com/watch?v=WPX_8wHOD00"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Force Of Habit",
+              "url": "https://music.youtube.com/watch?v=gZzgI5R6CPs"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Crutch",
+              "url": "https://music.youtube.com/watch?v=QcBhJqxapV0"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Supremacy",
+              "url": "https://music.youtube.com/watch?v=F3DUMcnOrr8"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Ulcer",
+              "url": "https://music.youtube.com/watch?v=M9-3ovNAZ_Y"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Neglect",
+              "url": "https://music.youtube.com/watch?v=xIOArp12cTk"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Suffocate",
+              "url": "https://music.youtube.com/watch?v=apy_Kt_PLf8"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Selfserve",
+              "url": "https://music.youtube.com/watch?v=T9Lbz63gZf8"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Homegrown",
+              "url": "https://music.youtube.com/watch?v=AFzP-so8cFY"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Crown Of Thorns (Unreleased Version)",
+              "url": "https://music.youtube.com/watch?v=HeuIW51Oozk"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Internal (Unreleased Version)",
+              "url": "https://music.youtube.com/watch?v=nuc5iWT5Z4s"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Practiced Hatred",
+              "url": "https://music.youtube.com/watch?v=kbp0GFtE6L8"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Pure Delusion",
+              "url": "https://music.youtube.com/watch?v=-iwT01aCRkQ"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Society",
+              "url": "https://music.youtube.com/watch?v=b9fHjUnXHK4"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Lowlife",
+              "url": "https://music.youtube.com/watch?v=Z1_tpC5VhxE"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Scapegoat",
+              "url": "https://music.youtube.com/watch?v=1Fpe-N5QgXk"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Vacuum",
+              "url": "https://music.youtube.com/watch?v=oOnfOJZ6BSk"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "No Truth",
+              "url": "https://music.youtube.com/watch?v=P9fqjdpxQ4I"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Fraud (Demo)",
+              "url": "https://music.youtube.com/watch?v=uQs04Z9unIk"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Letch (Demo)",
+              "url": "https://music.youtube.com/watch?v=XfiYhV-POxU"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Never Forget (Demo)",
+              "url": "https://music.youtube.com/watch?v=wBAi9Ai7xoA"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "He-Man (Demo)",
+              "url": "https://music.youtube.com/watch?v=gVUfu2M7268"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Suicide Of The Species (Demo)",
+              "url": "https://music.youtube.com/watch?v=81RPVsxhnAA"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Selfish Achiever (Demo)",
+              "url": "https://music.youtube.com/watch?v=YDO_ZQkFfrE"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Advice? (Demo)",
+              "url": "https://music.youtube.com/watch?v=4U4S02G6-HI"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Locked In (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=8EpPJ0KIHOs"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Fraud (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=LG5Lg6KnBJw"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Ulcer (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=NFwUwjMV2s8"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "He-Man (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=Q-zGd6ChXQQ"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Internal (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=RRj9P1JvGa4"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Suffocate (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=N_Cr1xeWrfE"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Supremacy (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=9gKQM3MhtMo"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Force Of Habit (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=TkUDH5DubyI"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Homegrown (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=olWLUJE9_9s"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Selfserve (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=4s-EOiMKJnI"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Crown Of Thorns (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=pGsX9j55pPU"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Neglect (Live on KSPC)",
+              "url": "https://music.youtube.com/watch?v=KCkXCELNFzU"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Jihad",
+              "url": "https://music.youtube.com/watch?v=ma9E-fPiRCo"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Protester",
+              "url": "https://music.youtube.com/watch?v=Oc0xtSqtFsQ"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Pure Delusion (Live)",
+              "url": "https://music.youtube.com/watch?v=RyHgX28ukus"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Lowlife (Live)",
+              "url": "https://music.youtube.com/watch?v=cGqpbQ9HQ4M"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Nightstalker (Live)",
+              "url": "https://music.youtube.com/watch?v=XbgJ7xBC2to"
+            },
+            {
+              "artist": "Crossed Out",
+              "title": "Practiced Hatred (Live)",
+              "url": "https://music.youtube.com/watch?v=Fw6wA3x2IZ4"
+            }
+          ]
         },
         {
           "artist": "Last Breath",
           "title": "All That's Left EP",
           "notes": "Los Angeles, California",
-          "browse_id": "MPREb_2Gd8PaQf8yq",
+          "browse_id": "MPREb_DyfksvmX6kV",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "All That's Left"
+          "ytm_matched_title": "The Winter You Left Inside Me",
+          "tracks": [
+            {
+              "artist": "Yeti salma",
+              "title": "The Winter You Left Inside Me",
+              "url": "https://music.youtube.com/watch?v=pB5mVtXse4c"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "The Flowers Wilted Before Your Call",
+              "url": "https://music.youtube.com/watch?v=FjPsBIFUNYI"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "The House Forgot the Sound of Us",
+              "url": "https://music.youtube.com/watch?v=ARGMlla9GsU"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "The Little Things That Buried Us",
+              "url": "https://music.youtube.com/watch?v=pPIAVmyX0_o"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "The Pillow Knows I Still Pretend",
+              "url": "https://music.youtube.com/watch?v=SEN45EGMiMM"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "The Sky Turned Grey in Your Eyes",
+              "url": "https://music.youtube.com/watch?v=4hfxkiEUZYo"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "We Died a Little Every Sunday",
+              "url": "https://music.youtube.com/watch?v=9ra0l74EsQE"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "You Became a Stranger in My Sleep",
+              "url": "https://music.youtube.com/watch?v=YXItj5Ru630"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "Your Last Breath of Summer",
+              "url": "https://music.youtube.com/watch?v=DAAOqWZunqs"
+            },
+            {
+              "artist": "Yeti salma",
+              "title": "Your Side of the Mirror Is Empty",
+              "url": "https://music.youtube.com/watch?v=-BUQ_Dw_fos"
+            }
+          ]
         },
         {
           "artist": "Rascal",
           "title": "Heaven Shall Burn EP",
           "notes": "Lampung, Indonesia",
-          "browse_id": "MPREb_F9xef1Xl4o7",
+          "browse_id": "MPREb_V2wBF2CrtFk",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Heaven Shall Burn"
+          "ytm_matched_title": "Visions",
+          "tracks": [
+            {
+              "artist": "Don Williams",
+              "title": "Time On My Hands",
+              "url": "https://music.youtube.com/watch?v=Cjkq60CXHFw"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "I'll Forgive But I'll Never Forget",
+              "url": "https://music.youtube.com/watch?v=GKRY5Cay_l4"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "I'm Getting Good At Missing You",
+              "url": "https://music.youtube.com/watch?v=r6yfD0t1jus"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "In The Mornin'",
+              "url": "https://music.youtube.com/watch?v=P1zqhTTzBuY"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "Missing You, Missing Me",
+              "url": "https://music.youtube.com/watch?v=YQPacu4Cpxg"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "Some Broken Hearts Never Mend",
+              "url": "https://music.youtube.com/watch?v=YTuJHeXYD7I"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "Falling In Love Again",
+              "url": "https://music.youtube.com/watch?v=8J_Kfz1Ij2o"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "We Can Sing",
+              "url": "https://music.youtube.com/watch?v=Lh1eamjwsSo"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "I'll Need Someone To Hold Me (When I Cry)",
+              "url": "https://music.youtube.com/watch?v=VEMOToQ3NCQ"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "Expert At Everything",
+              "url": "https://music.youtube.com/watch?v=D-_9x2j6jf8"
+            },
+            {
+              "artist": "Don Williams",
+              "title": "Cup O' Tea",
+              "url": "https://music.youtube.com/watch?v=TWrDrjdlTrQ"
+            }
+          ]
         },
         {
           "artist": "Forced To Run",
           "title": "Forced To Run EP",
           "notes": "London, UK",
-          "browse_id": "MPREb_Muibr0ppUYD",
+          "browse_id": "MPREb_LOwiSJ405Gt",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "FORCED TO RUN"
+          "ytm_matched_title": "I Just Wanna Run EP",
+          "tracks": [
+            {
+              "artist": "Obsidian Force, Re:Covered Electronica",
+              "title": "I Just Wanna Run (Obsidian Force Remix)",
+              "url": "https://music.youtube.com/watch?v=nP9EpHN5Vvk"
+            },
+            {
+              "artist": "Obsidian Force, Re:Covered Electronica",
+              "title": "Cherryco",
+              "url": "https://music.youtube.com/watch?v=wXlLmC0SQ_k"
+            },
+            {
+              "artist": "Obsidian Force, Re:Covered Electronica",
+              "title": "It Must Be Love",
+              "url": "https://music.youtube.com/watch?v=gzHahTsih5Q"
+            },
+            {
+              "artist": "Obsidian Force, Re:Covered Electronica",
+              "title": "Push It Baby",
+              "url": "https://music.youtube.com/watch?v=yzcqfz3fUBM"
+            },
+            {
+              "artist": "Obsidian Force, Re:Covered Electronica",
+              "title": "Mystery",
+              "url": "https://music.youtube.com/watch?v=YUljI9svDG8"
+            }
+          ]
         },
         {
           "artist": "Sink",
@@ -7867,34 +8759,107 @@
           "browse_id": "MPREb_HDEwxcVRsxp",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "is it better where you are?"
+          "ytm_matched_title": "is it better where you are?",
+          "tracks": [
+            {
+              "artist": "Sink",
+              "title": "Unprepared (feat. Lakeview)",
+              "url": "https://music.youtube.com/watch?v=w5sUdKFpvZU"
+            },
+            {
+              "artist": "Sink",
+              "title": "No Life To Save Here",
+              "url": "https://music.youtube.com/watch?v=eU0Ht1b5lp4"
+            },
+            {
+              "artist": "Sink",
+              "title": "No Normalcy (feat. Kira Neil)",
+              "url": "https://music.youtube.com/watch?v=K55vwlqs71I"
+            },
+            {
+              "artist": "Sink",
+              "title": "Nobody But Her",
+              "url": "https://music.youtube.com/watch?v=g0Hru7FgqQ0"
+            },
+            {
+              "artist": "Sink",
+              "title": "Safety / Subdued (feat. Saving Face)",
+              "url": "https://music.youtube.com/watch?v=XKpiZmnNe1o"
+            },
+            {
+              "artist": "Sink",
+              "title": "Holding It Together",
+              "url": "https://music.youtube.com/watch?v=xPASXzgXcnQ"
+            }
+          ]
         },
         {
           "artist": "Chapel Hill",
           "title": "A Tragic Loss Of Morality EP",
           "notes": "Adelaide, Australia",
-          "browse_id": "MPREb_4D3jqpX4yqP",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "A Tragic Loss Of Morality"
+          "browse_id": null,
+          "video_id": "vNKKxXF_0Is",
+          "ytm_type": "song",
+          "ytm_matched_title": "Deathmatch (between my spirit and a nailgun)",
+          "tracks": [
+            {
+              "artist": "Chapel Hill",
+              "title": "A Tragic Loss Of Morality EP",
+              "url": "https://music.youtube.com/watch?v=vNKKxXF_0Is"
+            }
+          ]
         },
         {
           "artist": "Getdrown",
           "title": "Greedy/Differentiate",
           "notes": "Batang, Indonesia",
-          "browse_id": "VLPLJdlwiZAfRG1YH7Y-83et0X1i9uD1CqU0",
-          "video_id": null,
-          "ytm_type": "playlist",
-          "ytm_matched_title": "HxC - Beatdown"
+          "browse_id": null,
+          "video_id": "1tOs5zAsY1g",
+          "ytm_type": "video",
+          "ytm_matched_title": "Getdrown - GREEDY/DIFFERENTIATE 2026 (Full Stream)",
+          "tracks": [
+            {
+              "artist": "Getdrown",
+              "title": "Greedy/Differentiate",
+              "url": "https://music.youtube.com/watch?v=1tOs5zAsY1g"
+            }
+          ]
         },
         {
           "artist": "No Loss",
           "title": "No Loss EP",
           "notes": "Ontario, Canada",
-          "browse_id": "MPREb_8vk89kxdWvc",
+          "browse_id": "MPREb_FKtGXXdntuI",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "I Ain't Takin No Loss 2"
+          "ytm_matched_title": "EP 2026",
+          "tracks": [
+            {
+              "artist": "NO LOSS",
+              "title": "INTRODUCTION",
+              "url": "https://music.youtube.com/watch?v=t0EpEP2QDyg"
+            },
+            {
+              "artist": "NO LOSS",
+              "title": "WELCOME",
+              "url": "https://music.youtube.com/watch?v=3ZyGrkNoC10"
+            },
+            {
+              "artist": "NO LOSS",
+              "title": "H.E.A.T.",
+              "url": "https://music.youtube.com/watch?v=XtQqxTsh3hQ"
+            },
+            {
+              "artist": "NO LOSS",
+              "title": "SPINNING OUT",
+              "url": "https://music.youtube.com/watch?v=WVSlxDiucYE"
+            },
+            {
+              "artist": "NO LOSS",
+              "title": "BEST REGARDS",
+              "url": "https://music.youtube.com/watch?v=8ivCtCgpejE"
+            }
+          ]
         },
         {
           "artist": "Realm Of Death",
@@ -7903,34 +8868,72 @@
           "browse_id": "MPREb_cu5OfaeZtYO",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Demos 2025"
+          "ytm_matched_title": "Demos 2025",
+          "tracks": [
+            {
+              "artist": "The Mystic Realm",
+              "title": "Dark Angel (Demo)",
+              "url": "https://music.youtube.com/watch?v=FDpvrArnmXY"
+            },
+            {
+              "artist": "The Mystic Realm",
+              "title": "Goddess of Death (Demo)",
+              "url": "https://music.youtube.com/watch?v=0xfYfCfqKxY"
+            },
+            {
+              "artist": "The Mystic Realm",
+              "title": "Divine Legion (Demo)",
+              "url": "https://music.youtube.com/watch?v=ZDwUBR54ziI"
+            }
+          ]
         },
         {
           "artist": "Sikm",
           "title": "Fire On Command LP",
           "notes": "Atlanta",
-          "browse_id": "MPREb_OofszwP2K7d",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Fire On Command"
+          "browse_id": null,
+          "video_id": "eTzRlCpGkBA",
+          "ytm_type": "video",
+          "ytm_matched_title": "SIKM - Fire On Command (Full Album)",
+          "tracks": [
+            {
+              "artist": "Sikm",
+              "title": "Fire On Command LP",
+              "url": "https://music.youtube.com/watch?v=eTzRlCpGkBA"
+            }
+          ]
         },
         {
           "artist": "Los Parasitos",
           "title": "Way Of The Wauk EP",
           "notes": "Waukegan, Illinois",
-          "browse_id": "MPREb_K0wMchMzY33",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Way of The Wauk"
+          "browse_id": null,
+          "video_id": "sjvOCgSVqg8",
+          "ytm_type": "song",
+          "ytm_matched_title": "Way of The Wauk",
+          "tracks": [
+            {
+              "artist": "Los Parasitos",
+              "title": "Way Of The Wauk EP",
+              "url": "https://music.youtube.com/watch?v=sjvOCgSVqg8"
+            }
+          ]
         },
         {
           "artist": "Compilation",
           "title": "Bound By Modern Age Records - The BBMA Records Mixtape #6",
           "notes": "",
           "browse_id": null,
-          "video_id": "kvmw7kK1WmI",
-          "ytm_type": "video",
-          "ytm_matched_title": "Various Artists - Baltimore's Xtra Thick Compilation (Compilation - 1998)"
+          "video_id": "S6iUUwe5b10",
+          "ytm_type": "song",
+          "ytm_matched_title": "mbb six",
+          "tracks": [
+            {
+              "artist": "Compilation",
+              "title": "Bound By Modern Age Records - The BBMA Records Mixtape #6",
+              "url": "https://music.youtube.com/watch?v=S6iUUwe5b10"
+            }
+          ]
         },
         {
           "artist": "Before Your Eyes",
@@ -7939,16 +8942,40 @@
           "browse_id": "MPREb_Ht8A8NyQLvG",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "2026 Demo 2"
+          "ytm_matched_title": "2026 Demo 2",
+          "tracks": [
+            {
+              "artist": "Before Your Eyes",
+              "title": "Bootstrap",
+              "url": "https://music.youtube.com/watch?v=s7Hz526EiIY"
+            },
+            {
+              "artist": "Before Your Eyes",
+              "title": "In Fight",
+              "url": "https://music.youtube.com/watch?v=wErFtRfjxLo"
+            },
+            {
+              "artist": "Before Your Eyes",
+              "title": "Brainrot",
+              "url": "https://music.youtube.com/watch?v=WEukeCpryoc"
+            }
+          ]
         },
         {
           "artist": "Fractal Killingz",
           "title": "Wartime Manifesto EP",
           "notes": "Edmonton, Canada",
-          "browse_id": "MPREb_M8n5jKiKqNY",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "WARTIME MANIFESTO"
+          "browse_id": null,
+          "video_id": "6520xIOYzls",
+          "ytm_type": "song",
+          "ytm_matched_title": "BLOODSPORT (feat. Full Tilt)",
+          "tracks": [
+            {
+              "artist": "Fractal Killingz",
+              "title": "Wartime Manifesto EP",
+              "url": "https://music.youtube.com/watch?v=6520xIOYzls"
+            }
+          ]
         },
         {
           "artist": "Freezed",
@@ -7957,27 +8984,75 @@
           "browse_id": "MPREb_6n3yUkMms8k",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Just Enough Rope Promo"
+          "ytm_matched_title": "Just Enough Rope Promo",
+          "tracks": [
+            {
+              "artist": "Freeze Out",
+              "title": "New Enemy",
+              "url": "https://music.youtube.com/watch?v=RZDE-g_9bT8"
+            },
+            {
+              "artist": "Freeze Out",
+              "title": "Just Enough Rope",
+              "url": "https://music.youtube.com/watch?v=hTcKvIvwoxU"
+            },
+            {
+              "artist": "Freeze Out",
+              "title": "Freeze Outro",
+              "url": "https://music.youtube.com/watch?v=QzaNsREdVOU"
+            }
+          ]
         },
         {
           "artist": "AMFAD",
           "title": "All My Friends Are Dead EP",
           "notes": "Tokyo, Japan",
-          "browse_id": "VLPLfEplp_fJ9SvEW19qV1qQHoBD1IJwjUh2",
-          "video_id": null,
-          "ytm_type": "playlist",
-          "ytm_matched_title": "dead friend forever full episode eng sub"
+          "browse_id": null,
+          "video_id": "1OWnVS3LIrc",
+          "ytm_type": "song",
+          "ytm_matched_title": "All my friends are dead",
+          "tracks": [
+            {
+              "artist": "AMFAD",
+              "title": "All My Friends Are Dead EP",
+              "url": "https://music.youtube.com/watch?v=1OWnVS3LIrc"
+            }
+          ]
         },
         {
           "artist": "Reject Life",
           "title": "Total Rejection Of Life EP",
           "notes": "East Tennessee",
-          "browse_id": "MPREb_qdMTFCnB6hx",
+          "browse_id": "MPREb_4507CMDYEyE",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Total Rejection of Life"
+          "ytm_matched_title": "Rejected EP",
+          "tracks": [
+            {
+              "artist": "PLTX",
+              "title": "This Life",
+              "url": "https://music.youtube.com/watch?v=MCWMX32tv5I"
+            },
+            {
+              "artist": "PLTX",
+              "title": "Autumn Blues",
+              "url": "https://music.youtube.com/watch?v=McVDNLjHI4g"
+            },
+            {
+              "artist": "PLTX",
+              "title": "Calling",
+              "url": "https://music.youtube.com/watch?v=TsXHGsNhNN8"
+            },
+            {
+              "artist": "PLTX",
+              "title": "C.R.A.C.K",
+              "url": "https://music.youtube.com/watch?v=MdpyaiPOl9o"
+            }
+          ]
         }
-      ]
+      ],
+      "playlist_id": "PLL4P9fcYRlKs",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLL4P9fcYRlKs"
     },
     {
       "post_title": "new releases October Pt 2",
@@ -9270,7 +10345,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLU_pm9iWsCCk",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLU_pm9iWsCCk"
     },
     {
       "post_title": "new releases October Pt 1",
@@ -10733,7 +11810,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLQuKVaJwD_qU",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLQuKVaJwD_qU"
     }
   ]
 }
