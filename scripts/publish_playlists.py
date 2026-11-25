@@ -3,7 +3,8 @@
 
 Supports both browser header auth files (e.g., browser.json) and OAuth token
 files (e.g., oauth.json) with OAuthCredentials. Iterates posts starting with
-the newest entry and writes 'playlist_id' and 'playlist_url' into releases.json.
+the newest entry, retries rate-limit/transient API errors with backoff, and
+writes 'playlist_id' and 'playlist_url' into releases.json.
 """
 
 from __future__ import annotations
@@ -12,10 +13,11 @@ import argparse
 import json
 import logging
 import os
+import random
 import sys
 import time
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable, TypeVar
 
 try:
     from ytmusicapi import YTMusic
@@ -44,6 +46,33 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 logger = logging.getLogger("publish_playlists")
+
+T = TypeVar("T")
+
+RATE_LIMIT_MARKERS = (
+    "429",
+    "rate limit",
+    "ratelimit",
+    "too many requests",
+    "resource_exhausted",
+    "resource exhausted",
+    "backenderror",
+    "backend error",
+    "internal error",
+    "temporarily unavailable",
+    "service unavailable",
+    "500",
+    "502",
+    "503",
+    "504",
+)
+
+HARD_QUOTA_MARKERS = (
+    "quotaexceeded",
+    "quota exceeded",
+    "exceeded your quota",
+    "daily limit",
+)
 
 
 def extract_post_video_ids(post: dict[str, Any]) -> list[str]:
@@ -121,6 +150,49 @@ def init_ytmusic(
     return YTMusic(str(auth_path))
 
 
+def is_hard_quota_error(err: Exception) -> bool:
+    msg = str(err).lower()
+    return any(marker in msg for marker in HARD_QUOTA_MARKERS)
+
+
+def is_retryable_api_error(err: Exception) -> bool:
+    if is_hard_quota_error(err):
+        return False
+    msg = str(err).lower()
+    return any(marker in msg for marker in RATE_LIMIT_MARKERS)
+
+
+def call_with_retry(
+    fn: Callable[[], T],
+    *,
+    label: str,
+    max_retries: int = 5,
+    base_delay: float = 5.0,
+    max_delay: float = 120.0,
+) -> T:
+    """Execute fn and retry with exponential backoff + jitter on rate/transient limits."""
+    attempt = 0
+    while True:
+        try:
+            return fn()
+        except Exception as err:
+            if not is_retryable_api_error(err) or attempt >= max_retries:
+                raise
+            attempt += 1
+            delay = min(max_delay, base_delay * (2 ** (attempt - 1)))
+            jitter = random.uniform(0.0, min(5.0, delay * 0.25))
+            sleep_for = delay + jitter
+            logger.warning(
+                "API limit/transient error during %s (%s). Retrying %d/%d in %.1fs...",
+                label,
+                err,
+                attempt,
+                max_retries,
+                sleep_for,
+            )
+            time.sleep(sleep_for)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Create public YTM playlists for posts in releases.json."
@@ -154,6 +226,18 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=None,
         help="Maximum number of playlists to create in this run (default: unlimited).",
+    )
+    parser.add_argument(
+        "--max-retries",
+        type=int,
+        default=5,
+        help="Maximum retry attempts on rate-limit/transient API errors (default: 5).",
+    )
+    parser.add_argument(
+        "--retry-base-delay",
+        type=float,
+        default=5.0,
+        help="Initial backoff delay in seconds before first retry (default: 5.0).",
     )
     parser.add_argument(
         "--force",
@@ -194,7 +278,6 @@ def main() -> None:
     updated = False
     created_count = 0
 
-    # Iterate newest-first (end of list toward index 0) unless a single index is requested.
     indices = (
         [args.post_idx]
         if args.post_idx is not None
@@ -228,11 +311,16 @@ def main() -> None:
 
         logger.info("Creating public playlist [%d] '%s' with %d tracks...", idx, title, len(video_ids))
         try:
-            pl_id = ytm.create_playlist(
-                title=title[:150],
-                description=desc[:5000],
-                privacy_status="PUBLIC",
-                video_ids=video_ids,
+            pl_id = call_with_retry(
+                lambda: ytm.create_playlist(
+                    title=title[:150],
+                    description=desc[:5000],
+                    privacy_status="PUBLIC",
+                    video_ids=video_ids,
+                ),
+                label=f"create_playlist[{idx}]",
+                max_retries=max(0, args.max_retries),
+                base_delay=max(0.5, args.retry_base_delay),
             )
             if isinstance(pl_id, dict):
                 pl_id = pl_id.get("id") or pl_id.get("playlistId")
@@ -243,8 +331,17 @@ def main() -> None:
             updated = True
             created_count += 1
             logger.info("Successfully published [%d]: %s", idx, pl_url)
-            time.sleep(1.0)
+            time.sleep(1.5)
         except Exception as err:
+            if is_hard_quota_error(err):
+                logger.error(
+                    "Daily/hard API quota hit while creating playlist for [%d] '%s': %s. "
+                    "Stopping remaining posts for this run.",
+                    idx,
+                    title,
+                    err,
+                )
+                break
             logger.error("Failed creating playlist for [%d] '%s': %s", idx, title, err)
 
     if updated:
