@@ -1585,7 +1585,54 @@
           "browse_id": "MPREb_w6nV1NMWf5U",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Bound by Code"
+          "ytm_matched_title": "Bound by Code",
+          "tracks": [
+            {
+              "artist": "Judo",
+              "title": "Reprehension in C#",
+              "url": "https://music.youtube.com/watch?v=WMGocmbwwjw"
+            },
+            {
+              "artist": "Judo",
+              "title": "Follow! This Circus Won't Ride Itself",
+              "url": "https://music.youtube.com/watch?v=0G6AzbfPRcg"
+            },
+            {
+              "artist": "Judo",
+              "title": "Anatomize These Parts",
+              "url": "https://music.youtube.com/watch?v=-tfXAjO_2J8"
+            },
+            {
+              "artist": "Judo",
+              "title": "Promises Above These Skies",
+              "url": "https://music.youtube.com/watch?v=NjNljNmh3Qw"
+            },
+            {
+              "artist": "Judo",
+              "title": "Party With the Undead",
+              "url": "https://music.youtube.com/watch?v=EME722uInjU"
+            },
+            {
+              "artist": "Judo",
+              "title": "Tourniquet for Two",
+              "url": "https://music.youtube.com/watch?v=g3AB2P9pOo0"
+            },
+            {
+              "artist": "Judo",
+              "title": "Try Turning It off and on Again",
+              "url": "https://music.youtube.com/watch?v=mbqBa2sxkcQ"
+            },
+            {
+              "artist": "Judo",
+              "title": "Bound by Code",
+              "url": "https://music.youtube.com/watch?v=naFe53zsJeQ"
+            },
+            {
+              "artist": "Judo",
+              "title": "The Daring Nature",
+              "url": "https://music.youtube.com/watch?v=Jr_Klqw1gzw"
+            }
+          ]
         },
         {
           "artist": "Heathens",
@@ -1594,7 +1641,34 @@
           "browse_id": "MPREb_ZTrndAIuxzV",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Illusion of Choice"
+          "ytm_matched_title": "Illusion of Choice",
+          "tracks": [
+            {
+              "artist": "Heathens",
+              "title": "(I'm) Street-Poisoned (feat. Depressionista)",
+              "url": "https://music.youtube.com/watch?v=9LMOx7SWtC8"
+            },
+            {
+              "artist": "Heathens",
+              "title": "Dead in the Water",
+              "url": "https://music.youtube.com/watch?v=tyFE5cSiUvU"
+            },
+            {
+              "artist": "Heathens",
+              "title": "Shattered in the Head",
+              "url": "https://music.youtube.com/watch?v=AS2NxwVcok8"
+            },
+            {
+              "artist": "Heathens",
+              "title": "Prophets for Profit (feat. Defy You)",
+              "url": "https://music.youtube.com/watch?v=LrbojUqcwCk"
+            },
+            {
+              "artist": "Heathens",
+              "title": "Paradise Lost",
+              "url": "https://music.youtube.com/watch?v=NZDP-EKdwlk"
+            }
+          ]
         },
         {
           "artist": "Flex Your Head",
@@ -1603,7 +1677,14 @@
           "browse_id": "MPREb_qKkj2urNTEp",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Flex your head"
+          "ytm_matched_title": "Flex your head",
+          "tracks": [
+            {
+              "artist": "AI HOUSE",
+              "title": "Flex your head",
+              "url": "https://music.youtube.com/watch?v=uxldVuXDopQ"
+            }
+          ]
         },
         {
           "artist": "Detach",
@@ -1612,7 +1693,39 @@
           "browse_id": "MPREb_TotTzUmBsRQ",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Another Victim"
+          "ytm_matched_title": "Another Victim",
+          "tracks": [
+            {
+              "artist": "Detach",
+              "title": "One More Time",
+              "url": "https://music.youtube.com/watch?v=LsVUpn_5GzE"
+            },
+            {
+              "artist": "Detach",
+              "title": "Despise",
+              "url": "https://music.youtube.com/watch?v=NXboYeosB18"
+            },
+            {
+              "artist": "Detach",
+              "title": "No Justice",
+              "url": "https://music.youtube.com/watch?v=qOI61OL8GR4"
+            },
+            {
+              "artist": "Detach",
+              "title": "Back to Back (feat. Julien Urias)",
+              "url": "https://music.youtube.com/watch?v=CPolcO1raPQ"
+            },
+            {
+              "artist": "Detach",
+              "title": "Another Victim (feat. Conner Morsette)",
+              "url": "https://music.youtube.com/watch?v=e4adtPixke0"
+            },
+            {
+              "artist": "Detach",
+              "title": "Break the Chains (feat. Christopher Delgado)",
+              "url": "https://music.youtube.com/watch?v=1spLZJJHp_8"
+            }
+          ]
         },
         {
           "artist": "Till The End",
@@ -1621,7 +1734,54 @@
           "browse_id": "MPREb_XXLxINmFuYL",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Youth Takes All"
+          "ytm_matched_title": "Youth Takes All",
+          "tracks": [
+            {
+              "artist": "Till The End",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=jIRDVFOtp-Q"
+            },
+            {
+              "artist": "Till The End",
+              "title": "One Life",
+              "url": "https://music.youtube.com/watch?v=phNT6XyGa_g"
+            },
+            {
+              "artist": "Till The End",
+              "title": "Behind Closed Doors",
+              "url": "https://music.youtube.com/watch?v=K5OGcNqySWk"
+            },
+            {
+              "artist": "Till The End",
+              "title": "To The Ground",
+              "url": "https://music.youtube.com/watch?v=VfKFPGCv0Is"
+            },
+            {
+              "artist": "Till The End",
+              "title": "Can't See/Give Up",
+              "url": "https://music.youtube.com/watch?v=BXorzythes0"
+            },
+            {
+              "artist": "Till The End",
+              "title": "Better Than Me Now",
+              "url": "https://music.youtube.com/watch?v=3XkSXFY7VTs"
+            },
+            {
+              "artist": "Till The End",
+              "title": "Stand Firm",
+              "url": "https://music.youtube.com/watch?v=2BHAWE3OSWU"
+            },
+            {
+              "artist": "Till The End",
+              "title": "Throwing Bricks (feat. highdesertcalifornia)",
+              "url": "https://music.youtube.com/watch?v=EMExlDrRT2k"
+            },
+            {
+              "artist": "Till The End",
+              "title": "True Till Done",
+              "url": "https://music.youtube.com/watch?v=VR2Y4890hCc"
+            }
+          ]
         },
         {
           "artist": "Crooks Die Slow",
@@ -1630,7 +1790,24 @@
           "browse_id": "MPREb_adk2qOlEXvM",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Demo 26"
+          "ytm_matched_title": "Demo 26",
+          "tracks": [
+            {
+              "artist": "Crooks Die Slow",
+              "title": "If the shoe fits",
+              "url": "https://music.youtube.com/watch?v=QycedIIky_w"
+            },
+            {
+              "artist": "Crooks Die Slow",
+              "title": "Secret agent rich kid",
+              "url": "https://music.youtube.com/watch?v=vktXUxnT6gU"
+            },
+            {
+              "artist": "Crooks Die Slow",
+              "title": "We're Glad You're Dead",
+              "url": "https://music.youtube.com/watch?v=JxX-8qeXzzo"
+            }
+          ]
         },
         {
           "artist": "Fardo",
@@ -1639,7 +1816,34 @@
           "browse_id": "MPREb_IxMcYSAZKOY",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Eu Acabei de Matar Minha Maior Fraqueza"
+          "ytm_matched_title": "Eu Acabei de Matar Minha Maior Fraqueza",
+          "tracks": [
+            {
+              "artist": "Fardo",
+              "title": "Levante",
+              "url": "https://music.youtube.com/watch?v=yYA-mT0Borg"
+            },
+            {
+              "artist": "Fardo",
+              "title": "Coração Pesado",
+              "url": "https://music.youtube.com/watch?v=GhU-bmQ_ehk"
+            },
+            {
+              "artist": "Fardo",
+              "title": "Penitência",
+              "url": "https://music.youtube.com/watch?v=oscFEoLdBd0"
+            },
+            {
+              "artist": "Fardo",
+              "title": "O Refém do Meu Ódio",
+              "url": "https://music.youtube.com/watch?v=5FWUVFU_qmI"
+            },
+            {
+              "artist": "Fardo",
+              "title": "Lado a Lado",
+              "url": "https://music.youtube.com/watch?v=J76lw0EL3X4"
+            }
+          ]
         },
         {
           "artist": "Sincere",
@@ -1648,7 +1852,69 @@
           "browse_id": "MPREb_NG8UHd0MEE4",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "The Paranoiac-Critical Method"
+          "ytm_matched_title": "The Paranoiac-Critical Method",
+          "tracks": [
+            {
+              "artist": "Sincere.",
+              "title": "Diagnosis",
+              "url": "https://music.youtube.com/watch?v=VQjE5qjpIkw"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "...and Severe Abrasion",
+              "url": "https://music.youtube.com/watch?v=peyzkvuJg9w"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Twist My Nipples If I'm Wrong, But The Sky Is Green",
+              "url": "https://music.youtube.com/watch?v=r4dG1gS1qrc"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Highland Park Full Gospel Assembly",
+              "url": "https://music.youtube.com/watch?v=oxQbVfdbibI"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Ebony and Ivory",
+              "url": "https://music.youtube.com/watch?v=AHaeAe7rXAg"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "The Paranoiac",
+              "url": "https://music.youtube.com/watch?v=vOA8Ui6xDqQ"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "The Hand That Rocks The Cradle",
+              "url": "https://music.youtube.com/watch?v=jcSj7He5O6s"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Chinchilla Escapes The Nest",
+              "url": "https://music.youtube.com/watch?v=iK6hPxBc1wM"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "I Hate Math",
+              "url": "https://music.youtube.com/watch?v=X0WopfoGJI4"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Got Milk? Yeah... But Not For You, Lactose Donut Fuck",
+              "url": "https://music.youtube.com/watch?v=gG4RmFX-FvU"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Nothing Burger (With A Side Of Bottomless Fries) (feat. nsixhundred)",
+              "url": "https://music.youtube.com/watch?v=Ium9APHIq-k"
+            },
+            {
+              "artist": "Sincere.",
+              "title": "Mortui Flores",
+              "url": "https://music.youtube.com/watch?v=iGcf8vxvORo"
+            }
+          ]
         }
       ]
     },
@@ -1664,7 +1930,64 @@
           "browse_id": "MPREb_X4f3o8eLmkm",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "The Method"
+          "ytm_matched_title": "The Method",
+          "tracks": [
+            {
+              "artist": "Lethal Method",
+              "title": "The Method (feat. Dogpile)",
+              "url": "https://music.youtube.com/watch?v=LrI6wOIYyhg"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "Territory",
+              "url": "https://music.youtube.com/watch?v=quHlgdgHoUg"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "True Power",
+              "url": "https://music.youtube.com/watch?v=vvdJ0cB7nBI"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "The Hard Way",
+              "url": "https://music.youtube.com/watch?v=enuHOnNVVDQ"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "No Hand Outs (feat. Inclination)",
+              "url": "https://music.youtube.com/watch?v=G7lRG8ypDQs"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "Breakin It Down",
+              "url": "https://music.youtube.com/watch?v=VDAf0MocKtM"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "Time 2 Breathe",
+              "url": "https://music.youtube.com/watch?v=qfHUZSiSaYs"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "Trapped",
+              "url": "https://music.youtube.com/watch?v=H92GSxl7ME0"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "Bad 1 (feat. Volcano)",
+              "url": "https://music.youtube.com/watch?v=QOb-_94M_IA"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "This World",
+              "url": "https://music.youtube.com/watch?v=s1qbxMNyRz8"
+            },
+            {
+              "artist": "Lethal Method",
+              "title": "The Purest Love (feat. Time Bomb)",
+              "url": "https://music.youtube.com/watch?v=iLP4wj-c3Sk"
+            }
+          ]
         },
         {
           "artist": "Walls Of Jericho",
@@ -1673,7 +1996,84 @@
           "browse_id": "MPREb_ZvqrNPDEUkT",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "System Error: Humanity"
+          "ytm_matched_title": "System Error: Humanity",
+          "tracks": [
+            {
+              "artist": "Walls Of Jericho",
+              "title": "True Til' Death",
+              "url": "https://music.youtube.com/watch?v=E3zAo0M6yjQ"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Beginning",
+              "url": "https://music.youtube.com/watch?v=tup5hoJALos"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "The Flame",
+              "url": "https://music.youtube.com/watch?v=Fo79kDjDQzk"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "The Ascent",
+              "url": "https://music.youtube.com/watch?v=pSvKmWOGKqk"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Broken Mouths Can't Speak (feat. D. Randall Blythe)",
+              "url": "https://music.youtube.com/watch?v=L4JIF7yOCqI"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Untouchable",
+              "url": "https://music.youtube.com/watch?v=x3MaZ8RfMmc"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Rise",
+              "url": "https://music.youtube.com/watch?v=QAaGqB48W0g"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Agency",
+              "url": "https://music.youtube.com/watch?v=T_v4OG8Pqkk"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Unchained",
+              "url": "https://music.youtube.com/watch?v=v-cZe4xV7AA"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "The End Before",
+              "url": "https://music.youtube.com/watch?v=Jau4KCmE9rU"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Humanity (feat. Guy Kozowyk)",
+              "url": "https://music.youtube.com/watch?v=0VhPDx3nduU"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Borrowed Ground",
+              "url": "https://music.youtube.com/watch?v=ZlRj8ZsKWBE"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "Last Judgement",
+              "url": "https://music.youtube.com/watch?v=vu8goZz6TNg"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "A Brighter Fire (feat. Patsy Puopolo & Matthew Ruby)",
+              "url": "https://music.youtube.com/watch?v=p0k6lQqkSt4"
+            },
+            {
+              "artist": "Walls Of Jericho",
+              "title": "The Reckoning",
+              "url": "https://music.youtube.com/watch?v=LG3bYfI6XF4"
+            }
+          ]
         },
         {
           "artist": "Headbussa",
@@ -1682,7 +2082,54 @@
           "browse_id": "MPREb_bXFRr85IoCT",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Survival Measures"
+          "ytm_matched_title": "Survival Measures",
+          "tracks": [
+            {
+              "artist": "Headbussa",
+              "title": "Intro II",
+              "url": "https://music.youtube.com/watch?v=xS58N10y-ZQ"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "Survival Measures",
+              "url": "https://music.youtube.com/watch?v=cTxpk0oipU8"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "Immortality",
+              "url": "https://music.youtube.com/watch?v=Hg2ztPvTtm8"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "Fear Me",
+              "url": "https://music.youtube.com/watch?v=bjlGB_0p3TY"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "Manhunt",
+              "url": "https://music.youtube.com/watch?v=Bu08HRaGi7o"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "You Expire",
+              "url": "https://music.youtube.com/watch?v=cbeVvWPxYuE"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "The Code",
+              "url": "https://music.youtube.com/watch?v=7PGHMCdizx8"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "No Alibi",
+              "url": "https://music.youtube.com/watch?v=eT5uQDyXI5k"
+            },
+            {
+              "artist": "Headbussa",
+              "title": "The Hunt Won't End",
+              "url": "https://music.youtube.com/watch?v=NHQRQ2HNqpw"
+            }
+          ]
         },
         {
           "artist": "Maniac",
@@ -1691,7 +2138,64 @@
           "browse_id": "MPREb_3RhES1SscHO",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Forward Onto Annihilation"
+          "ytm_matched_title": "Forward Onto Annihilation",
+          "tracks": [
+            {
+              "artist": "Maniac",
+              "title": "Bloodletting",
+              "url": "https://music.youtube.com/watch?v=kwLFodlrwSM"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Forward Onto Annihilation",
+              "url": "https://music.youtube.com/watch?v=oTgqsx_l5Eo"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Overlord",
+              "url": "https://music.youtube.com/watch?v=FpEw1tX5jeE"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Exile",
+              "url": "https://music.youtube.com/watch?v=lW4JrbEi3kA"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Cult of Death",
+              "url": "https://music.youtube.com/watch?v=5sVTyCsnO3k"
+            },
+            {
+              "artist": "Maniac",
+              "title": "To The Slaughter",
+              "url": "https://music.youtube.com/watch?v=mhSB_BqAXAM"
+            },
+            {
+              "artist": "Maniac",
+              "title": "No Hope For Tomorrow",
+              "url": "https://music.youtube.com/watch?v=tTJw21PR1VQ"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Inferno",
+              "url": "https://music.youtube.com/watch?v=X9149Za2VnE"
+            },
+            {
+              "artist": "Maniac",
+              "title": "Unhinged",
+              "url": "https://music.youtube.com/watch?v=jXkYIMbdkI0"
+            },
+            {
+              "artist": "Maniac",
+              "title": "See You In Hell",
+              "url": "https://music.youtube.com/watch?v=aMaHUBlnijM"
+            },
+            {
+              "artist": "Maniac",
+              "title": "I'll Take You There",
+              "url": "https://music.youtube.com/watch?v=_zuYgRyTB8U"
+            }
+          ]
         },
         {
           "artist": "Gold Attempt",
@@ -1700,7 +2204,34 @@
           "browse_id": "MPREb_ZQbYTkZHp0F",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "STILL IN GAME"
+          "ytm_matched_title": "STILL IN GAME",
+          "tracks": [
+            {
+              "artist": "Gold Attempt",
+              "title": "Face the Truth",
+              "url": "https://music.youtube.com/watch?v=36H8ng5LtRI"
+            },
+            {
+              "artist": "Gold Attempt",
+              "title": "Still in Game",
+              "url": "https://music.youtube.com/watch?v=WgVj99Y_3IY"
+            },
+            {
+              "artist": "Gold Attempt",
+              "title": "Point of Pressure",
+              "url": "https://music.youtube.com/watch?v=VkBHNWEajdE"
+            },
+            {
+              "artist": "Gold Attempt",
+              "title": "Sad But True",
+              "url": "https://music.youtube.com/watch?v=ZcjzvngR_eI"
+            },
+            {
+              "artist": "Gold Attempt",
+              "title": "Social Suicide",
+              "url": "https://music.youtube.com/watch?v=hAmrpNMo_t4"
+            }
+          ]
         },
         {
           "artist": "Depletion",
@@ -1709,7 +2240,29 @@
           "browse_id": "MPREb_dFI9YhlM6k6",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Demo '26"
+          "ytm_matched_title": "Demo '26",
+          "tracks": [
+            {
+              "artist": "Depletion",
+              "title": "Exordium",
+              "url": "https://music.youtube.com/watch?v=Hq7zUAeWSh4"
+            },
+            {
+              "artist": "Depletion",
+              "title": "Bitter Taste",
+              "url": "https://music.youtube.com/watch?v=BkYrevwSrow"
+            },
+            {
+              "artist": "Depletion",
+              "title": "Conundrum",
+              "url": "https://music.youtube.com/watch?v=RlRv7R-nJLo"
+            },
+            {
+              "artist": "Depletion",
+              "title": "Cosmic Groove",
+              "url": "https://music.youtube.com/watch?v=HqyN9upYfgw"
+            }
+          ]
         },
         {
           "artist": "Bayway",
@@ -1718,7 +2271,29 @@
           "browse_id": "MPREb_Cj1LGDABhdU",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Bayway Lives"
+          "ytm_matched_title": "Bayway Lives",
+          "tracks": [
+            {
+              "artist": "Bayway NJ",
+              "title": "Pezzo Di Merda",
+              "url": "https://music.youtube.com/watch?v=Fq1ohm99a28"
+            },
+            {
+              "artist": "Bayway NJ",
+              "title": "Caught Between Two Worlds (feat. Snuffed On Sight)",
+              "url": "https://music.youtube.com/watch?v=q7ldDgFFv3U"
+            },
+            {
+              "artist": "Bayway NJ",
+              "title": "Star Shopping",
+              "url": "https://music.youtube.com/watch?v=pHFXkwRANV8"
+            },
+            {
+              "artist": "Bayway NJ",
+              "title": "Violent By Design",
+              "url": "https://music.youtube.com/watch?v=ldNG6ItIpQI"
+            }
+          ]
         },
         {
           "artist": "Life Sentence",
@@ -1727,7 +2302,34 @@
           "browse_id": "MPREb_Y6AMB08hk9C",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "ORANGE BLOSSOM TALES"
+          "ytm_matched_title": "ORANGE BLOSSOM TALES",
+          "tracks": [
+            {
+              "artist": "LIFE SENTENCE HC",
+              "title": "Heavy Chains",
+              "url": "https://music.youtube.com/watch?v=pxiwyEbtWTU"
+            },
+            {
+              "artist": "LIFE SENTENCE HC",
+              "title": "Life Sentence",
+              "url": "https://music.youtube.com/watch?v=pXhMXPgT4dY"
+            },
+            {
+              "artist": "LIFE SENTENCE HC",
+              "title": "HWTC",
+              "url": "https://music.youtube.com/watch?v=y-Gr0YGMyzI"
+            },
+            {
+              "artist": "LIFE SENTENCE HC",
+              "title": "Friends Like Mine",
+              "url": "https://music.youtube.com/watch?v=sEqiy5LNPkA"
+            },
+            {
+              "artist": "LIFE SENTENCE HC",
+              "title": "Got Away",
+              "url": "https://music.youtube.com/watch?v=icxTERS_Sww"
+            }
+          ]
         },
         {
           "artist": "Demeanour",
@@ -1736,7 +2338,34 @@
           "browse_id": "MPREb_iKzF1w86Ska",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "True Ultimate Evil"
+          "ytm_matched_title": "True Ultimate Evil",
+          "tracks": [
+            {
+              "artist": "demeanour",
+              "title": "Twisting Nether",
+              "url": "https://music.youtube.com/watch?v=IrZtu74zQbg"
+            },
+            {
+              "artist": "demeanour",
+              "title": "Who Made You God?",
+              "url": "https://music.youtube.com/watch?v=kIHEViDRLVE"
+            },
+            {
+              "artist": "demeanour",
+              "title": "Mortal Reminder",
+              "url": "https://music.youtube.com/watch?v=6XfsnGHR-10"
+            },
+            {
+              "artist": "demeanour",
+              "title": "Pot Of Greed",
+              "url": "https://music.youtube.com/watch?v=iLKWhYmccMw"
+            },
+            {
+              "artist": "demeanour",
+              "title": "Malevolent Machinations Of A World Most Foul (feat. Instrument of God)",
+              "url": "https://music.youtube.com/watch?v=mEGe1cKZTes"
+            }
+          ]
         },
         {
           "artist": "Truest Form",
@@ -1745,7 +2374,29 @@
           "browse_id": "MPREb_pFAIr5Dqxe6",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Truest Form"
+          "ytm_matched_title": "Truest Form",
+          "tracks": [
+            {
+              "artist": "Truest Form",
+              "title": "Truest Form",
+              "url": "https://music.youtube.com/watch?v=Ajx_rhEgw1k"
+            },
+            {
+              "artist": "Truest Form",
+              "title": "Sorrow",
+              "url": "https://music.youtube.com/watch?v=BPUeyHqzTzU"
+            },
+            {
+              "artist": "Truest Form",
+              "title": "Poison",
+              "url": "https://music.youtube.com/watch?v=jUcWsjhseKU"
+            },
+            {
+              "artist": "Truest Form",
+              "title": "Sick",
+              "url": "https://music.youtube.com/watch?v=r144G-unhnQ"
+            }
+          ]
         },
         {
           "artist": "Skinhead",
@@ -1754,7 +2405,19 @@
           "browse_id": "MPREb_YOzxNkRiK7J",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "The Plan: 2"
+          "ytm_matched_title": "The Plan: 2",
+          "tracks": [
+            {
+              "artist": "Skinhead",
+              "title": "The Plan: 2",
+              "url": "https://music.youtube.com/watch?v=s7cu4mOxjYw"
+            },
+            {
+              "artist": "Skinhead",
+              "title": "The Plan, Pt. 2 (Story)",
+              "url": "https://music.youtube.com/watch?v=ZfcowuZ0DbU"
+            }
+          ]
         },
         {
           "artist": "Master Killer",
@@ -1763,7 +2426,49 @@
           "browse_id": "MPREb_6klahedi4R7",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "BURN THIS MIXTAPE"
+          "ytm_matched_title": "BURN THIS MIXTAPE",
+          "tracks": [
+            {
+              "artist": "Master Killer",
+              "title": "LET US BURN (feat. Despize)",
+              "url": "https://music.youtube.com/watch?v=yKqK4a1XY1I"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "STUCK",
+              "url": "https://music.youtube.com/watch?v=gH39-PKc1eU"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "RONIN",
+              "url": "https://music.youtube.com/watch?v=hIao7sWOw28"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "WILL TO POWER",
+              "url": "https://music.youtube.com/watch?v=5zBIf1sTG5Q"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "NOT YOUR OWN (feat. INVADER)",
+              "url": "https://music.youtube.com/watch?v=GcfeWvyOzCc"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "HANGIN' HEADZ",
+              "url": "https://music.youtube.com/watch?v=awddJ3PnFP4"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "CURSED",
+              "url": "https://music.youtube.com/watch?v=gfbyUOoml-8"
+            },
+            {
+              "artist": "Master Killer",
+              "title": "HEAVY CROWN (kings of närke)",
+              "url": "https://music.youtube.com/watch?v=gebbJla__vE"
+            }
+          ]
         },
         {
           "artist": "Justice For The Damned",
@@ -1772,7 +2477,179 @@
           "browse_id": "VLPLOmYX64E6Y-xAitATYmiamLOkQpdB5crl",
           "video_id": null,
           "ytm_type": "playlist",
-          "ytm_matched_title": "Dowtempo $lamz"
+          "ytm_matched_title": "Dowtempo $lamz",
+          "tracks": [
+            {
+              "artist": "derail.",
+              "title": "derail. - Switchblade",
+              "url": "https://music.youtube.com/watch?v=lMZ9rfhxcMU"
+            },
+            {
+              "artist": "derail.",
+              "title": "derail. - Heretic",
+              "url": "https://music.youtube.com/watch?v=mnJGR4JiM0U"
+            },
+            {
+              "artist": "SLAM WORLDWIDE",
+              "title": "PIECED UP - URAGIRI [OFFICIAL MUSIC VIDEO] (2021) SW EXCLUSIVE",
+              "url": "https://music.youtube.com/watch?v=9mJu4YtWqf4"
+            },
+            {
+              "artist": "Crown Magnetar",
+              "title": "Desecrate Infinite",
+              "url": "https://music.youtube.com/watch?v=GQtmSE235Ck"
+            },
+            {
+              "artist": "Bodysnatcher",
+              "title": "MURDER8 feat. Jamey Jasta (OFFICIAL MUSIC VIDEO) (feat. Jamey Jasta)",
+              "url": "https://music.youtube.com/watch?v=_jIqBvvWTps"
+            },
+            {
+              "artist": "Apate",
+              "title": "Shinigami",
+              "url": "https://music.youtube.com/watch?v=cD4UuW7UG6M"
+            },
+            {
+              "artist": "Vildhjarta",
+              "title": "rational gaze / sum",
+              "url": "https://music.youtube.com/watch?v=2bZnEk2gxvI"
+            },
+            {
+              "artist": "stoort neer",
+              "title": "stoort neer - MÖRRINJÖ",
+              "url": "https://music.youtube.com/watch?v=IaCv6gL2Qx4"
+            },
+            {
+              "artist": "Paleface Swiss, Nathan James",
+              "title": "Secrets of the Shadows",
+              "url": "https://music.youtube.com/watch?v=x0xKAMmbU04"
+            },
+            {
+              "artist": "Rotnest",
+              "title": "Hell",
+              "url": "https://music.youtube.com/watch?v=ltkCB5mV5LE"
+            },
+            {
+              "artist": "Filth",
+              "title": "SLAM BAND - DOOKIE (Featuring Filth, Official Video)",
+              "url": "https://music.youtube.com/watch?v=SW4U6wHzR2c"
+            },
+            {
+              "artist": "King 810",
+              "title": "Noonday Demon",
+              "url": "https://music.youtube.com/watch?v=cobclyLnPO0"
+            },
+            {
+              "artist": "Rotnest",
+              "title": "ROTNEST - Eldritch (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=bw96saCdxT4"
+            },
+            {
+              "artist": "Lawnchair Youth",
+              "title": "Nailwound - Hades | LCY Uncut",
+              "url": "https://music.youtube.com/watch?v=YQfwTPcyV5U"
+            },
+            {
+              "artist": "HONESTCROOKS",
+              "title": "Honest Crooks - False Gods [ft Bobak & Nick of Justice For The Damned] (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=mMyVi4aAnv0"
+            },
+            {
+              "artist": "Impending Doom",
+              "title": "Holy Death",
+              "url": "https://music.youtube.com/watch?v=xik_2GsXdqw"
+            },
+            {
+              "artist": "Lawnchair Youth",
+              "title": "In Gloom - Captive Bolt Pistol | LCY Uncut",
+              "url": "https://music.youtube.com/watch?v=IjEqlCXQGrA"
+            },
+            {
+              "artist": "APATE",
+              "title": "Apate - Split (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=bQ-W_YViMW0"
+            },
+            {
+              "artist": "Enterprise Earth",
+              "title": "Mortem Incarnatum",
+              "url": "https://music.youtube.com/watch?v=F2yKsVPSvcw"
+            },
+            {
+              "artist": "Filth",
+              "title": "FILTH X NATHAN JAMES - BODIES (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=-hTAUZQuirY"
+            },
+            {
+              "artist": "Paleface Swiss",
+              "title": "Talk",
+              "url": "https://music.youtube.com/watch?v=mcJq-SDTrsI"
+            },
+            {
+              "artist": "Vildhjarta",
+              "title": "+ kristallfågel + (instrumentaal)",
+              "url": "https://music.youtube.com/watch?v=RD0-pUfrgWA"
+            },
+            {
+              "artist": "Varials",
+              "title": "I'll Find the Dark",
+              "url": "https://music.youtube.com/watch?v=87TdwWoWPJg"
+            },
+            {
+              "artist": "SLAM WORLDWIDE",
+              "title": "HANG TOUGH - 81H8//SLAM FERNANDO [OFFICIAL STREAM] (2024) SW EXCLUSIVE",
+              "url": "https://music.youtube.com/watch?v=ogx6rv1d1wg"
+            },
+            {
+              "artist": "Bodysnatcher",
+              "title": "Take Me To Hell (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=S7KojIMiu5c"
+            },
+            {
+              "artist": "No Cure",
+              "title": "Convulsing In The Dark",
+              "url": "https://music.youtube.com/watch?v=JyJz5GsjQEc"
+            },
+            {
+              "artist": "DREADCULT",
+              "title": "DREADCULT - bite the blade (Official Music Video)",
+              "url": "https://music.youtube.com/watch?v=617MEIDPqBM"
+            },
+            {
+              "artist": "BeheadingTheTraitor",
+              "title": "FEIGN - Dig (Studio Playthrough)",
+              "url": "https://music.youtube.com/watch?v=3yivy82ZgPc"
+            },
+            {
+              "artist": "Tohru Yuzame",
+              "title": "Omerta - Double Suicide (Ft. JOHNNASCUS) [Snippet w/Lyrics]",
+              "url": "https://music.youtube.com/watch?v=r12C2tDUPGg"
+            },
+            {
+              "artist": "Yüth Forever",
+              "title": "Bitterromantic Pt. 1",
+              "url": "https://music.youtube.com/watch?v=Efpvqw3cD64"
+            },
+            {
+              "artist": "Teddy Slugz, Warlord Colossus",
+              "title": "Brain Freeze",
+              "url": "https://music.youtube.com/watch?v=KdEPYjo8jhg"
+            },
+            {
+              "artist": "DecimatorDowntempo",
+              "title": "DECIMATOR - Reborn (Official Video)",
+              "url": "https://music.youtube.com/watch?v=z2l5wriv2_U"
+            },
+            {
+              "artist": "xBrutalYouth666x",
+              "title": "Years Spent Cold - Use Your Retribution I 2026 (Full EP)",
+              "url": "https://music.youtube.com/watch?v=_N1VHYh3VgQ"
+            },
+            {
+              "artist": "CHUG CO.",
+              "title": "Nailwound  - Dog Eat Dog [Official Stream Video) (2019)",
+              "url": "https://music.youtube.com/watch?v=2LlLyzihxVw"
+            }
+          ]
         },
         {
           "artist": "Pointing Fingers",
@@ -1781,7 +2658,44 @@
           "browse_id": "MPREb_IT8JgNNDJ5U",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "DEMO 2026"
+          "ytm_matched_title": "DEMO 2026",
+          "tracks": [
+            {
+              "artist": "Pointing Fingers",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=5ijjSjVSwL8"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "Go South",
+              "url": "https://music.youtube.com/watch?v=SJhjgcC1fDY"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "HDM",
+              "url": "https://music.youtube.com/watch?v=qtiUlgoea9k"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "Crown Of Rust (feat. Foreign)",
+              "url": "https://music.youtube.com/watch?v=wREr8CJ4vHU"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "Echos Of A Feeling",
+              "url": "https://music.youtube.com/watch?v=MpDkse9bMtE"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "Prison",
+              "url": "https://music.youtube.com/watch?v=bvNvlSPtFlQ"
+            },
+            {
+              "artist": "Pointing Fingers",
+              "title": "No Loss",
+              "url": "https://music.youtube.com/watch?v=5LYG1rk9FBs"
+            }
+          ]
         },
         {
           "artist": "Compilation",
@@ -1790,7 +2704,79 @@
           "browse_id": "MPREb_HXZ3jIIeMYS",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Where Do We Go? Volume 2 - A Northwest Hardcore Compilation"
+          "ytm_matched_title": "Where Do We Go? Volume 2 - A Northwest Hardcore Compilation",
+          "tracks": [
+            {
+              "artist": "End Of Dayz",
+              "title": "Blind Side",
+              "url": "https://music.youtube.com/watch?v=HHQySQHQmfM"
+            },
+            {
+              "artist": "Reflex",
+              "title": "Tides",
+              "url": "https://music.youtube.com/watch?v=0c7NmunGaOA"
+            },
+            {
+              "artist": "Self Arrest",
+              "title": "Start Cold",
+              "url": "https://music.youtube.com/watch?v=WlrDIFsZoGg"
+            },
+            {
+              "artist": "Empty Chamber",
+              "title": "Traitor",
+              "url": "https://music.youtube.com/watch?v=XSVjD1rHx4w"
+            },
+            {
+              "artist": "Slow Exit",
+              "title": "Crusher",
+              "url": "https://music.youtube.com/watch?v=YFL5SWIKTKM"
+            },
+            {
+              "artist": "N.O. (Nature's Opposition)",
+              "title": "Algorithm",
+              "url": "https://music.youtube.com/watch?v=fKnYkLkjrW0"
+            },
+            {
+              "artist": "Mal Criado",
+              "title": "Mi Cuerpo Es Mio",
+              "url": "https://music.youtube.com/watch?v=XtalM9Ui554"
+            },
+            {
+              "artist": "Dying Wish",
+              "title": "Weak Hearts Bleed Out",
+              "url": "https://music.youtube.com/watch?v=ETX3uWo07K0"
+            },
+            {
+              "artist": "Chemical World",
+              "title": "Chemical World",
+              "url": "https://music.youtube.com/watch?v=p_jvDkd0IjU"
+            },
+            {
+              "artist": "By All Meanz",
+              "title": "Last Release",
+              "url": "https://music.youtube.com/watch?v=tiUlSVs-riY"
+            },
+            {
+              "artist": "Rise Up",
+              "title": "Entire Generation",
+              "url": "https://music.youtube.com/watch?v=fBz11dYZjr0"
+            },
+            {
+              "artist": "CottonMouth",
+              "title": "Perpetual",
+              "url": "https://music.youtube.com/watch?v=039IFcPvn2A"
+            },
+            {
+              "artist": "Kurb",
+              "title": "Fencewalker",
+              "url": "https://music.youtube.com/watch?v=mTX5y6mOB5Q"
+            },
+            {
+              "artist": "The Enforcers",
+              "title": "Death Rattle",
+              "url": "https://music.youtube.com/watch?v=rdX8GZahYG0"
+            }
+          ]
         },
         {
           "artist": "Compilation",
@@ -1799,7 +2785,14 @@
           "browse_id": null,
           "video_id": "1AF7npmdHas",
           "ytm_type": "video",
-          "ytm_matched_title": "(LYRICS) Hatebreed - A Call For Blood"
+          "ytm_matched_title": "(LYRICS) Hatebreed - A Call For Blood",
+          "tracks": [
+            {
+              "artist": "Compilation",
+              "title": "A Call For Blood - A Tribute To Hatebreed - 8991 Records",
+              "url": "https://music.youtube.com/watch?v=1AF7npmdHas"
+            }
+          ]
         },
         {
           "artist": "Totaled",
@@ -1808,7 +2801,34 @@
           "browse_id": "MPREb_pm5JyAELAr6",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Dead End"
+          "ytm_matched_title": "Dead End",
+          "tracks": [
+            {
+              "artist": "Totaled",
+              "title": "Dead End",
+              "url": "https://music.youtube.com/watch?v=4SyTJeriGGs"
+            },
+            {
+              "artist": "Totaled",
+              "title": "Blame",
+              "url": "https://music.youtube.com/watch?v=-knPwlm1cac"
+            },
+            {
+              "artist": "Totaled",
+              "title": "Next Fix",
+              "url": "https://music.youtube.com/watch?v=IZ73HBRh7P4"
+            },
+            {
+              "artist": "Totaled",
+              "title": "G.A.F.ll",
+              "url": "https://music.youtube.com/watch?v=4pXW_xkYumw"
+            },
+            {
+              "artist": "Totaled",
+              "title": "Parasite",
+              "url": "https://music.youtube.com/watch?v=yWuCvXKMmbY"
+            }
+          ]
         },
         {
           "artist": "Nebulam",
@@ -1817,7 +2837,34 @@
           "browse_id": "MPREb_InjhNduQCpo",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Objections To Humanism"
+          "ytm_matched_title": "Objections To Humanism",
+          "tracks": [
+            {
+              "artist": "Nebulam",
+              "title": "Silence",
+              "url": "https://music.youtube.com/watch?v=aUPwNQgJ55o"
+            },
+            {
+              "artist": "Nebulam",
+              "title": "By A Thousand Nails",
+              "url": "https://music.youtube.com/watch?v=2_N64TMgHvQ"
+            },
+            {
+              "artist": "Nebulam",
+              "title": "L'Avventura",
+              "url": "https://music.youtube.com/watch?v=sJKe84spCAY"
+            },
+            {
+              "artist": "Nebulam",
+              "title": "Astigmatism (feat. Deliquesce)",
+              "url": "https://music.youtube.com/watch?v=4C0-5ukCKJQ"
+            },
+            {
+              "artist": "Nebulam",
+              "title": "The Ego Death",
+              "url": "https://music.youtube.com/watch?v=99hAKTp0XQ0"
+            }
+          ]
         },
         {
           "artist": "Eternal Enemy",
@@ -1826,7 +2873,19 @@
           "browse_id": "MPREb_QAmqoEwIiG9",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Every Man for Himself and God Against All / Extinction"
+          "ytm_matched_title": "Every Man for Himself and God Against All / Extinction",
+          "tracks": [
+            {
+              "artist": "Eternal Enemy",
+              "title": "Every Man for Himself and God Against All",
+              "url": "https://music.youtube.com/watch?v=jCGZwaJXy9c"
+            },
+            {
+              "artist": "Eternal Enemy",
+              "title": "Extinction",
+              "url": "https://music.youtube.com/watch?v=VDdx0hihj6I"
+            }
+          ]
         },
         {
           "artist": "Street Justice",
@@ -1835,7 +2894,34 @@
           "browse_id": "MPREb_LvYMxNLMqym",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "for a better world"
+          "ytm_matched_title": "for a better world",
+          "tracks": [
+            {
+              "artist": "Street Justice",
+              "title": "How the Mortals Kill",
+              "url": "https://music.youtube.com/watch?v=LhzRXz5dAO8"
+            },
+            {
+              "artist": "Street Justice",
+              "title": "Only Posers Die",
+              "url": "https://music.youtube.com/watch?v=sXniCf0zEw8"
+            },
+            {
+              "artist": "Street Justice",
+              "title": "Support the A.L.F: Theme to a Lab Raid",
+              "url": "https://music.youtube.com/watch?v=2H3KMfkHh74"
+            },
+            {
+              "artist": "Street Justice",
+              "title": "We Need Street Justice (not a self-referential statement on the value of our band; but a call to action for you, the listener, regarding what you can do in your own time through direct action)",
+              "url": "https://music.youtube.com/watch?v=fmBleY2TAw4"
+            },
+            {
+              "artist": "Street Justice",
+              "title": "XSJIIIX (Still X'n II)",
+              "url": "https://music.youtube.com/watch?v=KPGmb4gVyZc"
+            }
+          ]
         },
         {
           "artist": "Concussed",
@@ -1844,7 +2930,19 @@
           "browse_id": "MPREb_ISxi1Amr03t",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Promo 26"
+          "ytm_matched_title": "Promo 26",
+          "tracks": [
+            {
+              "artist": "CONCUSSED",
+              "title": "Pretentious Opinions",
+              "url": "https://music.youtube.com/watch?v=lJZEslaOAKA"
+            },
+            {
+              "artist": "CONCUSSED",
+              "title": "Resistance",
+              "url": "https://music.youtube.com/watch?v=kaZj0q5uuLI"
+            }
+          ]
         },
         {
           "artist": "TwoPointOne",
@@ -1853,7 +2951,19 @@
           "browse_id": "MPREb_chhHSd8jMWT",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "DEMONSTRATE 26"
+          "ytm_matched_title": "DEMONSTRATE 26",
+          "tracks": [
+            {
+              "artist": "Twopointone",
+              "title": "SEVEN DEADLY SINS",
+              "url": "https://music.youtube.com/watch?v=mECpsv2s28M"
+            },
+            {
+              "artist": "Twopointone",
+              "title": "RUNNIN' OUT",
+              "url": "https://music.youtube.com/watch?v=SxQlImcOtkY"
+            }
+          ]
         },
         {
           "artist": "Rugged",
@@ -1862,7 +2972,59 @@
           "browse_id": "MPREb_mGweAMpfMzW",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Deeper Than Blood"
+          "ytm_matched_title": "Deeper Than Blood",
+          "tracks": [
+            {
+              "artist": "Rugged",
+              "title": "Fist Of God",
+              "url": "https://music.youtube.com/watch?v=dHEFBekDoGw"
+            },
+            {
+              "artist": "Rugged",
+              "title": "The Nightmare Continues... (feat. TRUExFEELING)",
+              "url": "https://music.youtube.com/watch?v=beuIH3ZdxEU"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Deeper Than Blood (feat. Bun Dem Out & Ironed Out)",
+              "url": "https://music.youtube.com/watch?v=Jq6nfvHcgbw"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Lessons Learned",
+              "url": "https://music.youtube.com/watch?v=DRqFO1gssIo"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Profound Disgust (feat. VENDETTA SCT)",
+              "url": "https://music.youtube.com/watch?v=zMTaD007BXE"
+            },
+            {
+              "artist": "Rugged",
+              "title": "No Love Lost",
+              "url": "https://music.youtube.com/watch?v=p2Tum7lpnQ8"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Leech Brigades",
+              "url": "https://music.youtube.com/watch?v=Qprwwux_pqE"
+            },
+            {
+              "artist": "Rugged",
+              "title": "NPFC (Redux)",
+              "url": "https://music.youtube.com/watch?v=Cha8ebE8XJw"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Tears In The Mortar",
+              "url": "https://music.youtube.com/watch?v=YocakoP7TqI"
+            },
+            {
+              "artist": "Rugged",
+              "title": "Modus Operandi",
+              "url": "https://music.youtube.com/watch?v=c7PZ5giK0A4"
+            }
+          ]
         },
         {
           "artist": "Misprize",
@@ -1871,7 +3033,29 @@
           "browse_id": "MPREb_HOdhHxX53hm",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Eternal Damnation"
+          "ytm_matched_title": "Eternal Damnation",
+          "tracks": [
+            {
+              "artist": "Misprize",
+              "title": "Eternal Damnation",
+              "url": "https://music.youtube.com/watch?v=OzJWwfRjLEM"
+            },
+            {
+              "artist": "Misprize",
+              "title": "Witness Against Yourself",
+              "url": "https://music.youtube.com/watch?v=E2FJZQhO3y8"
+            },
+            {
+              "artist": "Misprize",
+              "title": "False Conviction",
+              "url": "https://music.youtube.com/watch?v=WvAoCHfvWrA"
+            },
+            {
+              "artist": "Misprize",
+              "title": "The Self Accused",
+              "url": "https://music.youtube.com/watch?v=JawsRpuf-14"
+            }
+          ]
         },
         {
           "artist": "Formed Against God",
@@ -1880,7 +3064,29 @@
           "browse_id": "MPREb_Hh3okLXWp8W",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Ruptured Utopia"
+          "ytm_matched_title": "Ruptured Utopia",
+          "tracks": [
+            {
+              "artist": "Formed Against God",
+              "title": "intro",
+              "url": "https://music.youtube.com/watch?v=T6BaHsTvlFE"
+            },
+            {
+              "artist": "Formed Against God",
+              "title": "fallen angel",
+              "url": "https://music.youtube.com/watch?v=D1jdXKZHZMg"
+            },
+            {
+              "artist": "Formed Against God",
+              "title": "ranunculus",
+              "url": "https://music.youtube.com/watch?v=YjR6K-hW66E"
+            },
+            {
+              "artist": "Formed Against God",
+              "title": "flesh & bone",
+              "url": "https://music.youtube.com/watch?v=sK6V9KFaGvc"
+            }
+          ]
         },
         {
           "artist": "Saint Violence",
@@ -1889,7 +3095,14 @@
           "browse_id": null,
           "video_id": "2YW6bW63htk",
           "ytm_type": "video",
-          "ytm_matched_title": "Saint Violence - Martyr Of Testament 2026 (Full EP)"
+          "ytm_matched_title": "Saint Violence - Martyr Of Testament 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Saint Violence",
+              "title": "Martyr Of Testament EP",
+              "url": "https://music.youtube.com/watch?v=2YW6bW63htk"
+            }
+          ]
         },
         {
           "artist": "Lifetrial",
@@ -1898,7 +3111,14 @@
           "browse_id": null,
           "video_id": "k0uoEaVQBKU",
           "ytm_type": "video",
-          "ytm_matched_title": "Lifetrial - Demo 2026 (Full Demo)"
+          "ytm_matched_title": "Lifetrial - Demo 2026 (Full Demo)",
+          "tracks": [
+            {
+              "artist": "Lifetrial",
+              "title": "Demo",
+              "url": "https://music.youtube.com/watch?v=k0uoEaVQBKU"
+            }
+          ]
         },
         {
           "artist": "Lawdown",
@@ -1907,7 +3127,34 @@
           "browse_id": "MPREb_DzyxjbDuBGp",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Lawdown"
+          "ytm_matched_title": "Lawdown",
+          "tracks": [
+            {
+              "artist": "LAWDOWN",
+              "title": "The Band",
+              "url": "https://music.youtube.com/watch?v=9eaUUe8WFuM"
+            },
+            {
+              "artist": "LAWDOWN",
+              "title": "First",
+              "url": "https://music.youtube.com/watch?v=SxZSL7rf2LM"
+            },
+            {
+              "artist": "LAWDOWN",
+              "title": "Parents Talk",
+              "url": "https://music.youtube.com/watch?v=98W4UV1vpgs"
+            },
+            {
+              "artist": "LAWDOWN",
+              "title": "Spirits",
+              "url": "https://music.youtube.com/watch?v=Ab8rLfs0MzM"
+            },
+            {
+              "artist": "LAWDOWN",
+              "title": "Dead Man",
+              "url": "https://music.youtube.com/watch?v=T75oQZap_I4"
+            }
+          ]
         },
         {
           "artist": "Torment",
@@ -1916,7 +3163,29 @@
           "browse_id": "MPREb_D3YtPzPYog2",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Torment Demo"
+          "ytm_matched_title": "Torment Demo",
+          "tracks": [
+            {
+              "artist": "Torment",
+              "title": "Endless Hurt",
+              "url": "https://music.youtube.com/watch?v=vqXKX8TWGy4"
+            },
+            {
+              "artist": "Torment",
+              "title": "Digital Siege Machine",
+              "url": "https://music.youtube.com/watch?v=JyEFlzf8kQQ"
+            },
+            {
+              "artist": "Torment",
+              "title": "Evil",
+              "url": "https://music.youtube.com/watch?v=NrL3-CHWkcQ"
+            },
+            {
+              "artist": "Torment",
+              "title": "Throw Ourselves Away (T.O.A.)",
+              "url": "https://music.youtube.com/watch?v=AofEd125eLg"
+            }
+          ]
         },
         {
           "artist": "Beyond My Rage",
@@ -1925,7 +3194,64 @@
           "browse_id": "MPREb_U2Af1hc6oik",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Vulgar Display of Power"
+          "ytm_matched_title": "Vulgar Display of Power",
+          "tracks": [
+            {
+              "artist": "Pantera",
+              "title": "Mouth for War",
+              "url": "https://music.youtube.com/watch?v=a3JSbOt7CLo"
+            },
+            {
+              "artist": "Pantera",
+              "title": "A New Level",
+              "url": "https://music.youtube.com/watch?v=li91V6m_OR0"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Walk",
+              "url": "https://music.youtube.com/watch?v=AkFqg5wAuFk"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Fucking Hostile",
+              "url": "https://music.youtube.com/watch?v=7QcMhOFAVzE"
+            },
+            {
+              "artist": "Pantera",
+              "title": "This Love",
+              "url": "https://music.youtube.com/watch?v=p62JUR5d_Gs"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Rise",
+              "url": "https://music.youtube.com/watch?v=ubwPeQmjdb0"
+            },
+            {
+              "artist": "Pantera",
+              "title": "No Good (Attack the Radical)",
+              "url": "https://music.youtube.com/watch?v=18QukmVZGLg"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Live in a Hole",
+              "url": "https://music.youtube.com/watch?v=mLYkKLZk_4U"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Regular People (Conceit)",
+              "url": "https://music.youtube.com/watch?v=4i2ifGa5n0o"
+            },
+            {
+              "artist": "Pantera",
+              "title": "By Demons Be Driven",
+              "url": "https://music.youtube.com/watch?v=F0mbRWRa0Rg"
+            },
+            {
+              "artist": "Pantera",
+              "title": "Hollow",
+              "url": "https://music.youtube.com/watch?v=ImXNU8Kg4H0"
+            }
+          ]
         },
         {
           "artist": "Blind",
@@ -1934,7 +3260,29 @@
           "browse_id": "MPREb_GEfpAKFjsKE",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "A Silver Pendulum Swung in Darkness"
+          "ytm_matched_title": "A Silver Pendulum Swung in Darkness",
+          "tracks": [
+            {
+              "artist": "BLIND",
+              "title": "Headwires",
+              "url": "https://music.youtube.com/watch?v=mIwADlr1r7c"
+            },
+            {
+              "artist": "BLIND",
+              "title": "Witness Me",
+              "url": "https://music.youtube.com/watch?v=KsIqI6eTjLs"
+            },
+            {
+              "artist": "BLIND",
+              "title": "Cherophobia",
+              "url": "https://music.youtube.com/watch?v=eO1VqZfqLOw"
+            },
+            {
+              "artist": "BLIND",
+              "title": "One Second to Midnight",
+              "url": "https://music.youtube.com/watch?v=qsumpOWnoAc"
+            }
+          ]
         },
         {
           "artist": "Recluse",
@@ -1943,7 +3291,14 @@
           "browse_id": "MPREb_Amu7i4E9Zrt",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "Eternal Escape"
+          "ytm_matched_title": "Eternal Escape",
+          "tracks": [
+            {
+              "artist": "bclic",
+              "title": "Eternal Escape",
+              "url": "https://music.youtube.com/watch?v=6Dc2Hrw7p0I"
+            }
+          ]
         },
         {
           "artist": "Twentyinchburial",
