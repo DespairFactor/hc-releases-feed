@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build a static index.html from releases.json for GitHub Pages.
 
-Supports full albums (browse_id -> /browse/MPREb_...), single tracks
-(video_id -> /watch?v=...), query search fallbacks, and a per-post
-in-page queue to step through releases in YouTube Music.
+Supports full albums, single tracks, in-page queueing, and client-side
+Google OAuth to let visitors export any post directly into their own
+YouTube / YouTube Music account as a playlist.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from __future__ import annotations
 import html
 import json
 import logging
+import os
 import re
 import sys
 from pathlib import Path
@@ -60,16 +61,54 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
         url = f"https://music.youtube.com/watch?v={video_id}"
         return url, "Track"
 
-    # Search fallback if unresolved
     query = quote_plus(clean_search_query(rel.get("artist", ""), rel.get("title", "")))
     return f"https://music.youtube.com/search?q={query}", "Search"
 
 
-def render_html(store: dict) -> str:
+def build_post_queue_items(releases: list) -> list[dict]:
+    """Collect all track/item info for queueing and client-side playlist export."""
+    items: list[dict] = []
+    for rel in releases:
+        if not isinstance(rel, dict):
+            continue
+        artist = str(rel.get("artist", "")).strip()
+        title = str(rel.get("title", "")).strip()
+        video_id = (rel.get("video_id") or "").strip()
+        ytm_url, badge = get_ytm_url(rel)
+
+        tracks = rel.get("tracks")
+        if isinstance(tracks, list) and tracks:
+            for tr in tracks:
+                if not isinstance(tr, dict):
+                    continue
+                url = str(tr.get("url") or "")
+                vid = ""
+                if "v=" in url:
+                    vid = url.split("v=")[1].split("&")[0]
+                items.append({
+                    "artist": str(tr.get("artist") or artist),
+                    "title": str(tr.get("title") or title),
+                    "video_id": vid,
+                    "badge": "Song",
+                    "ytm_url": url,
+                })
+        else:
+            items.append({
+                "artist": artist,
+                "title": title,
+                "video_id": video_id,
+                "badge": badge,
+                "ytm_url": ytm_url,
+            })
+    return items
+
+
+def render_html(store: dict, default_client_id: str = "") -> str:
     source_user = html.escape(str(store.get("source_user", "sepdri")))
     subreddit = html.escape(str(store.get("subreddit", "Hardcore")))
     updated_at = html.escape(str(store.get("updated_at", "Unknown")))
     posts = store.get("posts", [])
+    default_client_id_js = json.dumps(default_client_id.strip())
 
     total_releases = sum(len(p.get("releases", [])) for p in posts if isinstance(p.get("releases"), list))
 
@@ -80,7 +119,9 @@ def render_html(store: dict) -> str:
         added_at = html.escape(str(post.get("added_at", "")))
         releases = post.get("releases", [])
 
-        queue_items = []
+        queue_items = build_post_queue_items(releases)
+        queue_json = html.escape(json.dumps(queue_items, ensure_ascii=False))
+
         cards = []
         for rel in releases:
             artist_raw = str(rel.get("artist", ""))
@@ -94,14 +135,6 @@ def render_html(store: dict) -> str:
             ytm_url, ytm_badge = get_ytm_url(rel)
             yt_query = quote_plus(clean_search_query(artist_raw, title_raw))
             yt_url = f"https://www.youtube.com/results?search_query={yt_query}"
-
-            queue_items.append({
-                "artist": artist_raw,
-                "title": title_raw,
-                "notes": notes_raw,
-                "badge": ytm_badge,
-                "ytm_url": ytm_url,
-            })
 
             notes_markup = f'<span class="badge notes-badge">{notes}</span>' if notes else ""
             type_markup = f'<span class="badge type-badge">{ytm_badge}</span>'
@@ -127,25 +160,19 @@ def render_html(store: dict) -> str:
 """)
 
         cards_html = "\n".join(cards) if cards else '<p class="empty-text">No releases tracked in this post.</p>'
-        queue_json = html.escape(json.dumps(queue_items, ensure_ascii=False))
-        queue_btn_html = (
-            f'<button type="button" class="btn btn-queue" data-post-idx="{post_idx}">'
-            f'▶ Queue ({len(queue_items)})'
-            f'</button>'
-            if queue_items
-            else ""
-        )
 
         post_sections.append(f"""
-      <section class="post-group" data-post-idx="{post_idx}" data-queue="{queue_json}">
+      <section class="post-group" data-post-idx="{post_idx}" data-post-title="{post_title}" data-queue="{queue_json}">
         <header class="post-header">
           <h2>{post_title}</h2>
           <div class="post-info">
             <span>{added_at}</span>
-            {queue_btn_html}
+            <button type="button" class="btn btn-queue" data-action="toggle-queue">▶ Queue ({len(queue_items)})</button>
+            <button type="button" class="btn btn-export-oauth" data-action="export-playlist">Export to My YTM</button>
             <a href="{post_url}" target="_blank" rel="noopener noreferrer" class="thread-link">Reddit Thread ↗</a>
           </div>
         </header>
+        <div class="export-status-bar" hidden></div>
         <div class="queue-panel" hidden></div>
         <div class="cards-list">
           {cards_html}
@@ -191,12 +218,12 @@ def render_html(store: dict) -> str:
     }}
 
     .container {{
-      max-width: 940px;
+      max-width: 960px;
       margin: 0 auto;
     }}
 
     header.site-header {{
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1.25rem;
     }}
@@ -215,6 +242,38 @@ def render_html(store: dict) -> str:
     .subtitle a {{
       color: var(--accent);
       text-decoration: none;
+    }}
+
+    .oauth-panel {{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }}
+
+    .oauth-inputs {{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }}
+
+    .oauth-inputs input {{
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text-main);
+      padding: 0.4rem 0.65rem;
+      font-size: 0.82rem;
+      width: min(340px, 100%);
     }}
 
     .filter-panel {{
@@ -236,7 +295,8 @@ def render_html(store: dict) -> str:
       outline: none;
     }}
 
-    input[type="search"]:focus {{
+    input[type="search"]:focus,
+    .oauth-inputs input:focus {{
       border-color: var(--accent);
     }}
 
@@ -267,15 +327,30 @@ def render_html(store: dict) -> str:
     .post-info {{
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
       font-size: 0.83rem;
       color: var(--text-sub);
+      flex-wrap: wrap;
     }}
 
     .thread-link {{
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+    }}
+
+    .export-status-bar {{
+      padding: 0.6rem 1.15rem;
+      background: #192231;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+      color: #7dd3fc;
+    }}
+
+    .export-status-bar a {{
+      color: #38bdf8;
+      font-weight: 700;
+      text-decoration: underline;
     }}
 
     .queue-panel {{
@@ -311,7 +386,7 @@ def render_html(store: dict) -> str:
     }}
 
     .queue-list {{
-      max-height: 220px;
+      max-height: 240px;
       overflow-y: auto;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -398,31 +473,36 @@ def render_html(store: dict) -> str:
     .btn {{
       font-size: 0.78rem;
       font-weight: 600;
-      padding: 0.4rem 0.75rem;
+      padding: 0.35rem 0.7rem;
       border-radius: 4px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
     }}
 
     .btn-queue {{
       background: #1e293b;
       color: #f8fafc;
-      border: 1px solid #334155;
-      padding: 0.28rem 0.65rem;
-      font-size: 0.76rem;
+      border-color: #334155;
     }}
 
-    .btn-queue:hover {{
-      border-color: var(--accent);
+    .btn-export-oauth {{
+      background: #b91c1c;
+      color: #ffffff;
+      border-color: #991b1b;
+      font-weight: 700;
+    }}
+
+    .btn-export-oauth:hover {{
+      background: #dc2626;
     }}
 
     .btn-action {{
       background: #222734;
       color: #f0f2f5;
-      border: 1px solid #363d4f;
+      border-color: #363d4f;
       padding: 0.32rem 0.65rem;
       font-size: 0.75rem;
     }}
@@ -452,6 +532,9 @@ def render_html(store: dict) -> str:
         width: 100%;
         justify-content: flex-end;
       }}
+      .oauth-inputs input {{
+        width: 100%;
+      }}
     }}
   </style>
 </head>
@@ -463,6 +546,19 @@ def render_html(store: dict) -> str:
         Curated from <a href="https://www.reddit.com/user/{source_user}/" target="_blank" rel="noopener noreferrer">u/{source_user}</a> • {len(posts)} posts • {total_releases} releases • Updated {updated_at[:10]}
       </p>
     </header>
+
+    <section class="oauth-panel">
+      <div class="oauth-inputs">
+        <label for="clientIdInput"><strong>Your Google Client ID:</strong></label>
+        <input type="text" id="clientIdInput" placeholder="xxxx.apps.googleusercontent.com" spellcheck="false" />
+        <button type="button" class="btn btn-action" id="saveClientIdBtn">Save</button>
+      </div>
+      <div>
+        <span id="oauthStatus" style="color: var(--text-sub); margin-right: 0.5rem;">Not Connected</span>
+        <button type="button" class="btn btn-ytm" id="loginBtn">Connect YouTube</button>
+        <button type="button" class="btn btn-action" id="logoutBtn" style="display: none;">Disconnect</button>
+      </div>
+    </section>
 
     <div class="filter-panel">
       <input type="search" id="searchInput" placeholder="Filter releases by artist, title, notes, or roundup title..." aria-label="Filter releases" />
@@ -491,6 +587,182 @@ def render_html(store: dict) -> str:
         }});
 
         group.style.display = (visibleCount > 0 || !query) ? "block" : "none";
+      }});
+    }});
+
+    const STORAGE_CLIENT_ID = "yt_oauth_client_id";
+    const SESSION_TOKEN = "yt_oauth_access_token";
+    const DEFAULT_CLIENT_ID = {default_client_id_js};
+
+    const clientIdInput = document.getElementById("clientIdInput");
+    const saveClientIdBtn = document.getElementById("saveClientIdBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const oauthStatus = document.getElementById("oauthStatus");
+
+    clientIdInput.value = localStorage.getItem(STORAGE_CLIENT_ID) || DEFAULT_CLIENT_ID || "";
+
+    saveClientIdBtn.addEventListener("click", () => {{
+      const val = clientIdInput.value.trim();
+      localStorage.setItem(STORAGE_CLIENT_ID, val);
+      alert(val ? "Google Client ID saved locally in your browser." : "Client ID cleared.");
+    }});
+
+    if (window.location.hash) {{
+      const params = new URLSearchParams(window.location.hash.substring(1));
+      const accessToken = params.get("access_token");
+      if (accessToken) {{
+        sessionStorage.setItem(SESSION_TOKEN, accessToken);
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }}
+    }}
+
+    function updateAuthUi() {{
+      const token = sessionStorage.getItem(SESSION_TOKEN);
+      if (token) {{
+        oauthStatus.textContent = "Connected ✓";
+        oauthStatus.style.color = "#4ade80";
+        loginBtn.style.display = "none";
+        logoutBtn.style.display = "inline-flex";
+      }} else {{
+        oauthStatus.textContent = "Not Connected";
+        oauthStatus.style.color = "var(--text-sub)";
+        loginBtn.style.display = "inline-flex";
+        logoutBtn.style.display = "none";
+      }}
+    }}
+    updateAuthUi();
+
+    loginBtn.addEventListener("click", () => {{
+      const clientId = (localStorage.getItem(STORAGE_CLIENT_ID) || clientIdInput.value || DEFAULT_CLIENT_ID || "").trim();
+      if (!clientId) {{
+        alert("Please enter and save your Google Client ID first.");
+        clientIdInput.focus();
+        return;
+      }}
+
+      const redirectUri = window.location.origin + window.location.pathname;
+      const scope = "https://www.googleapis.com/auth/youtube";
+      const authUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + new URLSearchParams({{
+        client_id: clientId,
+        redirect_uri: redirectUri,
+        response_type: "token",
+        scope: scope,
+        include_granted_scopes: "true",
+      }}).toString();
+
+      window.location.href = authUrl;
+    }});
+
+    logoutBtn.addEventListener("click", () => {{
+      sessionStorage.removeItem(SESSION_TOKEN);
+      updateAuthUi();
+    }});
+
+    async function createYouTubePlaylist(token, title, description) {{
+      const res = await fetch("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {{
+        method: "POST",
+        headers: {{
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json",
+        }},
+        body: JSON.stringify({{
+          snippet: {{
+            title: title.slice(0, 150),
+            description: description.slice(0, 5000),
+          }},
+          status: {{
+            privacyStatus: "unlisted",
+          }},
+        }}),
+      }});
+
+      if (!res.ok) {{
+        const err = await res.json().catch(() => ({{}}));
+        throw new Error(err.error?.message || ("HTTP " + res.status));
+      }}
+      const data = await res.json();
+      return data.id;
+    }}
+
+    async function addVideoToPlaylist(token, playlistId, videoId) {{
+      const res = await fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet", {{
+        method: "POST",
+        headers: {{
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json",
+        }},
+        body: JSON.stringify({{
+          snippet: {{
+            playlistId: playlistId,
+            resourceId: {{
+              kind: "youtube#video",
+              videoId: videoId,
+            }},
+          }},
+        }}),
+      }});
+      return res.ok;
+    }}
+
+    document.querySelectorAll('[data-action="export-playlist"]').forEach((btn) => {{
+      btn.addEventListener("click", async () => {{
+        const token = sessionStorage.getItem(SESSION_TOKEN);
+        if (!token) {{
+          alert("Please connect your YouTube account above using your Google Client ID first.");
+          return;
+        }}
+
+        const group = btn.closest(".post-group");
+        const statusDiv = group.querySelector(".export-status-bar");
+        const postTitle = group.getAttribute("data-post-title") || "Roundup";
+        let items = [];
+        try {{
+          items = JSON.parse(group.getAttribute("data-queue") || "[]");
+        }} catch {{
+          items = [];
+        }}
+
+        const videoIds = items.map((i) => i.video_id).filter(Boolean);
+        if (!videoIds.length) {{
+          alert("No resolved track video IDs found in this post to add to a playlist.");
+          return;
+        }}
+
+        btn.disabled = true;
+        statusDiv.hidden = false;
+        statusDiv.textContent = `Creating playlist for "${{postTitle}}"...`;
+
+        try {{
+          const playlistId = await createYouTubePlaylist(
+            token,
+            postTitle,
+            `Curated releases from ${{postTitle}} on r/Hardcore.`
+          );
+
+          statusDiv.textContent = `Created playlist. Adding 0/${{videoIds.length}} track(s)...`;
+
+          let added = 0;
+          for (const vid of videoIds) {{
+            const ok = await addVideoToPlaylist(token, playlistId, vid);
+            if (ok) added++;
+            statusDiv.textContent = `Adding tracks: ${{added}}/${{videoIds.length}}...`;
+            await new Promise((r) => setTimeout(r, 120));
+          }}
+
+          const ytmLink = `https://music.youtube.com/playlist?list=${{playlistId}}`;
+          statusDiv.innerHTML = `✓ Created playlist with ${{added}} track(s)! <a href="${{ytmLink}}" target="_blank" rel="noopener noreferrer">Open "${{postTitle}}" in YouTube Music ↗</a>`;
+        }} catch (err) {{
+          if (err.message.includes("401") || err.message.toLowerCase().includes("invalid credentials")) {{
+            sessionStorage.removeItem(SESSION_TOKEN);
+            updateAuthUi();
+            statusDiv.textContent = "Authentication expired. Please connect YouTube again.";
+          }} else {{
+            statusDiv.textContent = "Failed to create playlist: " + err.message;
+          }}
+        }} finally {{
+          btn.disabled = false;
+        }}
       }});
     }});
 
@@ -606,7 +878,7 @@ def render_html(store: dict) -> str:
       }});
     }}
 
-    document.querySelectorAll(".btn-queue").forEach((btn) => {{
+    document.querySelectorAll('[data-action="toggle-queue"]').forEach((btn) => {{
       btn.addEventListener("click", () => {{
         const group = btn.closest(".post-group");
         if (!group) return;
@@ -635,7 +907,8 @@ def main() -> None:
         logger.error("Failed to read JSON: %s", err)
         sys.exit(1)
 
-    html_content = render_html(store)
+    default_client_id = os.environ.get("YT_CLIENT_ID", "")
+    html_content = render_html(store, default_client_id=default_client_id)
     OUTPUT_HTML.write_text(html_content, encoding="utf-8")
     logger.info("Generated %s successfully.", OUTPUT_HTML)
 
