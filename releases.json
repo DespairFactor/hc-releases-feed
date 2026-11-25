@@ -8531,14 +8531,14 @@
           "title": "Songs Of 1996-1998 LP",
           "notes": "Sweden",
           "browse_id": null,
-          "video_id": "A11eiRTpBPc",
-          "ytm_type": "video",
-          "ytm_matched_title": "The Best Of 1996 #1 (PL)",
+          "video_id": "KSYg3QdEyKo",
+          "ytm_type": "song",
+          "ytm_matched_title": "Forced Into",
           "tracks": [
             {
               "artist": "Forced Into",
               "title": "Songs Of 1996-1998 LP",
-              "url": "https://music.youtube.com/watch?v=A11eiRTpBPc"
+              "url": "https://music.youtube.com/watch?v=KSYg3QdEyKo"
             }
           ]
         },
@@ -8866,14 +8866,14 @@
           "title": "Tabedo EP",
           "notes": "Padang, Indonesia",
           "browse_id": null,
-          "video_id": "rbtxIlA2rG0",
+          "video_id": "dFoX3LmayQc",
           "ytm_type": "song",
-          "ytm_matched_title": "We Rumble",
+          "ytm_matched_title": "Festering Rage",
           "tracks": [
             {
               "artist": "Rumble",
               "title": "Tabedo EP",
-              "url": "https://music.youtube.com/watch?v=rbtxIlA2rG0"
+              "url": "https://music.youtube.com/watch?v=dFoX3LmayQc"
             }
           ]
         },
