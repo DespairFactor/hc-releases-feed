@@ -7,6 +7,7 @@ on:
     paths:
       - "releases.json"
       - "build_site.py"
+      - "scripts/publish_playlists.py"
   workflow_dispatch:
 
 permissions:
@@ -24,19 +25,38 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate index.html
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install "ytmusicapi>=1.8.0"
+
+      - name: Decode YouTube Music auth credential
+        if: ${{ secrets.YTM_AUTH_B64 != '' }}
         env:
-          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+        run: |
+          printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
+
+      - name: Publish public playlists per post
+        if: ${{ secrets.YTM_AUTH_B64 != '' }}
+        run: python scripts/publish_playlists.py --auth .ytm_auth.json
+
+      - name: Remove temporary auth credential
+        if: always()
+        run: rm -f .ytm_auth.json
+
+      - name: Generate site pages
         run: python build_site.py
 
-      - name: Commit and push index.html
+      - name: Commit and push updated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html privacy.html terms.html
+          git add releases.json index.html privacy.html terms.html
           if git diff --staged --quiet; then
-            echo "No changes to site files"
+            echo "No changes to commit"
           else
-            git commit -m "chore: update site pages [skip ci]"
+            git commit -m "chore: publish playlists and update site [skip ci]"
             git push
           fi
