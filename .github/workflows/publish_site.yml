@@ -16,6 +16,11 @@ on:
         required: false
         default: ""
         type: string
+      reprocess_tracks:
+        description: "Reset and re-expand existing release tracks before publishing"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -39,7 +44,14 @@ jobs:
           python -m pip install "ytmusicapi>=1.8.0"
 
       - name: Expand release tracks
-        run: python scripts/expand_release_tracks.py --max-expansions 40
+        env:
+          REPROCESS_TRACKS: ${{ github.event.inputs.reprocess_tracks }}
+        run: |
+          if [ "$REPROCESS_TRACKS" = "true" ]; then
+            python scripts/expand_release_tracks.py --max-expansions 40 --reprocess-existing
+          else
+            python scripts/expand_release_tracks.py --max-expansions 40
+          fi
 
       - name: Decode YouTube Music auth credential
         if: env.YTM_AUTH_B64 != ''
