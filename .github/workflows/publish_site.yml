@@ -7,6 +7,7 @@ on:
     paths:
       - "releases.json"
       - "build_site.py"
+      - "scripts/expand_release_tracks.py"
   workflow_dispatch:
 
 permissions:
@@ -24,6 +25,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Expand release tracks
+        run: python scripts/expand_release_tracks.py --max-expansions 40
+
       - name: Generate index.html
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -33,10 +42,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html releases.json
           if git diff --staged --quiet; then
-            echo "No changes to index.html"
+            echo "No changes to index.html or releases.json"
           else
-            git commit -m "chore: update index.html [skip ci]"
+            git commit -m "chore: expand tracks and update index.html [skip ci]"
             git push
           fi
