@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Build static index.html, privacy.html, and terms.html from releases.json.
 
-Supports full albums, single tracks, in-page queueing, client-side
-Google OAuth to let visitors sign in and export any post directly into
-their own YouTube / YouTube Music account as a playlist, and static
-Privacy Policy / Terms of Service pages.
+Renders public YouTube Music playlist links published per post, in-page
+playback queues, and static documentation pages.
 """
 
 from __future__ import annotations
@@ -12,7 +10,6 @@ from __future__ import annotations
 import html
 import json
 import logging
-import os
 import re
 import sys
 from pathlib import Path
@@ -69,14 +66,13 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
 
 
 def build_post_queue_items(releases: list) -> list[dict]:
-    """Collect all track/item info for queueing and client-side playlist export."""
+    """Collect all track/item info for in-page stepping."""
     items: list[dict] = []
     for rel in releases:
         if not isinstance(rel, dict):
             continue
         artist = str(rel.get("artist", "")).strip()
         title = str(rel.get("title", "")).strip()
-        video_id = (rel.get("video_id") or "").strip()
         ytm_url, badge = get_ytm_url(rel)
 
         tracks = rel.get("tracks")
@@ -85,13 +81,9 @@ def build_post_queue_items(releases: list) -> list[dict]:
                 if not isinstance(tr, dict):
                     continue
                 url = str(tr.get("url") or "")
-                vid = ""
-                if "v=" in url:
-                    vid = url.split("v=")[1].split("&")[0]
                 items.append({
                     "artist": str(tr.get("artist") or artist),
                     "title": str(tr.get("title") or title),
-                    "video_id": vid,
                     "badge": "Song",
                     "ytm_url": url,
                 })
@@ -99,7 +91,6 @@ def build_post_queue_items(releases: list) -> list[dict]:
             items.append({
                 "artist": artist,
                 "title": title,
-                "video_id": video_id,
                 "badge": badge,
                 "ytm_url": ytm_url,
             })
@@ -272,21 +263,13 @@ def render_privacy_html(store: dict) -> str:
       <p><strong>Last updated:</strong> {updated_at} &bull; <strong>Contact:</strong> matthewdalex92@gmail.com</p>
 
       <h2>1. Overview</h2>
-      <p>hc-releases-feed is a static web application displaying curated hardcore release roundups and providing tools to open or export releases to YouTube and YouTube Music. The site runs directly in your browser without a custom backend server operated by the developer to store account data.</p>
+      <p>hc-releases-feed is a static web application displaying curated hardcore release roundups and providing links to listen to full playlists and tracks on YouTube Music. No personal account credentials or tracking cookies are collected from visitors.</p>
 
-      <h2>2. How YouTube API Services Are Used</h2>
-      <p>When you choose to sign in with Google and export a release roundup into a playlist, this site uses YouTube API Services (YouTube Data API v3) directly from your browser:</p>
-      <ul>
-        <li><strong>Requested scope:</strong> <code>https://www.googleapis.com/auth/youtube</code> is requested to create a playlist and add video/track entries on your YouTube account.</li>
-        <li><strong>Playlist creation:</strong> Clicking <strong>Export to My YTM</strong> sends requests directly from your browser to the YouTube Data API to create a playlist (unlisted by default) and insert resolved video IDs from that roundup.</li>
-        <li><strong>No developer backend storage:</strong> Your Google credentials, OAuth tokens, and created playlists are not transmitted to or stored on a backend server controlled by hc-releases-feed.</li>
-      </ul>
+      <h2>2. YouTube API Services &amp; Links</h2>
+      <p>Public playlists displayed on this site are published using YouTube API Services. Visitors can click playlist links directly to listen on YouTube Music under YouTube&rsquo;s standard platform terms.</p>
 
-      <h2>3. Local Browser Storage</h2>
-      <p>When you sign in via Google OAuth, your OAuth access token is stored in your browser&rsquo;s <code>sessionStorage</code> for the active session and is removed when you sign out or close your session. Standard web hosting infrastructure (such as GitHub Pages) may log standard HTTP request metadata under its own policies.</p>
-
-      <h2>4. Third-Party Policies &amp; Revoking Access</h2>
-      <p>Your use of YouTube API Services is subject to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. You can revoke access at any time in your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account permissions</a>.</p>
+      <h2>3. Third-Party Terms</h2>
+      <p>By using links to YouTube Music on this site, you are subject to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
     """
     return render_doc_page(store, "Privacy Policy", "Privacy Policy", body)
 
@@ -297,27 +280,22 @@ def render_terms_html(store: dict) -> str:
       <p><strong>Last updated:</strong> {updated_at} &bull; <strong>Contact:</strong> matthewdalex92@gmail.com</p>
 
       <h2>1. Acceptance of Terms</h2>
-      <p>By accessing hc-releases-feed or using its YouTube playlist export features, you agree to these Terms of Service and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</p>
+      <p>By accessing hc-releases-feed, you agree to these Terms of Service and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</p>
 
-      <h2>2. Service &amp; YouTube API Usage</h2>
-      <p>hc-releases-feed presents curated release entries and links to YouTube and YouTube Music. When you sign in with Google OAuth and export a post, your browser calls YouTube API Services directly to create a playlist on your account and add available track/video IDs associated with that post.</p>
-      <p>Release entries may resolve to albums, playlists, single videos, or search queries, and some items may lack resolved video IDs or be unavailable in your region or on YouTube Music. Availability and API behavior depend on third-party services.</p>
+      <h2>2. Content &amp; Availability</h2>
+      <p>Curated releases and playlists are provided for discovery purposes. Track availability, regional restrictions, and audio playback are subject to YouTube&rsquo;s platform availability.</p>
 
-      <h2>3. User Responsibilities</h2>
-      <p>You are responsible for your Google and YouTube account activity and for using the playlist export tool in compliance with applicable laws and YouTube&rsquo;s Terms of Service.</p>
-
-      <h2>4. Disclaimer &amp; Contact</h2>
-      <p>This site is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of any kind. For questions or support, contact matthewdalex92@gmail.com.</p>
+      <h2>3. Disclaimer</h2>
+      <p>This service is provided &ldquo;as is&rdquo; without warranties of any kind.</p>
     """
     return render_doc_page(store, "Terms of Service", "Terms of Service", body)
 
 
-def render_html(store: dict, default_client_id: str = "") -> str:
+def render_html(store: dict) -> str:
     source_user = html.escape(str(store.get("source_user", "sepdri")))
     subreddit = html.escape(str(store.get("subreddit", "Hardcore")))
     updated_at = html.escape(str(store.get("updated_at", "Unknown")))
     posts = store.get("posts", [])
-    default_client_id_js = json.dumps(default_client_id.strip())
 
     total_releases = sum(len(p.get("releases", [])) for p in posts if isinstance(p.get("releases"), list))
 
@@ -325,6 +303,7 @@ def render_html(store: dict, default_client_id: str = "") -> str:
     for post_idx, post in enumerate(posts):
         post_title = html.escape(str(post.get("post_title", "Untitled Roundup")))
         post_url = html.escape(str(post.get("post_url", f"https://www.reddit.com/user/{source_user}/")))
+        playlist_url = (post.get("playlist_url") or "").strip()
         added_at = html.escape(str(post.get("added_at", "")))
         releases = post.get("releases", [])
 
@@ -370,18 +349,24 @@ def render_html(store: dict, default_client_id: str = "") -> str:
 
         cards_html = "\n".join(cards) if cards else '<p class="empty-text">No releases tracked in this post.</p>'
 
+        playlist_btn_html = ""
+        if playlist_url:
+            playlist_btn_html = (
+                f'<a href="{html.escape(playlist_url)}" target="_blank" rel="noopener noreferrer" '
+                f'class="btn btn-playlist">▶ Listen to Full Playlist</a>'
+            )
+
         post_sections.append(f"""
-      <section class="post-group" data-post-idx="{post_idx}" data-post-title="{post_title}" data-queue="{queue_json}">
+      <section class="post-group" data-post-idx="{post_idx}" data-queue="{queue_json}">
         <header class="post-header">
           <h2>{post_title}</h2>
           <div class="post-info">
             <span>{added_at}</span>
-            <button type="button" class="btn btn-queue" data-action="toggle-queue">▶ Queue ({len(queue_items)})</button>
-            <button type="button" class="btn btn-export-oauth" data-action="export-playlist">Export to My YTM</button>
+            {playlist_btn_html}
+            <button type="button" class="btn btn-queue" data-action="toggle-queue">Queue ({len(queue_items)})</button>
             <a href="{post_url}" target="_blank" rel="noopener noreferrer" class="thread-link">Reddit Thread ↗</a>
           </div>
         </header>
-        <div class="export-status-bar" hidden></div>
         <div class="queue-panel" hidden></div>
         <div class="cards-list">
           {cards_html}
@@ -399,35 +384,6 @@ def render_html(store: dict, default_client_id: str = "") -> str:
   <title>r/{subreddit} Releases — u/{source_user}</title>
   <style>
 {shared_styles()}
-
-    .oauth-panel {{
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.85rem 1.15rem;
-      margin-bottom: 1.25rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      font-size: 0.85rem;
-    }}
-
-    .oauth-copy {{
-      color: var(--text-sub);
-    }}
-
-    .oauth-copy strong {{
-      color: var(--text-main);
-    }}
-
-    .oauth-actions {{
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }}
 
     .filter-panel {{
       background: var(--surface);
@@ -489,20 +445,6 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
-    }}
-
-    .export-status-bar {{
-      padding: 0.6rem 1.15rem;
-      background: #192231;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.83rem;
-      color: #7dd3fc;
-    }}
-
-    .export-status-bar a {{
-      color: #38bdf8;
-      font-weight: 700;
-      text-decoration: underline;
     }}
 
     .queue-panel {{
@@ -634,21 +576,21 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       border: 1px solid transparent;
     }}
 
+    .btn-playlist {{
+      background: #e11d48;
+      color: #ffffff;
+      border-color: #be123c;
+      font-weight: 700;
+    }}
+
+    .btn-playlist:hover {{
+      background: #f43f5e;
+    }}
+
     .btn-queue {{
       background: #1e293b;
       color: #f8fafc;
       border-color: #334155;
-    }}
-
-    .btn-export-oauth {{
-      background: #b91c1c;
-      color: #ffffff;
-      border-color: #991b1b;
-      font-weight: 700;
-    }}
-
-    .btn-export-oauth:hover {{
-      background: #dc2626;
     }}
 
     .btn-action {{
@@ -696,17 +638,6 @@ def render_html(store: dict, default_client_id: str = "") -> str:
       </p>
     </header>
 
-    <section class="oauth-panel">
-      <div class="oauth-copy">
-        <strong>YouTube Music Playlist Export:</strong> Sign in with Google to export any post into a playlist on your account.
-      </div>
-      <div class="oauth-actions">
-        <span id="oauthStatus" style="color: var(--text-sub);">Signed out</span>
-        <button type="button" class="btn btn-ytm" id="loginBtn">Sign in with Google</button>
-        <button type="button" class="btn btn-action" id="logoutBtn" style="display: none;">Sign out</button>
-      </div>
-    </section>
-
     <div class="filter-panel">
       <input type="search" id="searchInput" placeholder="Filter releases by artist, title, notes, or roundup title..." aria-label="Filter releases" />
     </div>
@@ -742,176 +673,6 @@ def render_html(store: dict, default_client_id: str = "") -> str:
         }});
 
         group.style.display = (visibleCount > 0 || !query) ? "block" : "none";
-      }});
-    }});
-
-    const SESSION_TOKEN = "yt_oauth_access_token";
-    const OAUTH_CLIENT_ID = {default_client_id_js};
-
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const oauthStatus = document.getElementById("oauthStatus");
-
-    if (window.location.hash) {{
-      const params = new URLSearchParams(window.location.hash.substring(1));
-      const accessToken = params.get("access_token");
-      if (accessToken) {{
-        sessionStorage.setItem(SESSION_TOKEN, accessToken);
-        history.replaceState(null, "", window.location.pathname + window.location.search);
-      }}
-    }}
-
-    function updateAuthUi() {{
-      const token = sessionStorage.getItem(SESSION_TOKEN);
-      if (token) {{
-        oauthStatus.textContent = "Signed in ✓";
-        oauthStatus.style.color = "#4ade80";
-        loginBtn.style.display = "none";
-        logoutBtn.style.display = "inline-flex";
-      }} else {{
-        oauthStatus.textContent = "Signed out";
-        oauthStatus.style.color = "var(--text-sub)";
-        loginBtn.style.display = OAUTH_CLIENT_ID ? "inline-flex" : "none";
-        logoutBtn.style.display = "none";
-        if (!OAUTH_CLIENT_ID) {{
-          oauthStatus.textContent = "OAuth sign-in not configured (YT_CLIENT_ID missing at build)";
-        }}
-      }}
-    }}
-    updateAuthUi();
-
-    function promptGoogleLogin() {{
-      if (!OAUTH_CLIENT_ID) {{
-        alert("Google OAuth sign-in is not configured on this page because YT_CLIENT_ID was not set when building the site.");
-        return;
-      }}
-      const redirectUri = window.location.origin + window.location.pathname;
-      const scope = "https://www.googleapis.com/auth/youtube";
-      const authUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + new URLSearchParams({{
-        client_id: OAUTH_CLIENT_ID,
-        redirect_uri: redirectUri,
-        response_type: "token",
-        scope: scope,
-        include_granted_scopes: "true",
-      }}).toString();
-      window.location.href = authUrl;
-    }}
-
-    loginBtn.addEventListener("click", promptGoogleLogin);
-
-    logoutBtn.addEventListener("click", () => {{
-      sessionStorage.removeItem(SESSION_TOKEN);
-      updateAuthUi();
-    }});
-
-    async function createYouTubePlaylist(token, title, description) {{
-      const res = await fetch("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {{
-        method: "POST",
-        headers: {{
-          "Authorization": "Bearer " + token,
-          "Content-Type": "application/json",
-        }},
-        body: JSON.stringify({{
-          snippet: {{
-            title: title.slice(0, 150),
-            description: description.slice(0, 5000),
-          }},
-          status: {{
-            privacyStatus: "unlisted",
-          }},
-        }}),
-      }});
-
-      if (!res.ok) {{
-        const err = await res.json().catch(() => ({{}}));
-        throw new Error(err.error?.message || ("HTTP " + res.status));
-      }}
-      const data = await res.json();
-      return data.id;
-    }}
-
-    async function addVideoToPlaylist(token, playlistId, videoId) {{
-      const res = await fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet", {{
-        method: "POST",
-        headers: {{
-          "Authorization": "Bearer " + token,
-          "Content-Type": "application/json",
-        }},
-        body: JSON.stringify({{
-          snippet: {{
-            playlistId: playlistId,
-            resourceId: {{
-              kind: "youtube#video",
-              videoId: videoId,
-            }},
-          }},
-        }}),
-      }});
-      return res.ok;
-    }}
-
-    document.querySelectorAll('[data-action="export-playlist"]').forEach((btn) => {{
-      btn.addEventListener("click", async () => {{
-        let token = sessionStorage.getItem(SESSION_TOKEN);
-        if (!token) {{
-          if (!OAUTH_CLIENT_ID) {{
-            alert("Google OAuth sign-in is not configured on this page.");
-            return;
-          }}
-          promptGoogleLogin();
-          return;
-        }}
-
-        const group = btn.closest(".post-group");
-        const statusDiv = group.querySelector(".export-status-bar");
-        const postTitle = group.getAttribute("data-post-title") || "Roundup";
-        let items = [];
-        try {{
-          items = JSON.parse(group.getAttribute("data-queue") || "[]");
-        }} catch {{
-          items = [];
-        }}
-
-        const videoIds = items.map((i) => i.video_id).filter(Boolean);
-        if (!videoIds.length) {{
-          alert("No resolved track video IDs found in this post to add to a playlist.");
-          return;
-        }}
-
-        btn.disabled = true;
-        statusDiv.hidden = false;
-        statusDiv.textContent = `Creating playlist for "${{postTitle}}"...`;
-
-        try {{
-          const playlistId = await createYouTubePlaylist(
-            token,
-            postTitle,
-            `Curated releases from ${{postTitle}} on r/Hardcore.`
-          );
-
-          statusDiv.textContent = `Created playlist. Adding 0/${{videoIds.length}} track(s)...`;
-
-          let added = 0;
-          for (const vid of videoIds) {{
-            const ok = await addVideoToPlaylist(token, playlistId, vid);
-            if (ok) added++;
-            statusDiv.textContent = `Adding tracks: ${{added}}/${{videoIds.length}}...`;
-            await new Promise((r) => setTimeout(r, 120));
-          }}
-
-          const ytmLink = `https://music.youtube.com/playlist?list=${{playlistId}}`;
-          statusDiv.innerHTML = `✓ Created playlist with ${{added}} track(s)! <a href="${{ytmLink}}" target="_blank" rel="noopener noreferrer">Open "${{postTitle}}" in YouTube Music ↗</a>`;
-        }} catch (err) {{
-          if (err.message.includes("401") || err.message.toLowerCase().includes("invalid credentials")) {{
-            sessionStorage.removeItem(SESSION_TOKEN);
-            updateAuthUi();
-            promptGoogleLogin();
-          }} else {{
-            statusDiv.textContent = "Failed to create playlist: " + err.message;
-          }}
-        }} finally {{
-          btn.disabled = false;
-        }}
       }});
     }});
 
@@ -1056,8 +817,7 @@ def main() -> None:
         logger.error("Failed to read JSON: %s", err)
         sys.exit(1)
 
-    default_client_id = os.environ.get("YT_CLIENT_ID", "")
-    OUTPUT_HTML.write_text(render_html(store, default_client_id=default_client_id), encoding="utf-8")
+    OUTPUT_HTML.write_text(render_html(store), encoding="utf-8")
     OUTPUT_PRIVACY.write_text(render_privacy_html(store), encoding="utf-8")
     OUTPUT_TERMS.write_text(render_terms_html(store), encoding="utf-8")
     logger.info("Generated %s, %s, and %s successfully.", OUTPUT_HTML, OUTPUT_PRIVACY, OUTPUT_TERMS)
