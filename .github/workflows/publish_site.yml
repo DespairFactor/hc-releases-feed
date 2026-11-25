@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12"
 
       - name: Generate index.html
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
         run: python build_site.py
 
       - name: Commit and push index.html
