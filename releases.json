@@ -7682,217 +7682,760 @@
           "artist": "Power Trip",
           "title": "Precinct 3 / Scavenger",
           "notes": "Dallas, Texas",
-          "browse_id": null,
+          "browse_id": "MPREb_SJp2CpqcsMz",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Precinct 3 / Scavenger",
+          "tracks": [
+            {
+              "artist": "Power Trip",
+              "title": "Precinct 3",
+              "url": "https://music.youtube.com/watch?v=N4u9M1eXxq0"
+            },
+            {
+              "artist": "Power Trip",
+              "title": "Scavenger",
+              "url": "https://music.youtube.com/watch?v=7JMSp0DsiWE"
+            }
+          ]
         },
         {
           "artist": "Sunblind",
           "title": "The Undertow EP",
           "notes": "Oakland, California",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "9SDywxWSZzA",
+          "ytm_type": "song",
+          "ytm_matched_title": "The Undertow",
+          "tracks": [
+            {
+              "artist": "Sunblind",
+              "title": "The Undertow EP",
+              "url": "https://music.youtube.com/watch?v=9SDywxWSZzA"
+            }
+          ]
         },
         {
           "artist": "Carry The Torch",
           "title": "Demo",
           "notes": "Pensacola, Florida",
-          "browse_id": null,
+          "browse_id": "MPREb_T29TiPh4La8",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo 2026",
+          "tracks": [
+            {
+              "artist": "Carry The Torch",
+              "title": "Everlasting Chains",
+              "url": "https://music.youtube.com/watch?v=_-KyYYLsx08"
+            },
+            {
+              "artist": "Carry The Torch",
+              "title": "Closed In (The Walls)",
+              "url": "https://music.youtube.com/watch?v=LBxAdM5urDk"
+            },
+            {
+              "artist": "Carry The Torch",
+              "title": "Shot in the Dark",
+              "url": "https://music.youtube.com/watch?v=wrBeup2hKd0"
+            },
+            {
+              "artist": "Carry The Torch",
+              "title": "Quicksand",
+              "url": "https://music.youtube.com/watch?v=dAYb8-7N434"
+            }
+          ]
         },
         {
           "artist": "Implode",
           "title": "Self Titled 7''",
           "notes": "Melbourne, Australia",
-          "browse_id": null,
+          "browse_id": "MPREb_rZXMa8HxOhR",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Self Titled",
+          "tracks": [
+            {
+              "artist": "Implode",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=N6nycfdMoxE"
+            },
+            {
+              "artist": "Implode",
+              "title": "Always The Same",
+              "url": "https://music.youtube.com/watch?v=V_Gz2N78kOo"
+            },
+            {
+              "artist": "Implode",
+              "title": "Take The Life",
+              "url": "https://music.youtube.com/watch?v=Zgssij7CBlo"
+            },
+            {
+              "artist": "Implode",
+              "title": "Return To Feeling",
+              "url": "https://music.youtube.com/watch?v=r6H6hSEZDNo"
+            },
+            {
+              "artist": "Implode",
+              "title": "Lost In My Ways",
+              "url": "https://music.youtube.com/watch?v=OdLUplBVkY8"
+            },
+            {
+              "artist": "Implode",
+              "title": "Running In Circles",
+              "url": "https://music.youtube.com/watch?v=14me-qzjcTE"
+            }
+          ]
         },
         {
           "artist": "Dominate",
           "title": "Mark Of Fools EP",
           "notes": "Tokyo, Japan",
-          "browse_id": null,
+          "browse_id": "MPREb_kIswCPGAk4h",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "MARK OF FOOLS",
+          "tracks": [
+            {
+              "artist": "DOMINATE",
+              "title": "Murda Attitude",
+              "url": "https://music.youtube.com/watch?v=g0j-85lutF0"
+            },
+            {
+              "artist": "DOMINATE",
+              "title": "No Soul",
+              "url": "https://music.youtube.com/watch?v=UvXl8DE_f4w"
+            },
+            {
+              "artist": "DOMINATE",
+              "title": "TOXIC MIND",
+              "url": "https://music.youtube.com/watch?v=iFS7sLRg8OY"
+            },
+            {
+              "artist": "DOMINATE",
+              "title": "Judah",
+              "url": "https://music.youtube.com/watch?v=ahmXqC3Z2kI"
+            },
+            {
+              "artist": "DOMINATE",
+              "title": "In the Smoke",
+              "url": "https://music.youtube.com/watch?v=BSD5huaGeFM"
+            }
+          ]
         },
         {
           "artist": "Wolfbrigade",
           "title": "Howl From Underground LP",
           "notes": "Sweden",
-          "browse_id": null,
+          "browse_id": "MPREb_dhc6w9RlbFm",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Howl from Underground",
+          "tracks": [
+            {
+              "artist": "Wolfbrigade",
+              "title": "Caveman Motherfuck",
+              "url": "https://music.youtube.com/watch?v=zTs4l5quQl4"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Doomrunner",
+              "url": "https://music.youtube.com/watch?v=bSjd4u7yke8"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Howl from Underground",
+              "url": "https://music.youtube.com/watch?v=rm7mXRn9Nos"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Born to Rot",
+              "url": "https://music.youtube.com/watch?v=uHHbOo8cnNU"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "When Dogs Cry",
+              "url": "https://music.youtube.com/watch?v=MPZkJaQ3ync"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Cold War Bootlicker",
+              "url": "https://music.youtube.com/watch?v=OaENRrOR9qY"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Fat Man Hellscape",
+              "url": "https://music.youtube.com/watch?v=iYlZEXDyzAE"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Headhunting",
+              "url": "https://music.youtube.com/watch?v=Zu-GAiz4Nks"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Cosmic Meatgrinder",
+              "url": "https://music.youtube.com/watch?v=ef9KzkLcrXA"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Seeking Scapegoats",
+              "url": "https://music.youtube.com/watch?v=W-js7-RWfAg"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Man Is Wolf to Man",
+              "url": "https://music.youtube.com/watch?v=DO-pKtsPf2o"
+            },
+            {
+              "artist": "Wolfbrigade",
+              "title": "Tangled Steel Mask",
+              "url": "https://music.youtube.com/watch?v=e1jZDY5ITJk"
+            }
+          ]
         },
         {
           "artist": "xDoulosx",
           "title": "Holy EP",
           "notes": "Riverside, California",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "2hCvDxPhqHk",
+          "ytm_type": "song",
+          "ytm_matched_title": "Where There's Death the Vultures Feast",
+          "tracks": [
+            {
+              "artist": "xDoulosx",
+              "title": "Holy EP",
+              "url": "https://music.youtube.com/watch?v=2hCvDxPhqHk"
+            }
+          ]
         },
         {
           "artist": "For The Fear",
           "title": "Self Titled EP",
           "notes": "Melbourne, Australia",
-          "browse_id": null,
+          "browse_id": "MPREb_q9Bjm3ecpFu",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "(The Self-Titled) - EP",
+          "tracks": [
+            {
+              "artist": "New Age Static",
+              "title": "Squirrel",
+              "url": "https://music.youtube.com/watch?v=SZyf_VpbZr8"
+            },
+            {
+              "artist": "New Age Static",
+              "title": "Gospel Chuck",
+              "url": "https://music.youtube.com/watch?v=7h3CaW3qTrs"
+            },
+            {
+              "artist": "New Age Static",
+              "title": "Fear",
+              "url": "https://music.youtube.com/watch?v=laOk1EjQkWM"
+            },
+            {
+              "artist": "New Age Static",
+              "title": "My Favorite Sin",
+              "url": "https://music.youtube.com/watch?v=ccpYUWSVPl0"
+            }
+          ]
         },
         {
           "artist": "Dream X World",
           "title": "When Freedom Dies EP",
           "notes": "Czech",
-          "browse_id": null,
+          "browse_id": "MPREb_iT7uzZNALYp",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "When Freedom Dies",
+          "tracks": [
+            {
+              "artist": "Dream X World",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=kiqRnijiUUY"
+            },
+            {
+              "artist": "Dream X World",
+              "title": "Reasons",
+              "url": "https://music.youtube.com/watch?v=mCufGJigK-Q"
+            },
+            {
+              "artist": "Dream X World",
+              "title": "When Freedom Dies",
+              "url": "https://music.youtube.com/watch?v=uem4VzaPMIo"
+            },
+            {
+              "artist": "Dream X World",
+              "title": "Searching (feat. Spirit Crusher)",
+              "url": "https://music.youtube.com/watch?v=9DMu0KShwcs"
+            },
+            {
+              "artist": "Dream X World",
+              "title": "Dream World",
+              "url": "https://music.youtube.com/watch?v=hBNndCYxQIU"
+            },
+            {
+              "artist": "Dream X World",
+              "title": "Outro",
+              "url": "https://music.youtube.com/watch?v=MXlBiQMwiZY"
+            }
+          ]
         },
         {
           "artist": "Skin Ticket",
           "title": "Skin Ticket LP",
           "notes": "Phoenix, Arizona",
-          "browse_id": null,
+          "browse_id": "MPREb_A2bdOV2Dwiy",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "SKIN TICKET",
+          "tracks": [
+            {
+              "artist": "Skin Ticket",
+              "title": "PISSED OFF",
+              "url": "https://music.youtube.com/watch?v=NkEvvpCBb7E"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "LEAD BY EXAMPLE",
+              "url": "https://music.youtube.com/watch?v=lkCKycppxgM"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "BUILT FOR WAR",
+              "url": "https://music.youtube.com/watch?v=s_itiHlCbyk"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "E.S.A.D.",
+              "url": "https://music.youtube.com/watch?v=AxPd63sogVo"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "SOUL MUST DIE",
+              "url": "https://music.youtube.com/watch?v=OM323-4aBe8"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "B.O.$.$.",
+              "url": "https://music.youtube.com/watch?v=2h0kS5UjAM4"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "3 WORDS",
+              "url": "https://music.youtube.com/watch?v=eJ5CaLvuMSk"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "CAN'T HAVE IT",
+              "url": "https://music.youtube.com/watch?v=6ZyNMmnrd_A"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "PIGNORANCE",
+              "url": "https://music.youtube.com/watch?v=2dDu1ZBMvzs"
+            },
+            {
+              "artist": "Skin Ticket",
+              "title": "BLOOD RUNS COLD",
+              "url": "https://music.youtube.com/watch?v=a0YeeXAL6iw"
+            }
+          ]
         },
         {
           "artist": "Pressed Luck",
           "title": "Demo II",
           "notes": "Hudson Valley, New York",
-          "browse_id": null,
+          "browse_id": "MPREb_sTWkf4cG1xJ",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo II",
+          "tracks": [
+            {
+              "artist": "Pressed Luck",
+              "title": "CYCLES",
+              "url": "https://music.youtube.com/watch?v=zvkwIjT6o5Y"
+            },
+            {
+              "artist": "Pressed Luck",
+              "title": "Cut You Out",
+              "url": "https://music.youtube.com/watch?v=EpWgw9GCk2k"
+            },
+            {
+              "artist": "Pressed Luck",
+              "title": "Blade's Edge",
+              "url": "https://music.youtube.com/watch?v=-S5DUApK4iw"
+            }
+          ]
         },
         {
           "artist": "En Mi Defensa",
           "title": "Un Sitio Bajo El Sol EP",
           "notes": "Santiago, Chile",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "lP9APvCcPZQ",
+          "ytm_type": "video",
+          "ytm_matched_title": "En mi defensa - Un sitio bajo el sol (Album Completo)",
+          "tracks": [
+            {
+              "artist": "En Mi Defensa",
+              "title": "Un Sitio Bajo El Sol EP",
+              "url": "https://music.youtube.com/watch?v=lP9APvCcPZQ"
+            }
+          ]
         },
         {
           "artist": "Afflicted Past",
           "title": "Born Into Exile EP",
           "notes": "Chicago",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "Iogs0cwf4_0",
+          "ytm_type": "video",
+          "ytm_matched_title": "Afflicted Past - Born Into Exile 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Afflicted Past",
+              "title": "Born Into Exile EP",
+              "url": "https://music.youtube.com/watch?v=Iogs0cwf4_0"
+            }
+          ]
         },
         {
           "artist": "Disparage",
           "title": "Phase 1 EP",
           "notes": "Chicago",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "WwgtBoKARfs",
+          "ytm_type": "video",
+          "ytm_matched_title": "Disparage - Phase 1 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Disparage",
+              "title": "Phase 1 EP",
+              "url": "https://music.youtube.com/watch?v=WwgtBoKARfs"
+            }
+          ]
         },
         {
           "artist": "Commitment In Pain",
           "title": "Forged In Grief EP",
           "notes": "Burlington, Vermont",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "8yll_rzz5cs",
+          "ytm_type": "song",
+          "ytm_matched_title": "Intro (Forged in Grief)",
+          "tracks": [
+            {
+              "artist": "Commitment In Pain",
+              "title": "Forged In Grief EP",
+              "url": "https://music.youtube.com/watch?v=8yll_rzz5cs"
+            }
+          ]
         },
         {
           "artist": "Bite The Blade",
           "title": "Bite The Blade EP",
           "notes": "East Frisia, Germany",
-          "browse_id": null,
+          "browse_id": "MPREb_RHMAgddLqTd",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "BITE THE BLADE",
+          "tracks": [
+            {
+              "artist": "BITE THE BLADE",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=cGTpcjbob0g"
+            },
+            {
+              "artist": "BITE THE BLADE",
+              "title": "No Place For You",
+              "url": "https://music.youtube.com/watch?v=oxRAcduqo_g"
+            },
+            {
+              "artist": "BITE THE BLADE",
+              "title": "K.A.P.",
+              "url": "https://music.youtube.com/watch?v=pDtfGzl9boE"
+            },
+            {
+              "artist": "BITE THE BLADE",
+              "title": "Restless Dreams",
+              "url": "https://music.youtube.com/watch?v=6BsvfFxsFMw"
+            },
+            {
+              "artist": "BITE THE BLADE",
+              "title": "Lifeline",
+              "url": "https://music.youtube.com/watch?v=C1Xj24njjUc"
+            }
+          ]
         },
         {
           "artist": "Wasted Life vs Confusion's Prince",
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "1JM8c8Q2cVo",
+          "ytm_type": "song",
+          "ytm_matched_title": "WKD",
+          "tracks": [
+            {
+              "artist": "Wasted Life vs Confusion's Prince",
+              "title": "SPLIT EP",
+              "url": "https://music.youtube.com/watch?v=1JM8c8Q2cVo"
+            }
+          ]
         },
         {
           "artist": "Faith",
           "title": "Demo",
           "notes": "Florida",
-          "browse_id": null,
+          "browse_id": "MPREb_d7RnKiVqqmg",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo 2026",
+          "tracks": [
+            {
+              "artist": "FAITH.",
+              "title": "Salvation",
+              "url": "https://music.youtube.com/watch?v=SCgViBBZBuk"
+            },
+            {
+              "artist": "FAITH.",
+              "title": "Seven Sorrows",
+              "url": "https://music.youtube.com/watch?v=7p-WJElDHlI"
+            },
+            {
+              "artist": "FAITH.",
+              "title": "(Brother's Keeper) حامي أخيه",
+              "url": "https://music.youtube.com/watch?v=ch779VHw2Lc"
+            },
+            {
+              "artist": "FAITH.",
+              "title": "Ecclesiastes 2",
+              "url": "https://music.youtube.com/watch?v=z6jyXjnxq-A"
+            },
+            {
+              "artist": "FAITH.",
+              "title": "Salvation (The Cranberries)",
+              "url": "https://music.youtube.com/watch?v=nhfXtrjOrIc"
+            }
+          ]
         },
         {
           "artist": "Failed Territory",
           "title": "Justice Served EP",
           "notes": "Netherlands",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "1IMSf9TpBxo",
+          "ytm_type": "video",
+          "ytm_matched_title": "Failed Territory - Justice Served 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Failed Territory",
+              "title": "Justice Served EP",
+              "url": "https://music.youtube.com/watch?v=1IMSf9TpBxo"
+            }
+          ]
         },
         {
           "artist": "Big Boss",
           "title": "Promo Tape",
           "notes": "Montreal, Canada",
-          "browse_id": null,
+          "browse_id": "MPREb_6KNqzdevCRP",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Big Boss Batz Tape, Vol. 6",
+          "tracks": [
+            {
+              "artist": "Dj Iceman",
+              "title": "Greeting From D",
+              "url": "https://music.youtube.com/watch?v=sGhA0Ayb5c0"
+            },
+            {
+              "artist": "Dj Iceman",
+              "title": "Jump Down",
+              "url": "https://music.youtube.com/watch?v=zUKOKT32D3o"
+            },
+            {
+              "artist": "Dj Iceman",
+              "title": "Mello Bells",
+              "url": "https://music.youtube.com/watch?v=fQMxrpIktCw"
+            },
+            {
+              "artist": "Dj Iceman",
+              "title": "Pile It On",
+              "url": "https://music.youtube.com/watch?v=q6qIKgbpDUE"
+            },
+            {
+              "artist": "Dj Iceman",
+              "title": "Sometin...",
+              "url": "https://music.youtube.com/watch?v=i6OzKz3fgqA"
+            }
+          ]
         },
         {
           "artist": "Brother's Keeper",
           "title": "You Can't Kill Me LP",
           "notes": "Erie, Pennsylvania",
-          "browse_id": null,
+          "browse_id": "MPREb_cNxihKRI9M3",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "You Can't Kill Me, Pt. 3",
+          "tracks": [
+            {
+              "artist": "Brother's Keeper",
+              "title": "Sweet Revenge",
+              "url": "https://music.youtube.com/watch?v=S2dZnSr6jzg"
+            },
+            {
+              "artist": "Brother's Keeper",
+              "title": "Dismantling The Icon",
+              "url": "https://music.youtube.com/watch?v=UimFuOU0Cnw"
+            },
+            {
+              "artist": "Brother's Keeper",
+              "title": "Eternal",
+              "url": "https://music.youtube.com/watch?v=Ig3lkYjxc1c"
+            }
+          ]
         },
         {
           "artist": "Drop Rate",
           "title": "Twin Charm Vol.2 EP",
           "notes": "Michigan",
-          "browse_id": null,
+          "browse_id": "MPREb_mZCWW2ktLaJ",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Get Rich Or Die Tryin'",
+          "tracks": [
+            {
+              "artist": "50 Cent",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=fT0C-imC3Ug"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "What Up Gangsta",
+              "url": "https://music.youtube.com/watch?v=94UmYrW5oto"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Patiently Waiting (feat. Eminem)",
+              "url": "https://music.youtube.com/watch?v=AeHzHNGdLAU"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Many Men (Wish Death)",
+              "url": "https://music.youtube.com/watch?v=5D3crqpClPY"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "In Da Club",
+              "url": "https://music.youtube.com/watch?v=5qm8PH4xAss"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "High All The Time",
+              "url": "https://music.youtube.com/watch?v=RVc5-GDnztI"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Heat",
+              "url": "https://music.youtube.com/watch?v=LZIc8VSonVY"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "If I Can't",
+              "url": "https://music.youtube.com/watch?v=JaM83rCSB7k"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Blood Hound (feat. Young Buck)",
+              "url": "https://music.youtube.com/watch?v=467eniyf5NY"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Back Down",
+              "url": "https://music.youtube.com/watch?v=4iPJ3gSaPrI"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "P.I.M.P.",
+              "url": "https://music.youtube.com/watch?v=N3xU63cBj0U"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Like My Style (feat. Tony Yayo)",
+              "url": "https://music.youtube.com/watch?v=O3m2BPZjCVU"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Poor Lil Rich",
+              "url": "https://music.youtube.com/watch?v=kj-lgYpA6qk"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "21 Questions (feat. Nate Dogg)",
+              "url": "https://music.youtube.com/watch?v=cDMhlvbOFaM"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Don't Push Me (feat. Lloyd Banks & Eminem)",
+              "url": "https://music.youtube.com/watch?v=0ukAb08vTzY"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Gotta Make It To Heaven",
+              "url": "https://music.youtube.com/watch?v=eCSvRxlgaD0"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Wanksta",
+              "url": "https://music.youtube.com/watch?v=ShOQQOy5pf8"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "U Not Like Me",
+              "url": "https://music.youtube.com/watch?v=0s-B8P1rE-A"
+            },
+            {
+              "artist": "50 Cent",
+              "title": "Lifes On The Line",
+              "url": "https://music.youtube.com/watch?v=NoMB9qtmJMU"
+            }
+          ]
         },
         {
           "artist": "Drop Rate",
           "title": "So What Now?: 2024-2026 LP",
           "notes": "Michigan",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "C3Gf1sQVgAU",
+          "ytm_type": "song",
+          "ytm_matched_title": "$150 PDF (you should have bought it for this price but you missed out and now you cant buy it for $150 its $350 now bonus)",
+          "tracks": [
+            {
+              "artist": "Drop Rate",
+              "title": "So What Now?: 2024-2026 LP",
+              "url": "https://music.youtube.com/watch?v=C3Gf1sQVgAU"
+            }
+          ]
         },
         {
           "artist": "Code of Vengeance",
           "title": "MMXXVI EP",
           "notes": "Phoenix, Arizona",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "WY7maxyXdC0",
+          "ytm_type": "video",
+          "ytm_matched_title": "Code Of Vengeance - MMXXVI 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Code of Vengeance",
+              "title": "MMXXVI EP",
+              "url": "https://music.youtube.com/watch?v=WY7maxyXdC0"
+            }
+          ]
         },
         {
           "artist": "F.M.J.",
@@ -8047,7 +8590,9 @@
           "ytm_type": null,
           "ytm_matched_title": null
         }
-      ]
+      ],
+      "playlist_id": "PLOwFEB6RliMs",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLOwFEB6RliMs"
     },
     {
       "post_title": "new releases October Pt 1",
@@ -9223,145 +9768,292 @@
           "artist": "Snipers Nest",
           "title": "Demo II",
           "notes": "Las Vegas",
-          "browse_id": null,
+          "browse_id": "MPREb_VgjGb1jZtaf",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo II",
+          "tracks": [
+            {
+              "artist": "Sniper's Nest",
+              "title": "Survival",
+              "url": "https://music.youtube.com/watch?v=YulAwuaKffw"
+            },
+            {
+              "artist": "Sniper's Nest",
+              "title": "Price to Pay",
+              "url": "https://music.youtube.com/watch?v=bQQWzFEX7sc"
+            },
+            {
+              "artist": "Sniper's Nest",
+              "title": "Scattered Remains",
+              "url": "https://music.youtube.com/watch?v=t-bYsandQmI"
+            },
+            {
+              "artist": "Sniper's Nest",
+              "title": "In The Mirror (feat. The Consequence)",
+              "url": "https://music.youtube.com/watch?v=_igJpjcqlLk"
+            },
+            {
+              "artist": "Sniper's Nest",
+              "title": "Dropping the Bomb",
+              "url": "https://music.youtube.com/watch?v=yXfkKxij84M"
+            }
+          ]
         },
         {
           "artist": "Underbite",
           "title": "No Fear Of God EP",
           "notes": "Sacramento, California",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "cg9T4UbaTzs",
+          "ytm_type": "song",
+          "ytm_matched_title": "Brainbuster",
+          "tracks": [
+            {
+              "artist": "Underbite",
+              "title": "No Fear Of God EP",
+              "url": "https://music.youtube.com/watch?v=cg9T4UbaTzs"
+            }
+          ]
         },
         {
           "artist": "Direct Loss",
           "title": "Death And Taxes EP",
           "notes": "Riverside, California",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "pQurrlsXjwc",
+          "ytm_type": "video",
+          "ytm_matched_title": "Direct Loss - Death And Taxes 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Direct Loss",
+              "title": "Death And Taxes EP",
+              "url": "https://music.youtube.com/watch?v=pQurrlsXjwc"
+            }
+          ]
         },
         {
           "artist": "Bare Your Teeth",
           "title": "Primal Ritual EP",
           "notes": "Tennessee",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "3a48aR9eywU",
+          "ytm_type": "song",
+          "ytm_matched_title": "Primal Ritual (feat. Pissrot)",
+          "tracks": [
+            {
+              "artist": "Bare Your Teeth",
+              "title": "Primal Ritual EP",
+              "url": "https://music.youtube.com/watch?v=3a48aR9eywU"
+            }
+          ]
         },
         {
           "artist": "Cold Mold",
           "title": "Ghost Enemy LP",
           "notes": "Curitiba, Brazil",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "iWM2kCZQBg8",
+          "ytm_type": "song",
+          "ytm_matched_title": "Time Is Up",
+          "tracks": [
+            {
+              "artist": "Cold Mold",
+              "title": "Ghost Enemy LP",
+              "url": "https://music.youtube.com/watch?v=iWM2kCZQBg8"
+            }
+          ]
         },
         {
           "artist": "Human Condition",
           "title": "S.C.H.C. EP",
           "notes": "Sunshine Coast, Queensland Australia",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "1VttfR_SESE",
+          "ytm_type": "video",
+          "ytm_matched_title": "Human Condition - S.C.H.C. 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Human Condition",
+              "title": "S.C.H.C. EP",
+              "url": "https://music.youtube.com/watch?v=1VttfR_SESE"
+            }
+          ]
         },
         {
           "artist": "Mindless vs Mob Handed",
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "qC-EvcEFCvA",
+          "ytm_type": "song",
+          "ytm_matched_title": "EBD",
+          "tracks": [
+            {
+              "artist": "Mindless vs Mob Handed",
+              "title": "SPLIT EP",
+              "url": "https://music.youtube.com/watch?v=qC-EvcEFCvA"
+            }
+          ]
         },
         {
           "artist": "Wounded Touch",
           "title": "They Promised Eden, Vol. 2 EP",
           "notes": "Michigan",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "SiVSTXY_R8o",
+          "ytm_type": "video",
+          "ytm_matched_title": "Wounded Touch - They Promised Eden, Vol. 2 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "Wounded Touch",
+              "title": "They Promised Eden, Vol. 2 EP",
+              "url": "https://music.youtube.com/watch?v=SiVSTXY_R8o"
+            }
+          ]
         },
         {
           "artist": "Fabric Of Self",
           "title": "Isodora's Pain EP",
           "notes": "Kansas",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "Qkwxn9Pph1A",
+          "ytm_type": "song",
+          "ytm_matched_title": "ISOLATED IN PAIN",
+          "tracks": [
+            {
+              "artist": "Fabric Of Self",
+              "title": "Isodora's Pain EP",
+              "url": "https://music.youtube.com/watch?v=Qkwxn9Pph1A"
+            }
+          ]
         },
         {
           "artist": "A New Day",
           "title": "Held Under An Incandescent Sky EP",
           "notes": "Texas",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "atWiq2oNQSI",
+          "ytm_type": "video",
+          "ytm_matched_title": "[EGxHC] A New Day - Held Under an Incandescent Sky - 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "A New Day",
+              "title": "Held Under An Incandescent Sky EP",
+              "url": "https://music.youtube.com/watch?v=atWiq2oNQSI"
+            }
+          ]
         },
         {
           "artist": "On The Ground",
           "title": "Demo",
           "notes": "Kutztown, Pennsylvania",
-          "browse_id": null,
+          "browse_id": "MPREb_ZRx8H5lNaSg",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Safely On The Ground (Demo)",
+          "tracks": [
+            {
+              "artist": "Andrew Kevin Newton",
+              "title": "Safely On The Ground (Demo)",
+              "url": "https://music.youtube.com/watch?v=jv402jrr-fs"
+            }
+          ]
         },
         {
           "artist": "False Hope",
           "title": "Inhumane/Against All Odds",
           "notes": "UK",
-          "browse_id": null,
+          "browse_id": "MPREb_eH8YPMEYwia",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "INHUMANE x AGAINST ALL ODDS",
+          "tracks": [
+            {
+              "artist": "False Hope",
+              "title": "INHUMANE",
+              "url": "https://music.youtube.com/watch?v=UGLjdZ4kJZo"
+            },
+            {
+              "artist": "False Hope",
+              "title": "AGAINST ALL ODDS",
+              "url": "https://music.youtube.com/watch?v=5TRG4x7dLmE"
+            }
+          ]
         },
         {
           "artist": "Chain Law",
           "title": "Demo",
           "notes": "Denver",
-          "browse_id": null,
+          "browse_id": "MPREb_2S6koIMnCRK",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo 25",
+          "tracks": [
+            {
+              "artist": "Hit The Chains",
+              "title": "Hit",
+              "url": "https://music.youtube.com/watch?v=l9VDp4K3CeI"
+            },
+            {
+              "artist": "Hit The Chains",
+              "title": "The",
+              "url": "https://music.youtube.com/watch?v=YPQRCQaE3as"
+            },
+            {
+              "artist": "Hit The Chains",
+              "title": "Chains",
+              "url": "https://music.youtube.com/watch?v=XegLLCHai3E"
+            }
+          ]
         },
         {
           "artist": "Pariah",
           "title": "Vencedores EP",
           "notes": "Medellín, Colombia",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "fGA5yjMM4L4",
+          "ytm_type": "video",
+          "ytm_matched_title": "PARIAH - VENCEDORES (Full EP) [2026]",
+          "tracks": [
+            {
+              "artist": "Pariah",
+              "title": "Vencedores EP",
+              "url": "https://music.youtube.com/watch?v=fGA5yjMM4L4"
+            }
+          ]
         },
         {
           "artist": "Iniquity Of Hate",
           "title": "Desiderium EP",
           "notes": "California",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "ySHOLVHmRZU",
+          "ytm_type": "song",
+          "ytm_matched_title": "Quiet Down",
+          "tracks": [
+            {
+              "artist": "Iniquity Of Hate",
+              "title": "Desiderium EP",
+              "url": "https://music.youtube.com/watch?v=ySHOLVHmRZU"
+            }
+          ]
         },
         {
           "artist": "Lock It Down",
           "title": "Demo",
           "notes": "Texas",
-          "browse_id": null,
+          "browse_id": "MPREb_rsQdIZOWVGB",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Lock Down (Unfinished Demo 2023)",
+          "tracks": [
+            {
+              "artist": "Cursed At Birth",
+              "title": "Lock Down (Unfinished Demo 2023)",
+              "url": "https://music.youtube.com/watch?v=chQxL6Dr_Uk"
+            }
+          ]
         }
       ],
       "playlist_id": "PLWxBLwe1Qybg",
