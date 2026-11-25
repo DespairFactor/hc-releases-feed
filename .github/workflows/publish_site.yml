@@ -10,6 +10,12 @@ on:
       - "scripts/publish_playlists.py"
       - "scripts/expand_release_tracks.py"
   workflow_dispatch:
+    inputs:
+      publish_limit:
+        description: "Max playlists to publish this run (empty = all remaining newest-first)"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -32,6 +38,9 @@ jobs:
           if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
           python -m pip install "ytmusicapi>=1.8.0"
 
+      - name: Expand release tracks
+        run: python scripts/expand_release_tracks.py --max-expansions 40
+
       - name: Decode YouTube Music auth credential
         if: env.YTM_AUTH_B64 != ''
         env:
@@ -45,7 +54,13 @@ jobs:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
-        run: python scripts/publish_playlists.py --auth .ytm_auth.json
+          PUBLISH_LIMIT: ${{ github.event.inputs.publish_limit }}
+        run: |
+          if [ -n "$PUBLISH_LIMIT" ]; then
+            python scripts/publish_playlists.py --auth .ytm_auth.json --limit "$PUBLISH_LIMIT"
+          else
+            python scripts/publish_playlists.py --auth .ytm_auth.json
+          fi
 
       - name: Remove temporary auth credential
         if: always()
