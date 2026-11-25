@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Build a static index.html from releases.json for GitHub Pages.
+"""Build static index.html, privacy.html, and terms.html from releases.json.
 
-Supports full albums, single tracks, in-page queueing, and client-side
+Supports full albums, single tracks, in-page queueing, client-side
 Google OAuth to let visitors sign in and export any post directly into
-their own YouTube / YouTube Music account as a playlist.
+their own YouTube / YouTube Music account as a playlist, and static
+Privacy Policy / Terms of Service pages.
 """
 
 from __future__ import annotations
@@ -20,6 +21,8 @@ from urllib.parse import quote_plus
 REPO_ROOT = Path(__file__).resolve().parent
 RELEASES_FILE = REPO_ROOT / "releases.json"
 OUTPUT_HTML = REPO_ROOT / "index.html"
+OUTPUT_PRIVACY = REPO_ROOT / "privacy.html"
+OUTPUT_TERMS = REPO_ROOT / "terms.html"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -101,6 +104,212 @@ def build_post_queue_items(releases: list) -> list[dict]:
                 "ytm_url": ytm_url,
             })
     return items
+
+
+def shared_styles() -> str:
+    return """    :root {
+      --bg: #0f1115;
+      --surface: #181b22;
+      --surface-alt: #13161c;
+      --border: #272c38;
+      --text-main: #f0f2f5;
+      --text-sub: #9ca3af;
+      --accent: #e11d48;
+      --badge-bg: #222734;
+      --badge-text: #cbd5e1;
+      --type-badge-bg: #1e293b;
+      --type-badge-text: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem 1rem 4rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header.site-header {
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .subtitle {
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    .subtitle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer.site-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    footer.site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    footer.site-footer a:first-child {
+      margin-left: 0;
+    }
+
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .doc-card h2 {
+      font-size: 1.15rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.45rem;
+      color: #fff;
+    }
+
+    .doc-card h2:first-child {
+      margin-top: 0;
+    }
+
+    .doc-card p,
+    .doc-card ul {
+      color: var(--text-sub);
+      font-size: 0.94rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .doc-card ul {
+      padding-left: 1.25rem;
+    }
+
+    .doc-card li {
+      margin-bottom: 0.35rem;
+    }
+
+    .doc-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }"""
+
+
+def render_doc_page(store: dict, page_title: str, heading: str, body_html: str) -> str:
+    source_user = html.escape(str(store.get("source_user", "sepdri")))
+    subreddit = html.escape(str(store.get("subreddit", "Hardcore")))
+    safe_page_title = html.escape(page_title)
+    safe_heading = html.escape(heading)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{safe_page_title} — r/{subreddit} Releases</title>
+  <style>
+{shared_styles()}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <h1>{safe_heading}</h1>
+      <p class="subtitle">
+        <a href="./index.html">← Back to r/{subreddit} Releases (u/{source_user})</a>
+      </p>
+    </header>
+
+    <main class="doc-card">
+{body_html}
+    </main>
+
+    <footer class="site-footer">
+      <span>r/{subreddit} Releases — u/{source_user}</span>
+      <nav aria-label="Legal links">
+        <a href="./index.html">Releases</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./terms.html">Terms of Service</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+
+
+def render_privacy_html(store: dict) -> str:
+    updated_at = html.escape(str(store.get("updated_at", "2026-11-25"))[:10])
+    body = f"""
+      <p><strong>Last updated:</strong> {updated_at} &bull; <strong>Contact:</strong> matthewdalex92@gmail.com</p>
+
+      <h2>1. Overview</h2>
+      <p>hc-releases-feed is a static web application displaying curated hardcore release roundups and providing tools to open or export releases to YouTube and YouTube Music. The site runs directly in your browser without a custom backend server operated by the developer to store account data.</p>
+
+      <h2>2. How YouTube API Services Are Used</h2>
+      <p>When you choose to sign in with Google and export a release roundup into a playlist, this site uses YouTube API Services (YouTube Data API v3) directly from your browser:</p>
+      <ul>
+        <li><strong>Requested scope:</strong> <code>https://www.googleapis.com/auth/youtube</code> is requested to create a playlist and add video/track entries on your YouTube account.</li>
+        <li><strong>Playlist creation:</strong> Clicking <strong>Export to My YTM</strong> sends requests directly from your browser to the YouTube Data API to create a playlist (unlisted by default) and insert resolved video IDs from that roundup.</li>
+        <li><strong>No developer backend storage:</strong> Your Google credentials, OAuth tokens, and created playlists are not transmitted to or stored on a backend server controlled by hc-releases-feed.</li>
+      </ul>
+
+      <h2>3. Local Browser Storage</h2>
+      <p>When you sign in via Google OAuth, your OAuth access token is stored in your browser&rsquo;s <code>sessionStorage</code> for the active session and is removed when you sign out or close your session. Standard web hosting infrastructure (such as GitHub Pages) may log standard HTTP request metadata under its own policies.</p>
+
+      <h2>4. Third-Party Policies &amp; Revoking Access</h2>
+      <p>Your use of YouTube API Services is subject to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. You can revoke access at any time in your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account permissions</a>.</p>
+    """
+    return render_doc_page(store, "Privacy Policy", "Privacy Policy", body)
+
+
+def render_terms_html(store: dict) -> str:
+    updated_at = html.escape(str(store.get("updated_at", "2026-11-25"))[:10])
+    body = f"""
+      <p><strong>Last updated:</strong> {updated_at} &bull; <strong>Contact:</strong> matthewdalex92@gmail.com</p>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing hc-releases-feed or using its YouTube playlist export features, you agree to these Terms of Service and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</p>
+
+      <h2>2. Service &amp; YouTube API Usage</h2>
+      <p>hc-releases-feed presents curated release entries and links to YouTube and YouTube Music. When you sign in with Google OAuth and export a post, your browser calls YouTube API Services directly to create a playlist on your account and add available track/video IDs associated with that post.</p>
+      <p>Release entries may resolve to albums, playlists, single videos, or search queries, and some items may lack resolved video IDs or be unavailable in your region or on YouTube Music. Availability and API behavior depend on third-party services.</p>
+
+      <h2>3. User Responsibilities</h2>
+      <p>You are responsible for your Google and YouTube account activity and for using the playlist export tool in compliance with applicable laws and YouTube&rsquo;s Terms of Service.</p>
+
+      <h2>4. Disclaimer &amp; Contact</h2>
+      <p>This site is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of any kind. For questions or support, contact matthewdalex92@gmail.com.</p>
+    """
+    return render_doc_page(store, "Terms of Service", "Terms of Service", body)
 
 
 def render_html(store: dict, default_client_id: str = "") -> str:
@@ -189,60 +398,7 @@ def render_html(store: dict, default_client_id: str = "") -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>r/{subreddit} Releases — u/{source_user}</title>
   <style>
-    :root {{
-      --bg: #0f1115;
-      --surface: #181b22;
-      --surface-alt: #13161c;
-      --border: #272c38;
-      --text-main: #f0f2f5;
-      --text-sub: #9ca3af;
-      --accent: #e11d48;
-      --badge-bg: #222734;
-      --badge-text: #cbd5e1;
-      --type-badge-bg: #1e293b;
-      --type-badge-text: #38bdf8;
-    }}
-
-    * {{
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }}
-
-    body {{
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      padding: 2rem 1rem 4rem;
-      line-height: 1.5;
-    }}
-
-    .container {{
-      max-width: 960px;
-      margin: 0 auto;
-    }}
-
-    header.site-header {{
-      margin-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.25rem;
-    }}
-
-    h1 {{
-      font-size: 1.85rem;
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-    }}
-
-    .subtitle {{
-      color: var(--text-sub);
-      font-size: 0.92rem;
-    }}
-
-    .subtitle a {{
-      color: var(--accent);
-      text-decoration: none;
-    }}
+{shared_styles()}
 
     .oauth-panel {{
       background: var(--surface);
@@ -558,6 +714,14 @@ def render_html(store: dict, default_client_id: str = "") -> str:
     <main id="content">
 {sections_html}
     </main>
+
+    <footer class="site-footer">
+      <span>r/{subreddit} Releases — u/{source_user}</span>
+      <nav aria-label="Legal links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./terms.html">Terms of Service</a>
+      </nav>
+    </footer>
   </div>
 
   <script>
@@ -893,9 +1057,10 @@ def main() -> None:
         sys.exit(1)
 
     default_client_id = os.environ.get("YT_CLIENT_ID", "")
-    html_content = render_html(store, default_client_id=default_client_id)
-    OUTPUT_HTML.write_text(html_content, encoding="utf-8")
-    logger.info("Generated %s successfully.", OUTPUT_HTML)
+    OUTPUT_HTML.write_text(render_html(store, default_client_id=default_client_id), encoding="utf-8")
+    OUTPUT_PRIVACY.write_text(render_privacy_html(store), encoding="utf-8")
+    OUTPUT_TERMS.write_text(render_terms_html(store), encoding="utf-8")
+    logger.info("Generated %s, %s, and %s successfully.", OUTPUT_HTML, OUTPUT_PRIVACY, OUTPUT_TERMS)
 
 
 if __name__ == "__main__":
