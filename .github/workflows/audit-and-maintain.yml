@@ -78,7 +78,7 @@ jobs:
           printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
 
       - name: Purge existing YouTube Music matches
-        if: ${{ github.event.inputs.dry_run != true && github.event.inputs.purge_matches_first == true }}
+        if: ${{ github.event.inputs.dry_run != 'true' && github.event.inputs.purge_matches_first == 'true' }}
         run: |
           TARGET_POST="${{ github.event.inputs.post_idx || '0' }}"
           python -u -c '
@@ -92,7 +92,7 @@ jobs:
           total = len(posts)
 
           if total == 0:
-              print("No posts in releases.json")
+              print("No posts in releases.json", flush=True)
               sys.exit(0)
 
           indices = list(range(total)) if target == "all" else [int(target)]
@@ -112,16 +112,15 @@ jobs:
               for rel in post.get("releases", []):
                   if not isinstance(rel, dict):
                       continue
-                  if any(k in rel for k in ("browse_id", "video_id", "ytm_type", "ytm_matched_title", "tracks")):
-                      rel["browse_id"] = None
-                      rel["video_id"] = None
-                      rel["ytm_type"] = None
-                      rel["ytm_matched_title"] = None
-                      rel.pop("tracks", None)
-                      purged_releases += 1
+                  rel["browse_id"] = None
+                  rel["video_id"] = None
+                  rel["ytm_type"] = None
+                  rel["ytm_matched_title"] = None
+                  rel.pop("tracks", None)
+                  purged_releases += 1
 
           path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-          print(f"Purged {purged_releases} release match records and {purged_posts} post playlist links across {len(indices)} post(s).", flush=True)
+          print(f"Purged {purged_releases} releases and {purged_posts} playlist links across {len(indices)} post(s).", flush=True)
           ' "$TARGET_POST"
 
       - name: Clean re-resolve and expand release tracks
@@ -152,7 +151,7 @@ jobs:
           posts = data.get("posts", [])
           total = len(posts)
           if total == 0:
-              print("No posts found in releases.json")
+              print("No posts found in releases.json", flush=True)
               sys.exit(0)
 
           indices = list(range(total)) if target == "all" else [int(target)]
@@ -170,11 +169,11 @@ jobs:
               ] + auth_args
               res = subprocess.run(cmd)
               if res.returncode != 0:
-                  print(f"Warning: audit_post.py failed with code {res.returncode} on post {norm_idx}", file=sys.stderr)
+                  print(f"Warning: audit_post.py failed with code {res.returncode} on post {norm_idx}", file=sys.stderr, flush=True)
           ' "$TARGET_POST" "$MIN_SCORE" "$APPLY_FLAG" $AUTH_ARGS
 
       - name: Force recreate and relink playlists
-        if: ${{ github.event.inputs.dry_run != true && github.event.inputs.recreate_playlists == true && env.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != '' }}
+        if: ${{ github.event.inputs.dry_run != 'true' && github.event.inputs.recreate_playlists == 'true' && env.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != '' }}
         env:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -183,7 +182,7 @@ jobs:
           RAW_LIMIT="${{ github.event.inputs.playlist_limit || 'all' }}"
           LIMIT_CLEAN=$(printf '%s' "$RAW_LIMIT" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
 
-          python -c '
+          python -u -c '
           import json
           from pathlib import Path
 
@@ -195,13 +194,13 @@ jobs:
           p.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
           '
 
-          CMD="python scripts/publish_playlists.py --auth .ytm_auth.json --force"
+          CMD="python -u scripts/publish_playlists.py --auth .ytm_auth.json --force"
           if [[ "$LIMIT_CLEAN" =~ ^[0-9]+$ ]] && [ "$LIMIT_CLEAN" -gt 0 ]; then
             CMD="$CMD --limit $LIMIT_CLEAN"
           fi
           eval "$CMD"
 
-          python -c '
+          python -u -c '
           import json
           from pathlib import Path
           from ytmusicapi import YTMusic
@@ -230,7 +229,7 @@ jobs:
                   relinked += 1
 
           p.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-          print(f"Relinked {relinked} posts from library.")
+          print(f"Relinked {relinked} posts from library.", flush=True)
           '
 
       - name: Remove temporary auth credential
@@ -238,11 +237,11 @@ jobs:
         run: rm -f .ytm_auth.json
 
       - name: Rebuild static site
-        if: ${{ github.event.inputs.dry_run != true && github.event.inputs.rebuild_site == true && hashFiles('build_site.py') != '' }}
+        if: ${{ github.event.inputs.dry_run != 'true' && github.event.inputs.rebuild_site == 'true' && hashFiles('build_site.py') != '' }}
         run: python -u build_site.py
 
       - name: Commit and push updates
-        if: ${{ github.event.inputs.dry_run != true }}
+        if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -255,11 +254,11 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "chore: purge, re-resolve with strict scoring, and rebuild site [skip ci]"
+          git commit -m "chore: audit/maintain releases and site [skip ci]"
           for attempt in 1 2 3; do
             git pull --rebase origin main
             if git push origin main; then
-              echo "Pushed successfully on attempt $attempt."
+              echo "Pushed on attempt $attempt."
               exit 0
             fi
             sleep $((attempt * 2))
