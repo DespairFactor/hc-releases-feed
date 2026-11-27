@@ -264,6 +264,3 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
-```[cite: 17]
-
-Make sure you also apply the same `env.YTM_AUTH_B64 != ''` change in `.github/workflows/ingest-issue.yml` (and `.github/workflows/force-purge-and-resolve.yml` if you kept it) wherever `secrets.YTM_AUTH_B64` was used inside an `if:` condition[cite: 18, 19].
