@@ -79,17 +79,16 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
 
     if browse_id:
         if browse_id.startswith("OLAK5uy_"):
-            first_track = _first_track_url(rel)
-            if first_track:
-                return first_track, "Song"
-            return f"https://music.youtube.com/playlist?list={browse_id}", "Playlist"
+            label = "Album" if "album" in res_type else "Playlist"
+            return f"https://music.youtube.com/playlist?list={browse_id}", label
         url = f"https://music.youtube.com/browse/{browse_id}"
         label = "Album" if "album" in res_type or browse_id.startswith("MPREb_") else "Playlist"
         return url, label
 
     if video_id:
         url = f"https://music.youtube.com/watch?v={video_id}"
-        return url, "Track"
+        label = "Video" if res_type == "video" else "Track"
+        return url, label
 
     first_track = _first_track_url(rel)
     if first_track:
