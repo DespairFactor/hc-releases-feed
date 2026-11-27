@@ -8,13 +8,18 @@ on:
         required: false
         default: "0"
         type: string
+      purge_matches_first:
+        description: "Purge existing match data and tracks before re-resolving"
+        required: false
+        default: true
+        type: boolean
       min_score:
         description: "Minimum candidate match score (default: 3.0)"
         required: false
         default: "3.0"
         type: string
       dry_run:
-        description: "Preview match changes without modifying files"
+        description: "Preview without writing changes to releases.json"
         required: false
         default: false
         type: boolean
@@ -72,7 +77,54 @@ jobs:
         run: |
           printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
 
-      - name: Audit and re-resolve target post(s)
+      - name: Purge existing YouTube Music matches
+        if: ${{ github.event.inputs.dry_run != true && github.event.inputs.purge_matches_first == true }}
+        run: |
+          TARGET_POST="${{ github.event.inputs.post_idx || '0' }}"
+          python -u -c '
+          import json, sys
+          from pathlib import Path
+
+          target = sys.argv[1].strip().lower()
+          path = Path("releases.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          posts = data.get("posts", [])
+          total = len(posts)
+
+          if total == 0:
+              print("No posts in releases.json")
+              sys.exit(0)
+
+          indices = list(range(total)) if target == "all" else [int(target)]
+          purged_releases = 0
+          purged_posts = 0
+
+          for i in indices:
+              norm = i if i >= 0 else total + i
+              if norm < 0 or norm >= total:
+                  continue
+              post = posts[norm]
+              if "playlist_id" in post or "playlist_url" in post:
+                  post.pop("playlist_id", None)
+                  post.pop("playlist_url", None)
+                  purged_posts += 1
+
+              for rel in post.get("releases", []):
+                  if not isinstance(rel, dict):
+                      continue
+                  if any(k in rel for k in ("browse_id", "video_id", "ytm_type", "ytm_matched_title", "tracks")):
+                      rel["browse_id"] = None
+                      rel["video_id"] = None
+                      rel["ytm_type"] = None
+                      rel["ytm_matched_title"] = None
+                      rel.pop("tracks", None)
+                      purged_releases += 1
+
+          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          print(f"Purged {purged_releases} release match records and {purged_posts} post playlist links across {len(indices)} post(s).", flush=True)
+          ' "$TARGET_POST"
+
+      - name: Clean re-resolve and expand release tracks
         run: |
           TARGET_POST="${{ github.event.inputs.post_idx || '0' }}"
           MIN_SCORE="${{ github.event.inputs.min_score || '3.0' }}"
@@ -86,7 +138,7 @@ jobs:
             AUTH_ARGS="--auth .ytm_auth.json"
           fi
 
-          python -c '
+          python -u -c '
           import json, subprocess, sys
 
           target = sys.argv[1].strip().lower()
@@ -105,21 +157,20 @@ jobs:
 
           indices = list(range(total)) if target == "all" else [int(target)]
           for idx in indices:
-              if idx < -total or idx >= total:
-                  print(f"Skipping out-of-range index: {idx}", file=sys.stderr)
-                  continue
               norm_idx = idx if idx >= 0 else total + idx
+              if norm_idx < 0 or norm_idx >= total:
+                  continue
               title = posts[norm_idx].get("post_title", "Untitled")
-              print(f"\n=== Auditing Post [{norm_idx}/{total - 1}]: {title} ===")
+              print(f"\n=== Processing Post [{norm_idx}/{total - 1}]: {title} ===", flush=True)
               cmd = [
-                  "python", "scripts/audit_post.py",
+                  "python", "-u", "scripts/audit_post.py",
                   "--post-idx", str(norm_idx),
                   "--min-score", min_score,
                   apply_flag,
               ] + auth_args
               res = subprocess.run(cmd)
               if res.returncode != 0:
-                  print(f"Warning: audit_post.py exited {res.returncode} on post {norm_idx}", file=sys.stderr)
+                  print(f"Warning: audit_post.py failed with code {res.returncode} on post {norm_idx}", file=sys.stderr)
           ' "$TARGET_POST" "$MIN_SCORE" "$APPLY_FLAG" $AUTH_ARGS
 
       - name: Force recreate and relink playlists
@@ -188,9 +239,9 @@ jobs:
 
       - name: Rebuild static site
         if: ${{ github.event.inputs.dry_run != true && github.event.inputs.rebuild_site == true && hashFiles('build_site.py') != '' }}
-        run: python build_site.py
+        run: python -u build_site.py
 
-      - name: Commit and push changes
+      - name: Commit and push updates
         if: ${{ github.event.inputs.dry_run != true }}
         run: |
           git config user.name "github-actions[bot]"
@@ -204,11 +255,11 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "chore: audit/maintain releases and site [skip ci]"
+          git commit -m "chore: purge, re-resolve with strict scoring, and rebuild site [skip ci]"
           for attempt in 1 2 3; do
             git pull --rebase origin main
             if git push origin main; then
-              echo "Pushed on attempt $attempt."
+              echo "Pushed successfully on attempt $attempt."
               exit 0
             fi
             sleep $((attempt * 2))
