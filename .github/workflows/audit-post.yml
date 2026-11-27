@@ -1,0 +1,113 @@
+name: Audit and Re-Resolve Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_idx:
+        description: "Post index in releases.json to audit and re-resolve (default: 0)"
+        required: false
+        default: "0"
+        type: string
+      min_score:
+        description: "Minimum candidate match score (default: 3.0)"
+        required: false
+        default: "3.0"
+        type: string
+      dry_run:
+        description: "Preview proposed match updates in logs without modifying files"
+        required: false
+        default: true
+        type: boolean
+      publish_playlist:
+        description: "Re-publish YouTube Music playlist for the post after updating matches"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: releases-json-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  audit-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install "ytmusicapi>=1.8.0"
+
+      - name: Decode YouTube Music auth credential
+        if: env.YTM_AUTH_B64 != ''
+        env:
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+        run: |
+          printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
+
+      - name: Audit and re-resolve target post
+        env:
+          POST_IDX: ${{ github.event.inputs.post_idx }}
+          MIN_SCORE: ${{ github.event.inputs.min_score }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: |
+          AUTH_ARG=""
+          if [ -f .ytm_auth.json ]; then
+            AUTH_ARG="--auth .ytm_auth.json"
+          fi
+
+          if [ "$DRY_RUN" = "true" ]; then
+            python scripts/audit_post.py --post-idx "$POST_IDX" --min-score "$MIN_SCORE" --dry-run $AUTH_ARG
+          else
+            python scripts/audit_post.py --post-idx "$POST_IDX" --min-score "$MIN_SCORE" --apply $AUTH_ARG
+          fi
+
+      - name: Re-publish playlist for target post
+        if: ${{ github.event.inputs.dry_run != true && github.event.inputs.publish_playlist == true && env.YTM_AUTH_B64 != '' }}
+        env:
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          POST_IDX: ${{ github.event.inputs.post_idx }}
+        run: |
+          python scripts/publish_playlists.py --auth .ytm_auth.json --post-idx "$POST_IDX" --limit 1
+
+      - name: Remove temporary auth credential
+        if: always()
+        run: rm -f .ytm_auth.json
+
+      - name: Rebuild site pages
+        if: ${{ github.event.inputs.dry_run != true }}
+        run: python build_site.py
+
+      - name: Commit and push updated files
+        if: ${{ github.event.inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          for f in releases.json index.html privacy.html terms.html; do
+            if [ -f "$f" ]; then
+              git add "$f"
+            fi
+          done
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: audit and re-resolve post #${{ github.event.inputs.post_idx }} [skip ci]"
+            git push
+          fi
