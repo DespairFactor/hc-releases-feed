@@ -13,7 +13,7 @@ permissions:
   issues: write
 
 jobs:
-  ingest-and-publish:
+  ingest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -43,63 +43,70 @@ jobs:
         run: |
           printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
 
-      - name: Parse issue body and append to releases.json
+      - name: Ingest issue into releases.json
         env:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
         run: python scripts/ingest_issue.py
 
-      - name: Resolve YouTube Music video IDs via ytmusicapi
-        if: hashFiles('resolve_ytm_ids.py') != ''
-        run: python resolve_ytm_ids.py --max-lookups 25 --delay 0.6
-
-      - name: Expand release tracks for newly ingested post
-        if: hashFiles('scripts/expand_release_tracks.py') != ''
+      - name: Resolve video IDs and expand tracks for new post
         run: |
-          AUTH_ARG=""
+          AUTH_ARGS=""
           if [ -f .ytm_auth.json ]; then
-            AUTH_ARG="--auth .ytm_auth.json"
+            AUTH_ARGS="--auth .ytm_auth.json"
           fi
-          python scripts/expand_release_tracks.py --post-idx 0 --max-expansions 40 --delay 0.6 $AUTH_ARG
+          if [ -f resolve_ytm_ids.py ]; then
+            python resolve_ytm_ids.py --max-lookups 25 --delay 0.6 || true
+          fi
+          if [ -f scripts/expand_release_tracks.py ]; then
+            python scripts/expand_release_tracks.py --post-idx 0 --max-expansions 40 --delay 0.6 $AUTH_ARGS || true
+          fi
 
-      - name: Publish playlist for newly ingested post
+      - name: Publish playlist for new post
         if: env.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != ''
         env:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
-        run: python scripts/publish_playlists.py --auth .ytm_auth.json --post-idx 0 --limit 1
+        run: python scripts/publish_playlists.py --auth .ytm_auth.json --post-idx 0 --limit 1 || true
 
       - name: Remove temporary auth credential
         if: always()
         run: rm -f .ytm_auth.json
 
-      - name: Rebuild site pages from releases.json
+      - name: Rebuild static site
         if: hashFiles('build_site.py') != ''
         run: python build_site.py
 
-      - name: Commit and push updated data and site
+      - name: Commit and push updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
-          for f in ytmusic_cache.json releases.json index.html privacy.html terms.html; do
+          for f in releases.json ytmusic_cache.json index.html privacy.html terms.html; do
             if [ -f "$f" ]; then
               git add "$f"
             fi
           done
           if git diff --staged --quiet; then
-            echo "No file changes to commit."
-          else
-            git commit -m "chore: ingest issue #${{ github.event.issue.number }} and update site [skip ci]"
-            git push
+            echo "No changes to commit."
+            exit 0
           fi
+          git commit -m "chore: ingest issue #${{ github.event.issue.number }} and rebuild site [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
 
       - name: Comment and close issue
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" --body "Parsed into \`releases.json\`, expanded tracks, published playlist, and updated site."
+          gh issue comment "$ISSUE_NUMBER" --body "Ingested into \`releases.json\`, expanded tracks, updated playlist, and rebuilt site."
           gh issue close "$ISSUE_NUMBER"
