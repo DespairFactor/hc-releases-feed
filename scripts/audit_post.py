@@ -12,7 +12,6 @@ from typing import Any
 
 from ytmusicapi import YTMusic
 
-
 STOPWORDS = {
     "the",
     "a",
@@ -50,14 +49,19 @@ STOPWORDS = {
     "2026",
 }
 
+FORMAT_SUFFIX_RE = re.compile(
+    r"\b(?:lp|ep|demo|promo|split|single|full\s*stream|album)\b",
+    flags=re.IGNORECASE,
+)
+
 
 def normalize_tokens(text: str) -> set[str]:
-    cleaned = re.sub(r"[^a-z0-9\s]", " ", text.lower())
+    cleaned = re.sub(r"[^a-z0-9\s]", " ", str(text or "").lower())
     return {tok for tok in cleaned.split() if len(tok) > 1 and tok not in STOPWORDS}
 
 
 def normalize_compact(text: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", text.lower())
+    return re.sub(r"[^a-z0-9]", "", str(text or "").lower())
 
 
 def extract_result_artists(item: dict[str, Any]) -> list[str]:
@@ -76,6 +80,47 @@ def extract_result_artists(item: dict[str, Any]) -> list[str]:
     return []
 
 
+def generate_query_variants(artist: str, title: str) -> list[str]:
+    artist_clean = str(artist or "").strip()
+    title_raw = str(title or "").strip()
+    title_stripped = FORMAT_SUFFIX_RE.sub(" ", title_raw)
+    title_stripped = re.sub(r"\s+", " ", title_stripped).strip(" -–—/.,")
+
+    candidates: list[str] = []
+    for t in (title_stripped, title_raw):
+        if not t:
+            continue
+        candidates.append(f"{artist_clean} {t}".strip())
+
+        if "." in t:
+            no_spaces = re.sub(r"\s+", "", t)
+            collapsed = re.sub(r"\.+", "", t).strip()
+            spaced_letters = re.sub(
+                r"\b([a-zA-Z0-9])\.(?=(?:[a-zA-Z0-9]\.){1,}[a-zA-Z0-9]?)",
+                r"\1 ",
+                t,
+            )
+            spaced_letters = re.sub(r"\.", "", spaced_letters)
+            spaced_letters = re.sub(r"\s+", " ", spaced_letters).strip()
+
+            for variant in (no_spaces, collapsed, spaced_letters):
+                if variant:
+                    candidates.append(f"{artist_clean} {variant}".strip())
+
+    clean_tokens = normalize_tokens(title_raw)
+    if clean_tokens:
+        candidates.append(f"{artist_clean} {' '.join(sorted(clean_tokens))}".strip())
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for q in candidates:
+        key = q.lower()
+        if q and key not in seen:
+            seen.add(key)
+            deduped.append(q)
+    return deduped
+
+
 def score_candidate(
     release_artist: str,
     release_title: str,
@@ -85,6 +130,7 @@ def score_candidate(
     artist_compact = normalize_compact(release_artist)
     artist_tokens = normalize_tokens(release_artist)
     title_tokens = normalize_tokens(release_title)
+    title_compact = normalize_compact(release_title)
 
     cand_title = str(item.get("title") or "").strip()
     cand_title_compact = normalize_compact(cand_title)
@@ -122,14 +168,26 @@ def score_candidate(
         score -= 5.0
 
     overlap = title_tokens & cand_title_tokens
+    compact_title_match = (
+        bool(title_compact)
+        and len(title_compact) >= 2
+        and (
+            title_compact in cand_title_compact
+            or cand_title_compact in title_compact
+        )
+    )
+
     if title_tokens:
-        score += (len(overlap) / len(title_tokens)) * 4.0
-        if not overlap:
+        if overlap:
+            score += (len(overlap) / len(title_tokens)) * 4.0
+        elif compact_title_match:
+            score += 3.5
+        else:
             score -= 1.5
-    elif exact_artist or token_artist_match or artist_in_title:
+    elif compact_title_match or exact_artist or token_artist_match or artist_in_title:
         score += 1.5
 
-    if result_type == "album" and item.get("browseId"):
+    if result_type == "album":
         score += 1.5
     elif result_type == "song" and item.get("videoId"):
         score += 0.5
@@ -183,8 +241,14 @@ def current_match_is_suspect(rel: dict[str, Any]) -> bool:
 
     title_tokens = normalize_tokens(title)
     matched_tokens = normalize_tokens(matched_title)
+    title_compact = normalize_compact(title)
     if title_tokens and matched_tokens and not (title_tokens & matched_tokens):
-        if not (ytm_type == "video" and artist_compact and artist_compact in matched_compact):
+        compact_ok = bool(title_compact) and (
+            title_compact in matched_compact or matched_compact in title_compact
+        )
+        if not compact_ok and not (
+            ytm_type == "video" and artist_compact and artist_compact in matched_compact
+        ):
             return True
 
     if ytm_type == "album" and not track_list:
@@ -201,28 +265,90 @@ def clear_match_fields(rel: dict[str, Any]) -> None:
     rel.pop("tracks", None)
 
 
+def fetch_playlist_tracks(
+    ytm: YTMusic,
+    playlist_id: str,
+    fallback_artist: str,
+) -> list[dict[str, str]]:
+    tracks: list[dict[str, str]] = []
+    try:
+        pl_data = ytm.get_playlist(playlist_id, limit=None)
+    except Exception:
+        return tracks
+
+    for tr in pl_data.get("tracks") or []:
+        if not isinstance(tr, dict):
+            continue
+        vid = tr.get("videoId")
+        if not vid:
+            continue
+        tr_artists = extract_result_artists(tr)
+        tracks.append(
+            {
+                "artist": ", ".join(tr_artists) if tr_artists else fallback_artist,
+                "title": str(tr.get("title") or "").strip(),
+                "url": f"https://music.youtube.com/watch?v={vid}",
+            }
+        )
+    return tracks
+
+
+def fetch_album_tracks(
+    ytm: YTMusic,
+    browse_id: str,
+    fallback_artist: str,
+) -> list[dict[str, str]]:
+    if str(browse_id).startswith("OLAK5uy_"):
+        return fetch_playlist_tracks(ytm, browse_id, fallback_artist)
+
+    tracks: list[dict[str, str]] = []
+    try:
+        album_data = ytm.get_album(browse_id)
+    except Exception:
+        return tracks
+
+    for tr in album_data.get("tracks") or []:
+        if not isinstance(tr, dict):
+            continue
+        vid = tr.get("videoId")
+        if not vid:
+            continue
+        tr_artists = extract_result_artists(tr)
+        tracks.append(
+            {
+                "artist": ", ".join(tr_artists) if tr_artists else fallback_artist,
+                "title": str(tr.get("title") or "").strip(),
+                "url": f"https://music.youtube.com/watch?v={vid}",
+            }
+        )
+    return tracks
+
+
 def resolve_release(
     ytm: YTMusic,
     artist: str,
     title: str,
     min_score: float = 3.0,
 ) -> dict[str, Any] | None:
-    queries = [f"{artist} {title}".strip()]
-    clean_tokens = normalize_tokens(title)
-    if clean_tokens and len(clean_tokens) < len(title.split()):
-        queries.append(f"{artist} {' '.join(sorted(clean_tokens))}".strip())
-
     best: tuple[float, str, str, dict[str, Any]] | None = None
     seen_ids: set[str] = set()
 
-    for q in queries:
-        for filter_type, ytm_type in [
-            ("albums", "album"),
-            ("songs", "song"),
-            ("videos", "video"),
-        ]:
+    search_passes: list[tuple[str | None, str]] = [
+        ("albums", "album"),
+        (None, "general"),
+        ("playlists", "playlist"),
+        ("songs", "song"),
+        ("videos", "video"),
+    ]
+
+    for q in generate_query_variants(artist, title):
+        for filter_type, fallback_kind in search_passes:
             try:
-                results = ytm.search(q, filter=filter_type, limit=5)
+                results = (
+                    ytm.search(q, filter=filter_type, limit=5)
+                    if filter_type
+                    else ytm.search(q, limit=5)
+                )
             except Exception:
                 continue
             if not isinstance(results, list):
@@ -231,15 +357,52 @@ def resolve_release(
             for item in results:
                 if not isinstance(item, dict):
                     continue
-                item_id = str(item.get("browseId") or item.get("videoId") or "")
-                dedup_key = f"{ytm_type}:{item_id}"
-                if not item_id or dedup_key in seen_ids:
+
+                raw_pid = item.get("playlistId")
+                raw_bid = item.get("browseId")
+                raw_vid = item.get("videoId")
+                raw_type = str(item.get("resultType") or "").lower()
+
+                is_olak = any(
+                    isinstance(x, str) and x.startswith("OLAK5uy_")
+                    for x in (raw_pid, raw_bid)
+                )
+
+                if is_olak:
+                    resolved_type = "album"
+                    album_id = str(
+                        raw_pid
+                        if isinstance(raw_pid, str) and raw_pid.startswith("OLAK5uy_")
+                        else raw_bid
+                    )
+                    item = {**item, "browseId": album_id}
+                    item_id = album_id
+                elif fallback_kind == "album" or raw_type == "album":
+                    resolved_type = "album"
+                    item_id = str(raw_bid or raw_pid or "")
+                elif fallback_kind in ("playlist", "general") and raw_type == "playlist":
+                    resolved_type = "playlist"
+                    item_id = str(raw_pid or raw_bid or "")
+                elif raw_type == "song" or fallback_kind == "song":
+                    resolved_type = "song"
+                    item_id = str(raw_vid or "")
+                elif raw_type == "video" or fallback_kind == "video":
+                    resolved_type = "video"
+                    item_id = str(raw_vid or "")
+                else:
+                    continue
+
+                if not item_id:
+                    continue
+
+                dedup_key = f"{resolved_type}:{item_id}"
+                if dedup_key in seen_ids:
                     continue
                 seen_ids.add(dedup_key)
 
-                s = score_candidate(artist, title, item, ytm_type)
+                s = score_candidate(artist, title, item, resolved_type)
                 if best is None or s > best[0]:
-                    best = (s, ytm_type, item_id, item)
+                    best = (s, resolved_type, item_id, item)
 
         if best and best[0] >= 6.0 and best[1] == "album":
             break
@@ -251,32 +414,22 @@ def resolve_release(
     matched_title = str(item.get("title") or "").strip()
 
     if ytm_type == "album":
-        browse_id = item.get("browseId")
-        tracks: list[dict[str, str]] = []
-        if browse_id:
-            try:
-                album_data = ytm.get_album(browse_id)
-                for tr in album_data.get("tracks") or []:
-                    if not isinstance(tr, dict):
-                        continue
-                    vid = tr.get("videoId")
-                    if not vid:
-                        continue
-                    tr_artists = extract_result_artists(tr)
-                    tracks.append(
-                        {
-                            "artist": ", ".join(tr_artists) if tr_artists else artist,
-                            "title": str(tr.get("title") or "").strip(),
-                            "url": f"https://music.youtube.com/watch?v={vid}",
-                        }
-                    )
-            except Exception:
-                tracks = []
-
+        tracks = fetch_album_tracks(ytm, item_id, artist)
         return {
-            "browse_id": browse_id,
+            "browse_id": item_id,
             "video_id": None,
             "ytm_type": "album",
+            "ytm_matched_title": matched_title,
+            "tracks": tracks,
+            "_score": score,
+        }
+
+    if ytm_type == "playlist":
+        tracks = fetch_playlist_tracks(ytm, item_id, artist)
+        return {
+            "browse_id": item_id,
+            "video_id": None,
+            "ytm_type": "playlist",
             "ytm_matched_title": matched_title,
             "tracks": tracks,
             "_score": score,
@@ -330,14 +483,17 @@ def main() -> None:
 
     post = posts[args.post_idx]
     releases = post.get("releases", [])
-    print(f"Auditing post[{args.post_idx}]: '{post.get('post_title')}' ({len(releases)} releases)")
+    print(
+        f"Auditing post[{args.post_idx}]: '{post.get('post_title')}' ({len(releases)} releases)",
+        flush=True,
+    )
 
     suspect_indices = [
         idx
         for idx, rel in enumerate(releases)
         if isinstance(rel, dict) and current_match_is_suspect(rel)
     ]
-    print(f"Found {len(suspect_indices)} suspect/unexpanded entries.\n")
+    print(f"Found {len(suspect_indices)} suspect/unexpanded entries.\n", flush=True)
 
     ytm = YTMusic(args.auth) if args.auth else YTMusic()
     updated_count = 0
@@ -348,3 +504,51 @@ def main() -> None:
         rel = releases[idx]
         artist = str(rel.get("artist") or "").strip()
         title = str(rel.get("title") or "").strip()
+        old_matched = rel.get("ytm_matched_title")
+
+        candidate = resolve_release(ytm, artist, title, min_score=args.min_score)
+        if candidate:
+            score = candidate.pop("_score")
+            print(
+                f"  [{idx}] {artist} — {title} (was {old_matched!r})\n"
+                f"       -> NEW ({candidate['ytm_type']}, score={score:.1f}): "
+                f"{candidate['ytm_matched_title']!r} ({len(candidate['tracks'])} tracks)",
+                flush=True,
+            )
+            if args.apply and not args.dry_run:
+                rel.update(candidate)
+                updated_count += 1
+                post_changed = True
+        else:
+            print(
+                f"  [{idx}] {artist} — {title} (was {old_matched!r})\n"
+                f"       -> NO CONFIDENT MATCH (clearing to null)",
+                flush=True,
+            )
+            if args.apply and not args.dry_run:
+                clear_match_fields(rel)
+                cleared_count += 1
+                post_changed = True
+
+        time.sleep(max(0.0, args.delay))
+
+    if args.apply and not args.dry_run and post_changed:
+        post.pop("playlist_id", None)
+        post.pop("playlist_url", None)
+        path.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        print(
+            f"\nSaved {path}: updated={updated_count}, cleared={cleared_count}, "
+            f"playlist metadata cleared for re-publish.",
+            flush=True,
+        )
+    elif args.dry_run:
+        print("\nDry run complete: no changes written.", flush=True)
+    else:
+        print("\nAudit complete (pass --apply to write changes).", flush=True)
+
+
+if __name__ == "__main__":
+    main()
