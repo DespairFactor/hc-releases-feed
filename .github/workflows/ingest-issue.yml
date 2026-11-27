@@ -37,7 +37,7 @@ jobs:
           fi
 
       - name: Decode YouTube Music auth credential
-        if: env.YTM_AUTH_B64 != ''
+        if: ${{ secrets.YTM_AUTH_B64 != '' }}
         env:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
         run: |
@@ -56,17 +56,16 @@ jobs:
           if [ -f .ytm_auth.json ]; then
             AUTH_ARGS="--auth .ytm_auth.json"
           fi
-          if [ -f resolve_ytm_ids.py ]; then
-            python -u resolve_ytm_ids.py --max-lookups 25 --delay 0.6 || true
-          fi
           if [ -f scripts/audit_post.py ]; then
             python -u scripts/audit_post.py --post-idx 0 --min-score 3.0 --apply $AUTH_ARGS || true
           elif [ -f scripts/expand_release_tracks.py ]; then
-            python -u scripts/expand_release_tracks.py --post-idx 0 --max-expansions 40 --delay 0.6 $AUTH_ARGS || true
+            python -u scripts/expand_release_tracks.py --post-idx 0 --min-score 3.0 --max-expansions 40 --delay 0.6 $AUTH_ARGS || true
+          elif [ -f resolve_ytm_ids.py ]; then
+            python -u resolve_ytm_ids.py --post-idx 0 --max-lookups 40 --delay 0.6 $AUTH_ARGS || true
           fi
 
       - name: Publish playlist for new post
-        if: env.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != ''
+        if: ${{ secrets.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != '' }}
         env:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
