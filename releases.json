@@ -130,11 +130,10 @@
           "artist": "In Other Climes",
           "title": "Somos LP",
           "notes": "Nice, France",
-          "browse_id": "OLAK5uy_nt1i0EtVJ_EsfjN_bgxZWkooVCXbkH9us",
+          "browse_id": null,
           "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Somos",
-          "tracks": []
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "PeelingFlesh",
@@ -526,16 +525,9 @@
           "title": "Life Is Nothing But... EP",
           "notes": "Skåne County, Sweden",
           "browse_id": null,
-          "video_id": "SFAsc7lyhkE",
-          "ytm_type": "song",
-          "ytm_matched_title": "CUMMED IN",
-          "tracks": [
-            {
-              "artist": "SUFFERING",
-              "title": "CUMMED IN",
-              "url": "https://music.youtube.com/watch?v=SFAsc7lyhkE"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Ornament",
@@ -733,130 +725,70 @@
           "artist": "Bazooka",
           "title": "Bazooka 2 LP",
           "notes": "St. John's, Newfoundland and Labrador Canada",
-          "browse_id": "OLAK5uy_n4MYVM5KcgXaexdwmx7XWNeZKaCM_pl1Y",
+          "browse_id": "OLAK5uy_lGHmztYCya0aq7xcvTJA-Fvz5Qq9Rc0wc",
           "video_id": null,
           "ytm_type": "album",
-          "ytm_matched_title": "LIGA BAZOOKA JORNADA #2",
+          "ytm_matched_title": "ย้อนรอยร็อค 2",
           "tracks": [
             {
-              "artist": "Liga Bazooka",
-              "title": "Replik - Round 1 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=pqDeJfJrI4k"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "เพราะคุณคนเดียว",
+              "url": "https://music.youtube.com/watch?v=xCcCA6lv9Vw"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Stuart - Round 1 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=82ZlmfP5sKM"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "อยู่กับความผิดหวัง",
+              "url": "https://music.youtube.com/watch?v=mx4rNkwVMa8"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Replik - Round 2 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=LGbVEp4wIJw"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "คิดถึงพี่ไหม",
+              "url": "https://music.youtube.com/watch?v=ShZPjof_8yU"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Stuart - Round 2 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=yd6njG-Uq1A"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "ฝนตกฟ้าร้อง",
+              "url": "https://music.youtube.com/watch?v=RHYupfzuBNc"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Replik - Round 3 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=g9VMwCqlx24"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "สมัครรักสมัครแฟน",
+              "url": "https://music.youtube.com/watch?v=ftHuLkWdyQo"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Stuart - Round 3 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
-              "url": "https://music.youtube.com/watch?v=HPSYQT9BdkY"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "ล้นเกล้าเผ่าไทย",
+              "url": "https://music.youtube.com/watch?v=B1f-BrNGZmg"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "G-Sony - Round 1 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=ms_QcPWXSe0"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "พี่มีแต่ให้",
+              "url": "https://music.youtube.com/watch?v=-bJ8_c1m0HU"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Brillante - Round 1 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=Sy9NCXFkGJk"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "นางใจ",
+              "url": "https://music.youtube.com/watch?v=Tj4vhJ0Zt3w"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "G Sony - Round 2 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=8Hf4wB2ZG_c"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "ขาดเงินขาดรัก",
+              "url": "https://music.youtube.com/watch?v=ZeSxc-_Hjh4"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Brillante - Round 2 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=5MGo0KhXGW4"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "ไกลบ้าน",
+              "url": "https://music.youtube.com/watch?v=krueoT4PBUU"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "G-Sony - Round 3 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=bFDrdKFVbCA"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "อยากกินเนื้อคนใจดำ",
+              "url": "https://music.youtube.com/watch?v=TNJOso61m7I"
             },
             {
-              "artist": "Liga Bazooka",
-              "title": "Brillante - Round 3 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
-              "url": "https://music.youtube.com/watch?v=4lHMqUJdf3Y"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Mecha - Round 1 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=VF3MAeh5hEc"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Markitos - Round 1 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=Y0fGb8cWPNw"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Mecha - Round 2 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=cKbs_iKNCLU"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Markitos - Round 2 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=m4YF2R_B7GE"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Mecha - Round 3 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=RsOp5cqkkzs"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Markitos - Round 3 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
-              "url": "https://music.youtube.com/watch?v=HhKfxJoJRDU"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Klan - Round 1 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=Nr5hyUagRlo"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Chili Parker - Round 1 (CHILLI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=gZaQHgNkVZY"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Klan - Round 2 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=PKDhNWHKNSc"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Chili Parker - Round 2 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=6Mt1bE9Rvvg"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Klan - Round 3 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=2uqtA55p87Y"
-            },
-            {
-              "artist": "Liga Bazooka",
-              "title": "Chili Parker - Round 3 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
-              "url": "https://music.youtube.com/watch?v=HKiY15nKn3w"
+              "artist": "บาซูก้า (Bazooka)",
+              "title": "คนสวยใจดำ",
+              "url": "https://music.youtube.com/watch?v=wb-sdhp-WWU"
             }
           ]
         },
@@ -1080,7 +1012,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLXgHHh09mIdo",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLXgHHh09mIdo"
     },
     {
       "post_title": "new releases November Pt 3",
@@ -1662,15 +1596,15 @@
           "artist": "Another Enemy",
           "title": "Another Enemy EP",
           "notes": "Minneapolis, Minnesota",
-          "browse_id": "OLAK5uy_kER1Hf4KLgSzF1n18-PPNHm0f-YOfbuvc",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Another Enemy",
+          "browse_id": null,
+          "video_id": "MikRegfDGZc",
+          "ytm_type": "video",
+          "ytm_matched_title": "Another Enemy - ST EP 2026 (Full EP)",
           "tracks": [
             {
-              "artist": "Strange Demons",
-              "title": "Another Enemy",
-              "url": "https://music.youtube.com/watch?v=Ouwtn1Wbtdw"
+              "artist": "xBrutalYouth666x",
+              "title": "Another Enemy - Another Enemy EP",
+              "url": "https://music.youtube.com/watch?v=MikRegfDGZc"
             }
           ]
         },
@@ -2415,14 +2349,14 @@
           "title": "Demo",
           "notes": "Tokyo, Japan",
           "browse_id": null,
-          "video_id": "kXeqOSiis5Q",
+          "video_id": "w7zyZfRoctM",
           "ytm_type": "song",
-          "ytm_matched_title": "Apocalypse (Lost Demos)",
+          "ytm_matched_title": "Hollow",
           "tracks": [
             {
-              "artist": "PAIN",
-              "title": "Apocalypse (Lost Demos)",
-              "url": "https://music.youtube.com/watch?v=kXeqOSiis5Q"
+              "artist": "Stuck in Pain",
+              "title": "Hollow",
+              "url": "https://music.youtube.com/watch?v=w7zyZfRoctM"
             }
           ]
         },
@@ -2556,14 +2490,14 @@
           "title": "Promo",
           "notes": "Tampere, Finland",
           "browse_id": null,
-          "video_id": "w0Y5pa8rpNA",
-          "ytm_type": "song",
-          "ytm_matched_title": "Bonustrack",
+          "video_id": "S-k1M1YiauE",
+          "ytm_type": "video",
+          "ytm_matched_title": "Bolt Cross - Promo 2026 (Full Stream)",
           "tracks": [
             {
-              "artist": "Bolt",
-              "title": "Bonustrack",
-              "url": "https://music.youtube.com/watch?v=w0Y5pa8rpNA"
+              "artist": "xBrutalYouth666x",
+              "title": "Bolt Cross - Promo",
+              "url": "https://music.youtube.com/watch?v=S-k1M1YiauE"
             }
           ]
         },
@@ -2664,14 +2598,14 @@
           "title": "Demo",
           "notes": "Nagoya, Japan",
           "browse_id": null,
-          "video_id": "B6jpqjDMvvg",
-          "ytm_type": "song",
-          "ytm_matched_title": "Off my chest (feat. LuteEastwood)",
+          "video_id": "pCtjxazfZxQ",
+          "ytm_type": "video",
+          "ytm_matched_title": "Flex Your Head - Demo 2026 (Full Demo)",
           "tracks": [
             {
-              "artist": "Flex",
-              "title": "Off my chest (feat. LuteEastwood)",
-              "url": "https://music.youtube.com/watch?v=B6jpqjDMvvg"
+              "artist": "xBrutalYouth666x",
+              "title": "Flex Your Head - Demo",
+              "url": "https://music.youtube.com/watch?v=pCtjxazfZxQ"
             }
           ]
         },
@@ -2905,7 +2839,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLTPIe-hgZ4D0",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLTPIe-hgZ4D0"
     },
     {
       "post_title": "new releases November Pt 2",
@@ -3687,60 +3623,15 @@
           "artist": "Eternal Enemy",
           "title": "Promo",
           "notes": "Hannover, Germany",
-          "browse_id": "OLAK5uy_ngAEq7xNfH1o306l8tZ1ZeB3A_7oYXYeE",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Eternal Enemy",
+          "browse_id": null,
+          "video_id": "XjhcMRVIK84",
+          "ytm_type": "song",
+          "ytm_matched_title": "Mainline Religion",
           "tracks": [
-            {
-              "artist": "Eternal Enemy",
-              "title": "Banquet In Hell",
-              "url": "https://music.youtube.com/watch?v=Sz2CtxI_0qM"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Everyone Dies",
-              "url": "https://music.youtube.com/watch?v=peq8jbx6ubE"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "There Will Be Blood",
-              "url": "https://music.youtube.com/watch?v=HSA8COAbHWw"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Necrosis Of The Mind",
-              "url": "https://music.youtube.com/watch?v=4sv-TQdxkpg"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Sinister Dark Forces",
-              "url": "https://music.youtube.com/watch?v=24lGMLgc380"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Through The Scope",
-              "url": "https://music.youtube.com/watch?v=rwQaKLIomnI"
-            },
             {
               "artist": "Eternal Enemy",
               "title": "Mainline Religion",
               "url": "https://music.youtube.com/watch?v=XjhcMRVIK84"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Moonless",
-              "url": "https://music.youtube.com/watch?v=vW5MCSPUwBk"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "A Broken Blade Will Kill",
-              "url": "https://music.youtube.com/watch?v=-3VtexCh0GI"
-            },
-            {
-              "artist": "Eternal Enemy",
-              "title": "Agony Addiction",
-              "url": "https://music.youtube.com/watch?v=WXO1u52U2OU"
             }
           ]
         },
@@ -3966,14 +3857,14 @@
           "title": "Demo",
           "notes": "Kankakee, Illinois",
           "browse_id": null,
-          "video_id": "wEbh9uT8hss",
-          "ytm_type": "song",
-          "ytm_matched_title": "Back to Life",
+          "video_id": "LpS7pBM3Dt0",
+          "ytm_type": "video",
+          "ytm_matched_title": "Lifetrial - The Weight (Official Music Video)",
           "tracks": [
             {
-              "artist": "TriaL",
-              "title": "Back to Life",
-              "url": "https://music.youtube.com/watch?v=wEbh9uT8hss"
+              "artist": "Lifetrial",
+              "title": "Lifetrial - Demo",
+              "url": "https://music.youtube.com/watch?v=LpS7pBM3Dt0"
             }
           ]
         },
@@ -4049,14 +3940,14 @@
           "title": "New World Chaos LP",
           "notes": "Kota Kinabalu, Malaysia",
           "browse_id": null,
-          "video_id": "dIZl3QE8-X4",
+          "video_id": "5-CbjK-r5XY",
           "ytm_type": "song",
-          "ytm_matched_title": "A New World Rising",
+          "ytm_matched_title": "NEW LIFE, NEW STRUGGLE",
           "tracks": [
             {
-              "artist": "Rage",
-              "title": "A New World Rising",
-              "url": "https://music.youtube.com/watch?v=dIZl3QE8-X4"
+              "artist": "BEYOND MY RAGE",
+              "title": "NEW LIFE, NEW STRUGGLE",
+              "url": "https://music.youtube.com/watch?v=5-CbjK-r5XY"
             }
           ]
         },
@@ -4648,7 +4539,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLPN_t7N-hfWs",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLPN_t7N-hfWs"
     },
     {
       "post_title": "new releases November Pt 1",
@@ -6286,14 +6179,14 @@
           "title": "Enemies Of Scene EP",
           "notes": "Batam, Indonesia",
           "browse_id": null,
-          "video_id": "9QAzSh8mZSg",
+          "video_id": "brC1_kZhWi0",
           "ytm_type": "song",
-          "ytm_matched_title": "Back On The Attack",
+          "ytm_matched_title": "Powers That Be",
           "tracks": [
             {
               "artist": "Disarray",
-              "title": "Back On The Attack",
-              "url": "https://music.youtube.com/watch?v=9QAzSh8mZSg"
+              "title": "Powers That Be",
+              "url": "https://music.youtube.com/watch?v=brC1_kZhWi0"
             }
           ]
         },
@@ -6647,7 +6540,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLFIsmf-1BX4g",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLFIsmf-1BX4g"
     },
     {
       "post_title": "new releases October Pt 4",
@@ -7943,67 +7838,10 @@
           "artist": "Unleash Hell",
           "title": "Resembling Man EP",
           "notes": "Berlin, New Jersey",
-          "browse_id": "OLAK5uy_mowo1zKM8kgzqF2G-BN_VwH2Akttlir00",
+          "browse_id": null,
           "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Unleash Hell",
-          "tracks": [
-            {
-              "artist": "Backbone",
-              "title": "Backbone",
-              "url": "https://music.youtube.com/watch?v=BkKHze2YtFo"
-            },
-            {
-              "artist": "Backbone",
-              "title": "All Religions",
-              "url": "https://music.youtube.com/watch?v=8DazwY9MU0Y"
-            },
-            {
-              "artist": "Backbone",
-              "title": "All Alone",
-              "url": "https://music.youtube.com/watch?v=U3urE7VMa4Y"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Kingdumb",
-              "url": "https://music.youtube.com/watch?v=556xa-Wh0sM"
-            },
-            {
-              "artist": "Backbone",
-              "title": "No Man = No War",
-              "url": "https://music.youtube.com/watch?v=I9kIdnX04XY"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Illusion of God",
-              "url": "https://music.youtube.com/watch?v=MAokOKgUMLk"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Scapegoat",
-              "url": "https://music.youtube.com/watch?v=PiQIHyqbKUI"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Demons",
-              "url": "https://music.youtube.com/watch?v=Szd4_FAH1Ps"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Hate Us All",
-              "url": "https://music.youtube.com/watch?v=dFERBp7MG-w"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Blinded by Sorrow",
-              "url": "https://music.youtube.com/watch?v=fOPm7PQILgA"
-            },
-            {
-              "artist": "Backbone",
-              "title": "Unleash Hell",
-              "url": "https://music.youtube.com/watch?v=9Tob8Wmp9H8"
-            }
-          ]
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Impermanent",
@@ -8528,7 +8366,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLba9sk3ubQY8",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLba9sk3ubQY8"
     },
     {
       "post_title": "new releases October Pt 3",
@@ -8596,32 +8436,18 @@
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "82bvO3HI_I4",
-          "ytm_type": "song",
-          "ytm_matched_title": "Fractured Pieces",
-          "tracks": [
-            {
-              "artist": "Rakshas",
-              "title": "Fractured Pieces",
-              "url": "https://music.youtube.com/watch?v=82bvO3HI_I4"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Burn Channel vs Cruel Act",
           "title": "SPLIT EP",
           "notes": "Boston vs Albuquerque",
           "browse_id": null,
-          "video_id": "PPSz4J69V-M",
-          "ytm_type": "song",
-          "ytm_matched_title": "Burn Eternal",
-          "tracks": [
-            {
-              "artist": "Cruel Act",
-              "title": "Burn Eternal",
-              "url": "https://music.youtube.com/watch?v=PPSz4J69V-M"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Asidhara",
@@ -8855,14 +8681,14 @@
           "title": "Demo",
           "notes": "Virginia",
           "browse_id": null,
-          "video_id": "Wh2ndLKIlyk",
+          "video_id": "3bbf4F8Tsb0",
           "ytm_type": "song",
-          "ytm_matched_title": "Shockwave",
+          "ytm_matched_title": "There Will Be Blood",
           "tracks": [
             {
-              "artist": "Brawler",
-              "title": "Shockwave",
-              "url": "https://music.youtube.com/watch?v=Wh2ndLKIlyk"
+              "artist": "Brawler Unit",
+              "title": "There Will Be Blood",
+              "url": "https://music.youtube.com/watch?v=3bbf4F8Tsb0"
             }
           ]
         },
@@ -8871,32 +8697,18 @@
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "khjSjj6Bf7k",
-          "ytm_type": "song",
-          "ytm_matched_title": "Fabricated",
-          "tracks": [
-            {
-              "artist": "Intrusive",
-              "title": "Fabricated",
-              "url": "https://music.youtube.com/watch?v=khjSjj6Bf7k"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Blackhand vs Savage Primal Impulse vs Ran Thru",
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "gytVjzEwyk0",
-          "ytm_type": "song",
-          "ytm_matched_title": "Through And Through",
-          "tracks": [
-            {
-              "artist": "Savage Primal Impulse",
-              "title": "Through And Through",
-              "url": "https://music.youtube.com/watch?v=gytVjzEwyk0"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Big Ass Truck",
@@ -9047,14 +8859,14 @@
           "title": "Split EP",
           "notes": "Greece vs Bulgaria",
           "browse_id": null,
-          "video_id": "WrUS95yV_98",
-          "ytm_type": "song",
-          "ytm_matched_title": "Path To Annihilation (feat. Whispers)",
+          "video_id": "bF5k7BKiZZE",
+          "ytm_type": "video",
+          "ytm_matched_title": "[EGxHC] Malignant / No Half Measures - Split LP - 2026 (Full EP)",
           "tracks": [
             {
-              "artist": "Malignant",
-              "title": "Path To Annihilation (feat. Whispers)",
-              "url": "https://music.youtube.com/watch?v=WrUS95yV_98"
+              "artist": "XstekkahX",
+              "title": "Malignant / No Half Measures - Split EP",
+              "url": "https://music.youtube.com/watch?v=bF5k7BKiZZE"
             }
           ]
         },
@@ -10032,14 +9844,14 @@
           "title": "No Loss EP",
           "notes": "Ontario, Canada",
           "browse_id": null,
-          "video_id": "RpMaK3_LTXw",
+          "video_id": "n49s5hXho5s",
           "ytm_type": "video",
-          "ytm_matched_title": "NO LOSS NO REGRETS - VOID (OFFICIAL MUSIC VIDEO)",
+          "ytm_matched_title": "NO LOSS NO REGRETS - WASTE AWAY (OFFICIAL LYRIC VIDEO)",
           "tracks": [
             {
               "artist": "NoLossNoRegrets Band",
               "title": "No Loss - No Loss EP",
-              "url": "https://music.youtube.com/watch?v=RpMaK3_LTXw"
+              "url": "https://music.youtube.com/watch?v=n49s5hXho5s"
             }
           ]
         },
@@ -10047,30 +9859,15 @@
           "artist": "Realm Of Death",
           "title": "Demo",
           "notes": "Belgium",
-          "browse_id": "OLAK5uy_mD8hRRvuPqEACrsJ1M4I-S1o4cX-p8AwQ",
-          "video_id": null,
-          "ytm_type": "album",
-          "ytm_matched_title": "Mo(u)rning Volume 1 (DEMO)",
+          "browse_id": null,
+          "video_id": "z5OMjCfR7Xw",
+          "ytm_type": "video",
+          "ytm_matched_title": "Realm Of Death - Demo 2026 (Full Demo)",
           "tracks": [
             {
-              "artist": "Realm",
-              "title": "Across The Room",
-              "url": "https://music.youtube.com/watch?v=UF3f42JjYpQ"
-            },
-            {
-              "artist": "Realm",
-              "title": "Dead In The Mo(u)rning",
-              "url": "https://music.youtube.com/watch?v=2xURGXsJAsY"
-            },
-            {
-              "artist": "Realm",
-              "title": "Diary of a Hypocrite",
-              "url": "https://music.youtube.com/watch?v=imbSuBq7bdE"
-            },
-            {
-              "artist": "Realm",
-              "title": "Snows Of February",
-              "url": "https://music.youtube.com/watch?v=LB3lkQUeRTI"
+              "artist": "xBrutalYouth666x",
+              "title": "Realm Of Death - Demo",
+              "url": "https://music.youtube.com/watch?v=z5OMjCfR7Xw"
             }
           ]
         },
@@ -10275,14 +10072,14 @@
           "title": "All My Friends Are Dead EP",
           "notes": "Tokyo, Japan",
           "browse_id": null,
-          "video_id": "BSgQz9AmpxY",
+          "video_id": "XcKIi8f_tuU",
           "ytm_type": "video",
-          "ytm_matched_title": "All My Friends Are Dead - Waypoints",
+          "ytm_matched_title": "AMFAD // All My Friends Are Dead // the news (demo)",
           "tracks": [
             {
-              "artist": "AMFADband",
-              "title": "All My Friends Are Dead - Waypoints",
-              "url": "https://music.youtube.com/watch?v=BSgQz9AmpxY"
+              "artist": "Muziktology",
+              "title": "AMFAD // All My Friends Are Dead // the news (demo)",
+              "url": "https://music.youtube.com/watch?v=XcKIi8f_tuU"
             }
           ]
         },
@@ -10307,7 +10104,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLKIrYhZq44jU",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLKIrYhZq44jU"
     },
     {
       "post_title": "new releases October Pt 2",
@@ -10920,16 +10719,9 @@
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "1JM8c8Q2cVo",
-          "ytm_type": "song",
-          "ytm_matched_title": "WKD",
-          "tracks": [
-            {
-              "artist": "Confusion's Prince",
-              "title": "WKD",
-              "url": "https://music.youtube.com/watch?v=1JM8c8Q2cVo"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Faith",
@@ -11141,14 +10933,14 @@
           "title": "So What Now?: 2024-2026 LP",
           "notes": "Michigan",
           "browse_id": null,
-          "video_id": "ShR6Kxhf4N0",
-          "ytm_type": "video",
-          "ytm_matched_title": "Drop Rate   Lay Awake (DUBSTEP)",
+          "video_id": "WAtQkSped7I",
+          "ytm_type": "song",
+          "ytm_matched_title": "Sidewinder",
           "tracks": [
             {
               "artist": "Drop Rate",
-              "title": "Drop Rate   Lay Awake (DUBSTEP)",
-              "url": "https://music.youtube.com/watch?v=ShR6Kxhf4N0"
+              "title": "Sidewinder",
+              "url": "https://music.youtube.com/watch?v=WAtQkSped7I"
             }
           ]
         },
@@ -11613,16 +11405,9 @@
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "ESqNd9sbJ2k",
-          "ytm_type": "song",
-          "ytm_matched_title": "Place to Grow",
-          "tracks": [
-            {
-              "artist": "In Jest",
-              "title": "Place to Grow",
-              "url": "https://music.youtube.com/watch?v=ESqNd9sbJ2k"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Meadows",
@@ -11748,7 +11533,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLJ83ki4xgLBk",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLJ83ki4xgLBk"
     },
     {
       "post_title": "new releases October Pt 1",
@@ -13636,16 +13423,9 @@
           "title": "SPLIT EP",
           "notes": "",
           "browse_id": null,
-          "video_id": "-UHtdmRzL_Y",
-          "ytm_type": "song",
-          "ytm_matched_title": "WHAT THEY DON'T SEE",
-          "tracks": [
-            {
-              "artist": "Mob",
-              "title": "WHAT THEY DON'T SEE",
-              "url": "https://music.youtube.com/watch?v=-UHtdmRzL_Y"
-            }
-          ]
+          "video_id": null,
+          "ytm_type": null,
+          "ytm_matched_title": null
         },
         {
           "artist": "Wounded Touch",
@@ -13901,7 +13681,9 @@
             }
           ]
         }
-      ]
+      ],
+      "playlist_id": "PLcXCjtQXloFc",
+      "playlist_url": "https://music.youtube.com/playlist?list=PLcXCjtQXloFc"
     }
   ]
 }
