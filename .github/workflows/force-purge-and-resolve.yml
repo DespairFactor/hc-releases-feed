@@ -207,4 +207,3 @@ jobs:
           done
           exit 1
 
-Make sure it is saved under `.github/workflows/force-purge-and-resolve.yml` on `main`.
