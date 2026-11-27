@@ -1,8 +1,255 @@
 {
   "source_user": "sepdri",
   "subreddit": "Hardcore",
-  "updated_at": "2026-11-20T23:58:00.000000+00:00",
+  "updated_at": "2026-11-27T16:22:07.238265+00:00",
   "posts": [
+    {
+      "post_title": "new releases November 2026 Pt 4",
+      "post_url": "https://github.com/DespairFactor/hc-releases-feed/issues/2",
+      "added_at": "2026-11-27",
+      "releases": [
+        {
+          "artist": "Alea Jacta Est",
+          "title": "Per Angusta EP",
+          "notes": "Toulouse, France",
+          "browse_id": "MPREb_BC2fhkQSp9E",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Per Angusta"
+        },
+        {
+          "artist": "Withdrawal",
+          "title": "Blood, Flesh & Faith EP",
+          "notes": "Winnipeg, Canada",
+          "browse_id": "MPREb_8PiK3Ngqvpq",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Faith Flesh and Blood"
+        },
+        {
+          "artist": "Hellscape",
+          "title": "World Devours Itself EP",
+          "notes": "North East France",
+          "browse_id": "MPREb_v73OcM8gLjk",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "World Devours Itself"
+        },
+        {
+          "artist": "In Other Climes",
+          "title": "Somos LP",
+          "notes": "Nice, France",
+          "browse_id": "MPREb_4Mgp37s1bZS",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Somos"
+        },
+        {
+          "artist": "PeelingFlesh",
+          "title": "PeelingFlesh LP",
+          "notes": "Oklahoma",
+          "browse_id": "MPREb_XBV2eMeCzOb",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "PeelingFlesh"
+        },
+        {
+          "artist": "Pure Living Hell",
+          "title": "Brute Force Hymns EP",
+          "notes": "Houston, Texas",
+          "browse_id": "MPREb_ofm8tv4lAOX",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Brute Force Hymns"
+        },
+        {
+          "artist": "Wind For Wings",
+          "title": "On High In Blue Tomorrows EP",
+          "notes": "Detroit",
+          "browse_id": "MPREb_JI3ToVtAKhB",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "On High in Blue Tomorrows"
+        },
+        {
+          "artist": "Exile",
+          "title": "Afflictions Of Pain EP",
+          "notes": "Glasgow, Scotland",
+          "browse_id": "MPREb_qv41Hip8y1w",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "AFFLICTIONS OF PAIN"
+        },
+        {
+          "artist": "Torture Smile",
+          "title": "Smile:Silenced Lament EP",
+          "notes": "Kawasaki, Japan",
+          "browse_id": "MPREb_6EUtcUkQt5I",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Smile: Silenced Lament"
+        },
+        {
+          "artist": "Violaine",
+          "title": "Violaine Demo",
+          "notes": "Brighton, UK",
+          "browse_id": "MPREb_voaQn8TNPH8",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Sandwiche"
+        },
+        {
+          "artist": "Miserere",
+          "title": "Detras De Nosotros Estamos Ustedes LP",
+          "notes": "Buenos Aires, Argentina",
+          "browse_id": "MPREb_SIleSCzZuWS",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Detras de Nosotros Estamos Ustedes"
+        },
+        {
+          "artist": "Mite",
+          "title": "Beyond Repair LP",
+          "notes": "Odense, Denmark",
+          "browse_id": "MPREb_nKBFxHGOmo0",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Beyond Repair"
+        },
+        {
+          "artist": "Still Cold",
+          "title": "Torn Through By The Unbound Pains EP",
+          "notes": "Budapest, Hungary",
+          "browse_id": "MPREb_yH4jS12flTJ",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "TORN THROUGH BY THE UNBOUND PAINS"
+        },
+        {
+          "artist": "War Prison",
+          "title": "Face The Fire EP",
+          "notes": "Tucson, Arizona",
+          "browse_id": "MPREb_bimN7eV3dDq",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Face The Fire"
+        },
+        {
+          "artist": "Continued Suffering",
+          "title": "Life Is Nothing But... EP",
+          "notes": "Skåne County, Sweden",
+          "browse_id": "MPREb_CiKwfPBwpYG",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Nothing but Suffering"
+        },
+        {
+          "artist": "Ornament",
+          "title": "Through The Sorrowfilled Summer Promo",
+          "notes": "Indonesia",
+          "browse_id": "MPREb_bpw6FvqQG5Y",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Through The Sorrowfilled Summer"
+        },
+        {
+          "artist": "Dreadweight",
+          "title": "Place Of Hate EP",
+          "notes": "Las Vegas, Nevada",
+          "browse_id": "MPREb_qN5IiAKR3JQ",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "PLACE OF HATE"
+        },
+        {
+          "artist": "Bigbite",
+          "title": "Wall Of Greed EP",
+          "notes": "Indonesia",
+          "browse_id": null,
+          "video_id": "PqGMXdGbY3Y",
+          "ytm_type": "video",
+          "ytm_matched_title": "Bigbite - Walls Of Greed 2026 (Full Stream)"
+        },
+        {
+          "artist": "Tiger Uppercut",
+          "title": "Demo",
+          "notes": "NSW, Australia",
+          "browse_id": "MPREb_t3GqHfQSDQV",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo 2026"
+        },
+        {
+          "artist": "Gnull",
+          "title": "Imperial Degradation EP",
+          "notes": "Salt Lake City, Utah",
+          "browse_id": "MPREb_ggwE7xWIQGG",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Imperial Degradation"
+        },
+        {
+          "artist": "Figurine",
+          "title": "Midwest Fuck You Promo",
+          "notes": "Wichita, Kansas",
+          "browse_id": "MPREb_qXFmmZp8eu7",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Midwest Fuck You"
+        },
+        {
+          "artist": "Bangalore",
+          "title": "Ain't War Hell EP",
+          "notes": "Colorado",
+          "browse_id": "MPREb_dksd8dQbVr7",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Top Gun: Maverick (Music From The Motion Picture)"
+        },
+        {
+          "artist": "Bazooka",
+          "title": "Bazooka 2 LP",
+          "notes": "St. John's, Newfoundland and Labrador Canada",
+          "browse_id": "MPREb_WKOaEEMkt48",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "BAZOOKA 2"
+        },
+        {
+          "artist": "BroLoaf",
+          "title": "Champions On Parade - Legacy Edition LP",
+          "notes": "Scottsdale, Arizona",
+          "browse_id": "MPREb_rJmTlx4dT42",
+          "video_id": null,
+          "ytm_type": "album",
+          "ytm_matched_title": "Champions on Parade - Legacy Edition"
+        },
+        {
+          "artist": "Homeless",
+          "title": "Extinción EP",
+          "notes": "Ecuador",
+          "browse_id": "VLPLCtgmyfpm6tycuEm9LdwXnftnFJfPuF1Y",
+          "video_id": null,
+          "ytm_type": "playlist",
+          "ytm_matched_title": "ñacañaca"
+        },
+        {
+          "artist": "Sworn Truth",
+          "title": "Even If I Drown EP",
+          "notes": "Southampton, UK"
+        },
+        {
+          "artist": "Feints",
+          "title": "Puzzle EP",
+          "notes": "Rouen, France"
+        },
+        {
+          "artist": "Set The Bar Low",
+          "title": "Then It Stops EP",
+          "notes": "Nashua, New Hampshire"
+        }
+      ]
+    },
     {
       "post_title": "new releases November Pt 3",
       "post_url": "https://www.reddit.com/user/sepdri/",
