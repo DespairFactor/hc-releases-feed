@@ -63,7 +63,11 @@ def normalize_compact(text: str) -> str:
 def extract_result_artists(item: dict[str, Any]) -> list[str]:
     artists = item.get("artists")
     if isinstance(artists, list):
-        names = [str(a.get("name", "")).strip() for a in artists if isinstance(a, dict) and a.get("name")]
+        names = [
+            str(a.get("name", "")).strip()
+            for a in artists
+            if isinstance(a, dict) and a.get("name")
+        ]
         if names:
             return names
     author = item.get("author")
@@ -72,8 +76,12 @@ def extract_result_artists(item: dict[str, Any]) -> list[str]:
     return []
 
 
-def score_candidate(release_artist: str, release_title: str, item: dict[str, Any], result_type: str) -> tuple[float, str]:
-    """Return (score, reason) for a YTM search candidate."""
+def score_candidate(
+    release_artist: str,
+    release_title: str,
+    item: dict[str, Any],
+    result_type: str,
+) -> float:
     artist_compact = normalize_compact(release_artist)
     artist_tokens = normalize_tokens(release_artist)
     title_tokens = normalize_tokens(release_title)
@@ -89,63 +97,50 @@ def score_candidate(release_artist: str, release_title: str, item: dict[str, Any
         cand_artists_tokens |= normalize_tokens(a)
 
     score = 0.0
-    notes: list[str] = []
 
-    # 1. Artist alignment check
     exact_artist = bool(artist_compact) and any(
         artist_compact == ca or artist_compact in ca or ca in artist_compact
         for ca in cand_artists_compact
         if len(ca) >= 2
     )
-    artist_in_title = bool(artist_compact) and len(artist_compact) >= 3 and artist_compact in cand_title_compact
+    artist_in_title = (
+        bool(artist_compact)
+        and len(artist_compact) >= 3
+        and artist_compact in cand_title_compact
+    )
     token_artist_match = bool(artist_tokens) and len(artist_tokens & cand_artists_tokens) >= max(
         1, len(artist_tokens)
     )
 
     if exact_artist:
         score += 5.0
-        notes.append("artist-exact")
     elif token_artist_match:
         score += 3.5
-        notes.append("artist-tokens")
     elif artist_in_title:
         score += 3.0
-        notes.append("artist-in-title")
     else:
-        # Penalize heavily when the release artist isn't present in result artists or title
         score -= 5.0
-        notes.append("artist-mismatch")
 
-    # 2. Title / release alignment check
     overlap = title_tokens & cand_title_tokens
     if title_tokens:
-        ratio = len(overlap) / len(title_tokens)
-        score += ratio * 4.0
-        if overlap:
-            notes.append(f"title-overlap({','.join(sorted(overlap))})")
-        else:
+        score += (len(overlap) / len(title_tokens)) * 4.0
+        if not overlap:
             score -= 1.5
-            notes.append("no-title-overlap")
-    else:
-        # Generic title like "Demo" or "Promo": rely primarily on artist match
-        if exact_artist or token_artist_match or artist_in_title:
-            score += 1.5
-            notes.append("generic-title+artist")
+    elif exact_artist or token_artist_match or artist_in_title:
+        score += 1.5
 
-    # 3. Type preferences & penalties
     if result_type == "album" and item.get("browseId"):
         score += 1.5
     elif result_type == "song" and item.get("videoId"):
         score += 0.5
     elif result_type == "video" and item.get("videoId"):
-        if "full" in cand_title.lower() or "ep" in cand_title.lower() or "lp" in cand_title.lower() or "demo" in cand_title.lower():
+        lower_t = cand_title.lower()
+        if any(k in lower_t for k in ("full", "ep", "lp", "demo", "promo")):
             score += 1.0
     elif result_type == "playlist":
-        # User playlists are frequently noisy compilations
         score -= 4.0
-        notes.append("playlist-penalty")
 
-    return score, ", ".join(notes) if notes else "no-signals"
+    return score
 
 
 def current_match_is_suspect(rel: dict[str, Any]) -> bool:
@@ -175,7 +170,9 @@ def current_match_is_suspect(rel: dict[str, Any]) -> bool:
         if artist_compact in matched_compact:
             artist_ok = True
         elif track_artists_compact and any(
-            artist_compact in ta or ta in artist_compact for ta in track_artists_compact if len(ta) >= 2
+            artist_compact in ta or ta in artist_compact
+            for ta in track_artists_compact
+            if len(ta) >= 2
         ):
             artist_ok = True
     else:
@@ -196,18 +193,34 @@ def current_match_is_suspect(rel: dict[str, Any]) -> bool:
     return False
 
 
-def resolve_release(ytm: YTMusic, artist: str, title: str, min_score: float = 3.0) -> dict[str, Any] | None:
-    """Search YTM across albums, songs, and videos and return a populated release patch or None."""
+def clear_match_fields(rel: dict[str, Any]) -> None:
+    rel["browse_id"] = None
+    rel["video_id"] = None
+    rel["ytm_type"] = None
+    rel["ytm_matched_title"] = None
+    rel.pop("tracks", None)
+
+
+def resolve_release(
+    ytm: YTMusic,
+    artist: str,
+    title: str,
+    min_score: float = 3.0,
+) -> dict[str, Any] | None:
     queries = [f"{artist} {title}".strip()]
-    title_clean_tokens = normalize_tokens(title)
-    if title_clean_tokens and len(title_clean_tokens) < len(title.split()):
-        queries.append(f"{artist} {' '.join(sorted(title_clean_tokens))}".strip())
+    clean_tokens = normalize_tokens(title)
+    if clean_tokens and len(clean_tokens) < len(title.split()):
+        queries.append(f"{artist} {' '.join(sorted(clean_tokens))}".strip())
 
     best: tuple[float, str, str, dict[str, Any]] | None = None
     seen_ids: set[str] = set()
 
     for q in queries:
-        for filter_type, ytm_type in [("albums", "album"), ("songs", "song"), ("videos", "video")]:
+        for filter_type, ytm_type in [
+            ("albums", "album"),
+            ("songs", "song"),
+            ("videos", "video"),
+        ]:
             try:
                 results = ytm.search(q, filter=filter_type, limit=5)
             except Exception:
@@ -224,11 +237,10 @@ def resolve_release(ytm: YTMusic, artist: str, title: str, min_score: float = 3.
                     continue
                 seen_ids.add(dedup_key)
 
-                s, _ = score_candidate(artist, title, item, ytm_type)
+                s = score_candidate(artist, title, item, ytm_type)
                 if best is None or s > best[0]:
                     best = (s, ytm_type, item_id, item)
 
-        # Stop early if we already found a strong album match
         if best and best[0] >= 6.0 and best[1] == "album":
             break
 
@@ -283,7 +295,11 @@ def resolve_release(ytm: YTMusic, artist: str, title: str, min_score: float = 3.
         "tracks": [
             {
                 "artist": ", ".join(tr_artists) if tr_artists else artist,
-                "title": f"{artist} - {title}".strip(" -") if ytm_type == "video" and len(title.split()) <= 3 else matched_title,
+                "title": (
+                    f"{artist} - {title}".strip(" -")
+                    if ytm_type == "video" and len(title.split()) <= 3
+                    else matched_title
+                ),
                 "url": f"https://music.youtube.com/watch?v={vid}",
             }
         ],
@@ -292,14 +308,16 @@ def resolve_release(ytm: YTMusic, artist: str, title: str, min_score: float = 3.
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Audit and re-resolve YTM matches for a post in releases.json.")
+    parser = argparse.ArgumentParser(
+        description="Audit and re-resolve YTM matches for a post in releases.json."
+    )
     parser.add_argument("--file", default="releases.json", help="Path to releases.json")
-    parser.add_argument("--post-idx", type=int, default=0, help="Post index to audit (default: 0)")
-    parser.add_argument("--auth", default=None, help="Optional path to ytmusicapi auth JSON")
-    parser.add_argument("--delay", type=float, default=0.5, help="Delay in seconds between YTM lookups")
-    parser.add_argument("--min-score", type=float, default=3.0, help="Minimum candidate score to accept")
-    parser.add_argument("--apply", action="store_true", help="Write resolved replacements back to releases.json")
-    parser.add_argument("--dry-run", action="store_true", help="Preview replacements without writing to disk")
+    parser.add_argument("--post-idx", type=int, default=0, help="Post index to audit")
+    parser.add_argument("--auth", default=None, help="Path to ytmusicapi auth JSON")
+    parser.add_argument("--delay", type=float, default=0.5, help="Delay between lookups")
+    parser.add_argument("--min-score", type=float, default=3.0, help="Minimum score")
+    parser.add_argument("--apply", action="store_true", help="Write updates to releases.json")
+    parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
     args = parser.parse_args()
 
     path = Path(args.file)
@@ -308,63 +326,25 @@ def main() -> None:
     if not isinstance(posts, list) or not posts:
         raise SystemExit("No posts found in releases.json")
     if args.post_idx < -len(posts) or args.post_idx >= len(posts):
-        raise SystemExit(f"post_idx {args.post_idx} out of range for {len(posts)} posts")
+        raise SystemExit(f"post_idx {args.post_idx} out of range")
 
     post = posts[args.post_idx]
     releases = post.get("releases", [])
     print(f"Auditing post[{args.post_idx}]: '{post.get('post_title')}' ({len(releases)} releases)")
 
     suspect_indices = [
-        idx for idx, rel in enumerate(releases) if isinstance(rel, dict) and current_match_is_suspect(rel)
+        idx
+        for idx, rel in enumerate(releases)
+        if isinstance(rel, dict) and current_match_is_suspect(rel)
     ]
     print(f"Found {len(suspect_indices)} suspect/unexpanded entries.\n")
 
     ytm = YTMusic(args.auth) if args.auth else YTMusic()
     updated_count = 0
     cleared_count = 0
+    post_changed = False
 
     for idx in suspect_indices:
         rel = releases[idx]
         artist = str(rel.get("artist") or "").strip()
         title = str(rel.get("title") or "").strip()
-        old_matched = rel.get("ytm_matched_title")
-
-        candidate = resolve_release(ytm, artist, title, min_score=args.min_score)
-        if candidate:
-            score = candidate.pop("_score")
-            print(
-                f"  [{idx}] {artist} — {title} (was {old_matched!r})\n"
-                f"       -> NEW ({candidate['ytm_type']}, score={score:.1f}): {candidate['ytm_matched_title']!r} "
-                f"({len(candidate['tracks'])} tracks)"
-            )
-            if args.apply and not args.dry_run:
-                rel.update(candidate)
-                updated_count += 1
-        else:
-            print(
-                f"  [{idx}] {artist} — {title} (was {old_matched!r})\n"
-                f"       -> NO CONFIDENT MATCH (resetting to null/unexpanded)"
-            )
-            if args.apply and not args.dry_run:
-                rel["browse_id"] = None
-                rel["video_id"] = None
-                rel["ytm_type"] = None
-                rel["ytm_matched_title"] = None
-                rel.pop("tracks", None)
-                cleared_count += 1
-
-        time.sleep(max(0.0, args.delay))
-
-    if args.apply and not args.dry_run and (updated_count or cleared_count):
-        post.pop("playlist_id", None)
-        post.pop("playlist_url", None)
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"\nSaved {path}: updated={updated_count}, cleared={cleared_count}, playlist metadata cleared.")
-    elif args.dry_run:
-        print("\nDry run complete: no changes written to disk.")
-    else:
-        print("\nAudit complete (pass --apply to write changes to releases.json).")
-
-
-if __name__ == "__main__":
-    main()
