@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import time
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -54,14 +55,45 @@ FORMAT_SUFFIX_RE = re.compile(
     flags=re.IGNORECASE,
 )
 
+# Unrelated genres, battle leagues, or gimmick edits that should not match hardcore releases
+STRICT_NOISE_TOKENS = {
+    "jornada",
+    "liga",
+    "battle",
+    "dubstep",
+    "nightcore",
+    "slowed",
+    "reverb",
+    "instrumental",
+    "karaoke",
+}
+
+# Upload format phrases common in full-release YouTube rips/channels
+FULL_STREAM_TOKENS = {
+    "full stream",
+    "full album",
+    "full ep",
+    "full demo",
+}
+
+
+def _strip_diacritics(text: str) -> str:
+    norm = unicodedata.normalize("NFKD", str(text or ""))
+    return "".join(ch for ch in norm if not unicodedata.combining(ch))
+
 
 def normalize_tokens(text: str) -> set[str]:
-    cleaned = re.sub(r"[^a-z0-9\s]", " ", str(text or "").lower())
+    cleaned = re.sub(r"[^a-z0-9\s]", " ", _strip_diacritics(text).lower())
     return {tok for tok in cleaned.split() if len(tok) > 1 and tok not in STOPWORDS}
 
 
 def normalize_compact(text: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", str(text or "").lower())
+    return re.sub(r"[^a-z0-9]", "", _strip_diacritics(text).lower())
+
+
+def _normalize_phrase(text: str) -> str:
+    cleaned = re.sub(r"[^a-z0-9]+", " ", _strip_diacritics(text).lower())
+    return re.sub(r"\s+", " ", cleaned).strip()
 
 
 def extract_result_artists(item: dict[str, Any]) -> list[str]:
@@ -78,6 +110,84 @@ def extract_result_artists(item: dict[str, Any]) -> list[str]:
     if isinstance(author, str) and author.strip():
         return [author.strip()]
     return []
+
+
+def _artist_matches_text(release_artist: str, candidate_text: str) -> bool:
+    artist_compact = normalize_compact(release_artist)
+    if not artist_compact:
+        return True
+
+    artist_tokens = normalize_tokens(release_artist)
+    cand_compact = normalize_compact(candidate_text)
+    cand_tokens = normalize_tokens(candidate_text)
+
+    if len(artist_compact) >= 2 and artist_compact in cand_compact:
+        return True
+    if artist_tokens and len(artist_tokens & cand_tokens) >= max(1, len(artist_tokens)):
+        return True
+    return False
+
+
+def validate_candidate(
+    release_artist: str,
+    release_title: str,
+    item: dict[str, Any],
+    result_type: str,
+    tracks: list[dict[str, str]] | None = None,
+    *,
+    release_notes: str = "",
+    require_tracks_for_releases: bool = True,
+) -> tuple[bool, str]:
+    """Validate a candidate match before or after track expansion."""
+    cand_title = str(item.get("title") or "").strip()
+    norm_title_phrase = _normalize_phrase(cand_title)
+    source_context = _normalize_phrase(f"{release_artist} {release_title} {release_notes}")
+    norm_type = str(result_type or item.get("resultType") or "").strip().lower()
+
+    # 1. Reject battle leagues, unrelated genres, or edits unless requested in source
+    for token in STRICT_NOISE_TOKENS:
+        if re.search(rf"\b{re.escape(token)}\b", source_context):
+            continue
+        if re.search(rf"\b{re.escape(token)}\b", norm_title_phrase):
+            return False, f"unrequested marker '{token}' in '{cand_title}'"
+
+    # 2. For video or full-stream uploads, verify expected artist appears in title
+    is_full_stream = any(tok in norm_title_phrase for tok in FULL_STREAM_TOKENS)
+    if norm_type == "video" or is_full_stream:
+        if release_artist and not _artist_matches_text(release_artist, cand_title):
+            return False, f"video/stream title missing artist '{release_artist}' ('{cand_title}')"
+        return True, "ok (video/stream match)"
+
+    # 3. Reject empty tracklists for structured releases once tracks are fetched
+    is_structured_release = norm_type == "album" or bool(
+        re.search(r"\b(?:lp|ep|demo|split)\b", str(release_title or ""), re.IGNORECASE)
+    )
+    if require_tracks_for_releases and is_structured_release and tracks is not None and len(tracks) == 0:
+        return False, f"empty tracklist for '{release_artist} - {release_title}'"
+
+    # 4. Verify artist overlap against candidate artist metadata and expanded tracks
+    norm_artist = _normalize_phrase(release_artist)
+    is_compilation = norm_artist in {"", "compilation", "various artists", "va"}
+    if not is_compilation:
+        cand_artists = extract_result_artists(item)
+        cand_artist_str = " ".join(cand_artists)
+        artist_ok = _artist_matches_text(release_artist, cand_artist_str)
+
+        if not artist_ok and tracks:
+            matching_tracks = sum(
+                1
+                for tr in tracks
+                if isinstance(tr, dict) and _artist_matches_text(release_artist, str(tr.get("artist") or ""))
+            )
+            if len(tracks) >= 3 and matching_tracks == 0:
+                return False, f"no tracks match artist '{release_artist}'"
+            if matching_tracks > 0:
+                artist_ok = True
+
+        if not artist_ok:
+            return False, f"off-artist match for '{release_artist}' (got '{cand_artist_str or cand_title}')"
+
+    return True, "ok"
 
 
 def generate_query_variants(artist: str, title: str) -> list[str]:
@@ -213,35 +323,26 @@ def current_match_is_suspect(rel: dict[str, Any]) -> bool:
 
     artist = str(rel.get("artist") or "").strip()
     title = str(rel.get("title") or "").strip()
-    artist_compact = normalize_compact(artist)
-    matched_compact = normalize_compact(matched_title)
-
+    notes = str(rel.get("notes") or "").strip()
     track_list = tracks if isinstance(tracks, list) else []
-    track_artists_compact = [
-        normalize_compact(str(t.get("artist", "")))
-        for t in track_list
-        if isinstance(t, dict) and t.get("artist")
-    ]
 
-    artist_ok = False
-    if artist_compact:
-        if artist_compact in matched_compact:
-            artist_ok = True
-        elif track_artists_compact and any(
-            artist_compact in ta or ta in artist_compact
-            for ta in track_artists_compact
-            if len(ta) >= 2
-        ):
-            artist_ok = True
-    else:
-        artist_ok = True
-
-    if not artist_ok:
+    valid, _ = validate_candidate(
+        artist,
+        title,
+        {"title": matched_title, "artists": [{"name": t.get("artist")} for t in track_list if isinstance(t, dict) and t.get("artist")]},
+        ytm_type,
+        tracks=track_list if ytm_type == "album" or track_list else None,
+        release_notes=notes,
+    )
+    if not valid:
         return True
 
     title_tokens = normalize_tokens(title)
     matched_tokens = normalize_tokens(matched_title)
     title_compact = normalize_compact(title)
+    matched_compact = normalize_compact(matched_title)
+    artist_compact = normalize_compact(artist)
+
     if title_tokens and matched_tokens and not (title_tokens & matched_tokens):
         compact_ok = bool(title_compact) and (
             title_compact in matched_compact or matched_compact in title_compact
@@ -329,6 +430,7 @@ def resolve_release(
     artist: str,
     title: str,
     min_score: float = 3.0,
+    notes: str = "",
 ) -> dict[str, Any] | None:
     best: tuple[float, str, str, dict[str, Any]] | None = None
     seen_ids: set[str] = set()
@@ -400,6 +502,16 @@ def resolve_release(
                     continue
                 seen_ids.add(dedup_key)
 
+                is_valid, _ = validate_candidate(
+                    artist,
+                    title,
+                    item,
+                    resolved_type,
+                    release_notes=notes,
+                )
+                if not is_valid:
+                    continue
+
                 s = score_candidate(artist, title, item, resolved_type)
                 if best is None or s > best[0]:
                     best = (s, resolved_type, item_id, item)
@@ -415,6 +527,18 @@ def resolve_release(
 
     if ytm_type == "album":
         tracks = fetch_album_tracks(ytm, item_id, artist)
+        is_valid, reason = validate_candidate(
+            artist,
+            title,
+            item,
+            ytm_type,
+            tracks=tracks,
+            release_notes=notes,
+        )
+        if not is_valid:
+            print(f"       [rejected album after track check: {reason}]", flush=True)
+            return None
+
         return {
             "browse_id": item_id,
             "video_id": None,
@@ -426,6 +550,18 @@ def resolve_release(
 
     if ytm_type == "playlist":
         tracks = fetch_playlist_tracks(ytm, item_id, artist)
+        is_valid, reason = validate_candidate(
+            artist,
+            title,
+            item,
+            ytm_type,
+            tracks=tracks,
+            release_notes=notes,
+        )
+        if not is_valid:
+            print(f"       [rejected playlist after track check: {reason}]", flush=True)
+            return None
+
         return {
             "browse_id": item_id,
             "video_id": None,
@@ -504,9 +640,16 @@ def main() -> None:
         rel = releases[idx]
         artist = str(rel.get("artist") or "").strip()
         title = str(rel.get("title") or "").strip()
+        notes = str(rel.get("notes") or "").strip()
         old_matched = rel.get("ytm_matched_title")
 
-        candidate = resolve_release(ytm, artist, title, min_score=args.min_score)
+        candidate = resolve_release(
+            ytm,
+            artist,
+            title,
+            min_score=args.min_score,
+            notes=notes,
+        )
         if candidate:
             score = candidate.pop("_score")
             print(
