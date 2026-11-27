@@ -1,0 +1,158 @@
+name: Fix Existing Entries in releases.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_idx:
+        description: "Target post index (0 = newest, or 'all' across all posts)"
+        required: false
+        default: "0"
+        type: string
+      re_resolve:
+        description: "Re-run scripts/audit_post.py --apply after clearing bad matches"
+        required: false
+        default: true
+        type: boolean
+      rebuild_site:
+        description: "Run build_site.py after updating releases.json"
+        required: false
+        default: true
+        type: boolean
+
+concurrency:
+  group: releases-json-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fix-entries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install "ytmusicapi>=1.8.0"
+
+      - name: Decode YouTube Music auth credential
+        if: env.YTM_AUTH_B64 != ''
+        env:
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+        run: |
+          printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
+
+      - name: Clear mismatched or playlist entries in releases.json
+        env:
+          TARGET_POST: ${{ github.event.inputs.post_idx }}
+        run: |
+          python -c '
+          import json, re
+          from pathlib import Path
+
+          p = Path("releases.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          posts = data.get("posts", [])
+
+          def compact(s):
+              return re.sub(r"[^a-z0-9]", "", str(s or "").lower())
+
+          raw = (TARGET_POST or "0").strip().lower()
+          if raw == "all":
+              target_posts = posts
+          else:
+              idx = int(raw)
+              target_posts = [posts[idx]]
+
+          cleared = 0
+          for post in target_posts:
+              post_cleared = False
+              for rel in post.get("releases", []):
+                  artist = compact(rel.get("artist"))
+                  matched = compact(rel.get("ytm_matched_title"))
+                  tracks = rel.get("tracks") or []
+                  track_artists = [compact(t.get("artist")) for t in tracks if isinstance(t, dict)]
+
+                  artist_ok = (
+                      len(artist) >= 3 and (artist in matched or matched in artist)
+                  ) or any(len(artist) >= 3 and (artist in ta or ta in artist) for ta in track_artists)
+
+                  if rel.get("ytm_type") == "playlist" or (rel.get("ytm_matched_title") and not artist_ok):
+                      rel["browse_id"] = None
+                      rel["video_id"] = None
+                      rel["ytm_type"] = None
+                      rel["ytm_matched_title"] = None
+                      rel.pop("tracks", None)
+                      cleared += 1
+                      post_cleared = True
+              if post_cleared:
+                  post.pop("playlist_id", None)
+                  post.pop("playlist_url", None)
+
+          p.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          print(f"Cleared {cleared} mismatched/playlist entries.")
+          '
+
+      - name: Re-resolve cleared entries via audit_post.py
+        if: ${{ github.event.inputs.re_resolve == true && hashFiles('scripts/audit_post.py') != '' }}
+        env:
+          TARGET_POST: ${{ github.event.inputs.post_idx }}
+        run: |
+          AUTH_ARG=""
+          if [ -f .ytm_auth.json ]; then
+            AUTH_ARG="--auth .ytm_auth.json"
+          fi
+          RAW=$(printf '%s' "$TARGET_POST" | tr -d '[:space:]')
+          if [ "$RAW" = "all" ]; then
+            python -c '
+            import json, subprocess
+            posts = json.load(open("releases.json", encoding="utf-8")).get("posts", [])
+            for i in range(len(posts)):
+                subprocess.run(["python", "scripts/audit_post.py", "--post-idx", str(i), "--apply", *("$AUTH_ARG".split())], check=True)
+            '
+          else
+            python scripts/audit_post.py --post-idx "$RAW" --apply $AUTH_ARG
+
+      - name: Remove temporary auth credential
+        if: always()
+        run: rm -f .ytm_auth.json
+
+      - name: Rebuild static site
+        if: ${{ github.event.inputs.rebuild_site == true && hashFiles('build_site.py') != '' }}
+        run: python build_site.py
+
+      - name: Commit and push updated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in releases.json index.html privacy.html terms.html; do
+            if [ -f "$f" ]; then
+              git add "$f"
+            fi
+          done
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "fix: clean and re-resolve releases.json entries [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
