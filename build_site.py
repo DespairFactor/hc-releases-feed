@@ -46,6 +46,18 @@ def clean_search_query(artist: str, title: str) -> str:
     return f"{clean_artist} {clean_title or title}".strip()
 
 
+def _first_track_url(rel: dict) -> str:
+    """Return the first valid track URL from a release's tracks list if present."""
+    tracks = rel.get("tracks")
+    if isinstance(tracks, list):
+        for tr in tracks:
+            if isinstance(tr, dict):
+                tr_url = str(tr.get("url") or "").strip()
+                if tr_url.startswith(("http://", "https://")):
+                    return tr_url
+    return ""
+
+
 def get_ytm_url(rel: dict) -> tuple[str, str]:
     """Return the destination URL and a badge/label based on the resolved type."""
     browse_id = (rel.get("browse_id") or "").strip()
@@ -53,6 +65,11 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
     res_type = (rel.get("ytm_type") or "").strip().lower()
 
     if browse_id:
+        if browse_id.startswith("OLAK5uy_"):
+            first_track = _first_track_url(rel)
+            if first_track:
+                return first_track, "Song"
+            return f"https://music.youtube.com/playlist?list={browse_id}", "Playlist"
         url = f"https://music.youtube.com/browse/{browse_id}"
         label = "Album" if "album" in res_type or browse_id.startswith("MPREb_") else "Playlist"
         return url, label
@@ -60,6 +77,10 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
     if video_id:
         url = f"https://music.youtube.com/watch?v={video_id}"
         return url, "Track"
+
+    first_track = _first_track_url(rel)
+    if first_track:
+        return first_track, "Song"
 
     query = quote_plus(clean_search_query(rel.get("artist", ""), rel.get("title", "")))
     return f"https://music.youtube.com/search?q={query}", "Search"
@@ -80,7 +101,7 @@ def build_post_queue_items(releases: list) -> list[dict]:
             for tr in tracks:
                 if not isinstance(tr, dict):
                     continue
-                url = str(tr.get("url") or "")
+                url = str(tr.get("url") or "").strip() or ytm_url
                 items.append({
                     "artist": str(tr.get("artist") or artist),
                     "title": str(tr.get("title") or title),
