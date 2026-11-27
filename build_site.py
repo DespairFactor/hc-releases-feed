@@ -58,6 +58,19 @@ def _first_track_url(rel: dict) -> str:
     return ""
 
 
+def _first_track_video_id(rel: dict) -> str:
+    """Extract the first 11-character YouTube video ID from a release's tracks if present."""
+    tracks = rel.get("tracks")
+    if isinstance(tracks, list):
+        for tr in tracks:
+            if isinstance(tr, dict):
+                tr_url = str(tr.get("url") or "").strip()
+                match = re.search(r"(?:v=|youtu\.be/)([a-zA-Z0-9_-]{11})", tr_url)
+                if match:
+                    return match.group(1)
+    return ""
+
+
 def get_ytm_url(rel: dict) -> tuple[str, str]:
     """Return the destination URL and a badge/label based on the resolved type."""
     browse_id = (rel.get("browse_id") or "").strip()
@@ -84,6 +97,25 @@ def get_ytm_url(rel: dict) -> tuple[str, str]:
 
     query = quote_plus(clean_search_query(rel.get("artist", ""), rel.get("title", "")))
     return f"https://music.youtube.com/search?q={query}", "Search"
+
+
+def get_yt_direct_url(rel: dict) -> tuple[str, str]:
+    """Return a direct www.youtube.com watch or playlist URL when resolved."""
+    browse_id = (rel.get("browse_id") or "").strip()
+    video_id = (rel.get("video_id") or "").strip()
+
+    if browse_id.startswith("OLAK5uy_"):
+        return f"https://www.youtube.com/playlist?list={browse_id}", "Playlist"
+
+    if video_id:
+        return f"https://www.youtube.com/watch?v={video_id}", "Video"
+
+    first_vid = _first_track_video_id(rel)
+    if first_vid:
+        return f"https://www.youtube.com/watch?v={first_vid}", "Track"
+
+    query = quote_plus(clean_search_query(rel.get("artist", ""), rel.get("title", "")))
+    return f"https://www.youtube.com/results?search_query={query}", "Search"
 
 
 def build_post_queue_items(releases: list) -> list[dict]:
@@ -342,8 +374,7 @@ def render_html(store: dict) -> str:
             notes = html.escape(notes_raw)
 
             ytm_url, ytm_badge = get_ytm_url(rel)
-            yt_query = quote_plus(clean_search_query(artist_raw, title_raw))
-            yt_url = f"https://www.youtube.com/results?search_query={yt_query}"
+            yt_url, _ = get_yt_direct_url(rel)
 
             notes_markup = f'<span class="badge notes-badge">{notes}</span>' if notes else ""
             type_markup = f'<span class="badge type-badge">{ytm_badge}</span>'
