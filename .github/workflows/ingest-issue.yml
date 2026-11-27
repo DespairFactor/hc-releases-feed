@@ -48,19 +48,21 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: python scripts/ingest_issue.py
+        run: python -u scripts/ingest_issue.py
 
-      - name: Resolve video IDs and expand tracks for new post
+      - name: Resolve and expand tracks for new post
         run: |
           AUTH_ARGS=""
           if [ -f .ytm_auth.json ]; then
             AUTH_ARGS="--auth .ytm_auth.json"
           fi
           if [ -f resolve_ytm_ids.py ]; then
-            python resolve_ytm_ids.py --max-lookups 25 --delay 0.6 || true
+            python -u resolve_ytm_ids.py --max-lookups 25 --delay 0.6 || true
           fi
-          if [ -f scripts/expand_release_tracks.py ]; then
-            python scripts/expand_release_tracks.py --post-idx 0 --max-expansions 40 --delay 0.6 $AUTH_ARGS || true
+          if [ -f scripts/audit_post.py ]; then
+            python -u scripts/audit_post.py --post-idx 0 --min-score 3.0 --apply $AUTH_ARGS || true
+          elif [ -f scripts/expand_release_tracks.py ]; then
+            python -u scripts/expand_release_tracks.py --post-idx 0 --max-expansions 40 --delay 0.6 $AUTH_ARGS || true
           fi
 
       - name: Publish playlist for new post
@@ -69,7 +71,7 @@ jobs:
           YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
-        run: python scripts/publish_playlists.py --auth .ytm_auth.json --post-idx 0 --limit 1 || true
+        run: python -u scripts/publish_playlists.py --auth .ytm_auth.json --post-idx 0 --limit 1 || true
 
       - name: Remove temporary auth credential
         if: always()
@@ -77,7 +79,7 @@ jobs:
 
       - name: Rebuild static site
         if: hashFiles('build_site.py') != ''
-        run: python build_site.py
+        run: python -u build_site.py
 
       - name: Commit and push updates
         run: |
