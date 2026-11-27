@@ -1,0 +1,208 @@
+name: Force Purge and Resolve All Posts
+
+on:
+  workflow_dispatch:
+    inputs:
+      min_score:
+        description: "Minimum candidate score (default: 3.0)"
+        required: false
+        default: "3.0"
+        type: string
+      recreate_playlists:
+        description: "Force recreate playlists on YouTube Music (requires secrets)"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: releases-json-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  purge-and-resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install "ytmusicapi>=1.8.0"
+          fi
+
+      - name: Decode YouTube Music auth credential
+        if: env.YTM_AUTH_B64 != ''
+        env:
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+        run: |
+          printf '%s' "$YTM_AUTH_B64" | base64 -d > .ytm_auth.json
+
+      - name: Unconditionally purge match metadata across all posts
+        run: |
+          python -u -c '
+          import json
+          from pathlib import Path
+
+          path = Path("releases.json")
+          if not path.exists():
+              raise SystemExit("releases.json not found in repository root")
+
+          data = json.loads(path.read_text(encoding="utf-8"))
+          posts = data.get("posts", [])
+          total = len(posts)
+
+          if total == 0:
+              print("No posts found in releases.json")
+              exit(0)
+
+          purged_releases = 0
+          purged_playlists = 0
+
+          for post in posts:
+              if "playlist_id" in post or "playlist_url" in post:
+                  post.pop("playlist_id", None)
+                  post.pop("playlist_url", None)
+                  purged_playlists += 1
+
+              for rel in post.get("releases", []):
+                  if not isinstance(rel, dict):
+                      continue
+                  rel["browse_id"] = None
+                  rel["video_id"] = None
+                  rel["ytm_type"] = None
+                  rel["ytm_matched_title"] = None
+                  rel.pop("tracks", None)
+                  purged_releases += 1
+
+          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          print(f"Purged {purged_releases} releases and {purged_playlists} playlist links across {total} post(s).", flush=True)
+          '
+
+      - name: Clean re-resolve all posts via audit_post.py
+        run: |
+          MIN_SCORE="${{ github.event.inputs.min_score || '3.0' }}"
+          AUTH_ARGS=""
+          if [ -f .ytm_auth.json ]; then
+            AUTH_ARGS="--auth .ytm_auth.json"
+          fi
+
+          python -u -c '
+          import json, subprocess, sys
+
+          min_score = sys.argv[1].strip()
+          auth_args = sys.argv[2:]
+
+          with open("releases.json", encoding="utf-8") as f:
+              data = json.load(f)
+
+          posts = data.get("posts", [])
+          total = len(posts)
+          print(f"Starting resolution across {total} posts with min_score={min_score}...", flush=True)
+
+          for idx in range(total):
+              title = posts[idx].get("post_title", f"Post {idx}")
+              print(f"\n==================================================", flush=True)
+              print(f"=== Resolving Post [{idx}/{total - 1}]: {title}", flush=True)
+              print(f"==================================================", flush=True)
+
+              cmd = [
+                  "python", "-u", "scripts/audit_post.py",
+                  "--post-idx", str(idx),
+                  "--min-score", min_score,
+                  "--apply",
+              ] + auth_args
+
+              res = subprocess.run(cmd)
+              if res.returncode != 0:
+                  print(f"Warning: audit_post.py returned non-zero code {res.returncode} for post {idx}", file=sys.stderr, flush=True)
+          ' "$MIN_SCORE" $AUTH_ARGS
+
+      - name: Force recreate and relink playlists
+        if: ${{ (github.event.inputs.recreate_playlists == 'true' || github.event.inputs.recreate_playlists == true) && env.YTM_AUTH_B64 != '' && hashFiles('scripts/publish_playlists.py') != '' }}
+        env:
+          YTM_AUTH_B64: ${{ secrets.YTM_AUTH_B64 }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+        run: |
+          echo "Recreating playlists..."
+          python -u scripts/publish_playlists.py --auth .ytm_auth.json --force
+
+          echo "Relinking playlist URLs from library..."
+          python -u -c '
+          import json
+          from pathlib import Path
+          from ytmusicapi import YTMusic
+
+          p = Path("releases.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          ytm = YTMusic(".ytm_auth.json")
+          lib = ytm.get_library_playlists(limit=200) or []
+
+          by_title = {}
+          for item in lib:
+              if not isinstance(item, dict):
+                  continue
+              t = str(item.get("title") or "").strip().lower()
+              pid = item.get("playlistId") or item.get("browseId")
+              if t and pid:
+                  by_title.setdefault(t, pid)
+
+          relinked = 0
+          for post in d.get("posts", []):
+              pt = str(post.get("post_title") or "").strip().lower()
+              pid = by_title.get(pt)
+              if pid:
+                  post["playlist_id"] = pid
+                  post["playlist_url"] = f"https://music.youtube.com/playlist?list={pid}"
+                  relinked += 1
+
+          p.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          print(f"Relinked {relinked} posts from library.", flush=True)
+          '
+
+      - name: Remove temporary auth credential
+        if: always()
+        run: rm -f .ytm_auth.json
+
+      - name: Rebuild static site
+        if: hashFiles('build_site.py') != ''
+        run: python -u build_site.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in releases.json ytmusic_cache.json index.html privacy.html terms.html; do
+            if [ -f "$f" ]; then
+              git add "$f"
+            fi
+          done
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: force purge and re-resolve all posts [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              echo "Pushed successfully on attempt $attempt."
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
