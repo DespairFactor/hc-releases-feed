@@ -12,253 +12,1073 @@
           "artist": "Alea Jacta Est",
           "title": "Per Angusta EP",
           "notes": "Toulouse, France",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_npFbsItmve2Hu-Jz5Wbpzl5qmTlacKXpU",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Per Angusta",
+          "tracks": [
+            {
+              "artist": "Alea Jacta Est",
+              "title": "The Reckoning",
+              "url": "https://music.youtube.com/watch?v=E9TndfXb4T4"
+            },
+            {
+              "artist": "Alea Jacta Est",
+              "title": "Conquer Them All",
+              "url": "https://music.youtube.com/watch?v=1ay1HQfsJc4"
+            },
+            {
+              "artist": "Alea Jacta Est",
+              "title": "Stay Back",
+              "url": "https://music.youtube.com/watch?v=C1AjixRWXOQ"
+            },
+            {
+              "artist": "Alea Jacta Est",
+              "title": "LE CLUB",
+              "url": "https://music.youtube.com/watch?v=ifrPsA09UjQ"
+            },
+            {
+              "artist": "Alea Jacta Est",
+              "title": "Together We Stand",
+              "url": "https://music.youtube.com/watch?v=SMdqc3gB0Io"
+            },
+            {
+              "artist": "Alea Jacta Est",
+              "title": "Oppression",
+              "url": "https://music.youtube.com/watch?v=rayQHAWnYAs"
+            }
+          ]
         },
         {
           "artist": "Withdrawal",
           "title": "Blood, Flesh & Faith EP",
           "notes": "Winnipeg, Canada",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_nQLNAFWCz-36Qod7fE3KE9JWkpgGkhbuA",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Faith Flesh and Blood",
+          "tracks": [
+            {
+              "artist": "Withdrawal",
+              "title": "Shapeshifter",
+              "url": "https://music.youtube.com/watch?v=QAknTqlTCvU"
+            },
+            {
+              "artist": "Withdrawal",
+              "title": "Blood Law",
+              "url": "https://music.youtube.com/watch?v=mlv15ULH8sA"
+            },
+            {
+              "artist": "Withdrawal",
+              "title": "Kingdom Come",
+              "url": "https://music.youtube.com/watch?v=bBaA8DTIXFs"
+            },
+            {
+              "artist": "Withdrawal",
+              "title": "Rotten Hell",
+              "url": "https://music.youtube.com/watch?v=TvVmfDjA-m8"
+            }
+          ]
         },
         {
           "artist": "Hellscape",
           "title": "World Devours Itself EP",
           "notes": "North East France",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_kFggZ2SsDm7TeHYgibCq_-b_JnIhsDtiU",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "World Devours Itself",
+          "tracks": [
+            {
+              "artist": "Hellscape",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=UxjfkZBaxWQ"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "My Internal Enemy",
+              "url": "https://music.youtube.com/watch?v=-E0o1tVxRTQ"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "Road To Death",
+              "url": "https://music.youtube.com/watch?v=elO8dbAJLZk"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "World Devours Itself",
+              "url": "https://music.youtube.com/watch?v=bZVbVDlYQ9E"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "I Rise Above",
+              "url": "https://music.youtube.com/watch?v=jg1mpEZVJ64"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "Seasons Of Decay",
+              "url": "https://music.youtube.com/watch?v=p1EJ8ZQQimo"
+            },
+            {
+              "artist": "Hellscape",
+              "title": "I Burn",
+              "url": "https://music.youtube.com/watch?v=zQ45JJE7nxo"
+            }
+          ]
         },
         {
           "artist": "In Other Climes",
           "title": "Somos LP",
           "notes": "Nice, France",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_nt1i0EtVJ_EsfjN_bgxZWkooVCXbkH9us",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Somos",
+          "tracks": []
         },
         {
           "artist": "PeelingFlesh",
           "title": "PeelingFlesh LP",
           "notes": "Oklahoma",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_n4GKUZkVKLL2S23MnWFY0_DK7cn6G_OQA",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "PeelingFlesh",
+          "tracks": [
+            {
+              "artist": "PeelingFlesh",
+              "title": "Crash Out Intro",
+              "url": "https://music.youtube.com/watch?v=_iVm_66tmeA"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Murderous Intent (feat. Missing Link)",
+              "url": "https://music.youtube.com/watch?v=QY4jFILeT4g"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Wig Split (feat. Sanguisugabogg)",
+              "url": "https://music.youtube.com/watch?v=H3CvKmnoDiM"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Lethal Interjection (feat. Bayway NJ)",
+              "url": "https://music.youtube.com/watch?v=sS77UoQYXdY"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "T.D.C.U.",
+              "url": "https://music.youtube.com/watch?v=s7PUjE8fRs4"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Crackology",
+              "url": "https://music.youtube.com/watch?v=UU6MfSn07xs"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "No Alibi (feat. Stabbing)",
+              "url": "https://music.youtube.com/watch?v=ovkaY03OudY"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Fuck Around Find Out",
+              "url": "https://music.youtube.com/watch?v=5I23L5B5jGE"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Full Clip",
+              "url": "https://music.youtube.com/watch?v=-xwkVC-JvdY"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "It's Goin Down, Pt. 2 (feat. Extermination Dismemberment)",
+              "url": "https://music.youtube.com/watch?v=8dR2k0Bzp04"
+            },
+            {
+              "artist": "PeelingFlesh",
+              "title": "Bottom Text",
+              "url": "https://music.youtube.com/watch?v=5frLDnji4SY"
+            }
+          ]
         },
         {
           "artist": "Pure Living Hell",
           "title": "Brute Force Hymns EP",
           "notes": "Houston, Texas",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_nKUZmQjWWjSn8W2lMWnA-7K5rnHz8GjGo",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Brute Force Hymns",
+          "tracks": [
+            {
+              "artist": "Pure Living Hell",
+              "title": "Ravishing",
+              "url": "https://music.youtube.com/watch?v=oCHHSRYqTbM"
+            },
+            {
+              "artist": "Pure Living Hell",
+              "title": "Forgotten War",
+              "url": "https://music.youtube.com/watch?v=CeDPnuok0z4"
+            },
+            {
+              "artist": "Pure Living Hell",
+              "title": "Neurosis",
+              "url": "https://music.youtube.com/watch?v=qeTimb6tFfs"
+            }
+          ]
         },
         {
           "artist": "Wind For Wings",
           "title": "On High In Blue Tomorrows EP",
           "notes": "Detroit",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_maPpBk4pKdG8h7CNZz9hsLVQGfDopXfEM",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "On High in Blue Tomorrows",
+          "tracks": [
+            {
+              "artist": "Wind for Wings",
+              "title": "Sunday is the Day I Left",
+              "url": "https://music.youtube.com/watch?v=eohiNrGqJmQ"
+            },
+            {
+              "artist": "Wind for Wings",
+              "title": "Befoulment, Revival",
+              "url": "https://music.youtube.com/watch?v=dZ_2I0Dzw8g"
+            },
+            {
+              "artist": "Wind for Wings",
+              "title": "Porcelain Tears",
+              "url": "https://music.youtube.com/watch?v=E71d1OpqJig"
+            },
+            {
+              "artist": "Wind for Wings",
+              "title": "Lush Inharmony",
+              "url": "https://music.youtube.com/watch?v=MkItjMozaS4"
+            },
+            {
+              "artist": "Wind for Wings",
+              "title": "Shattered Facade",
+              "url": "https://music.youtube.com/watch?v=yVMQ3G92Rbg"
+            },
+            {
+              "artist": "Wind for Wings",
+              "title": "Samsara",
+              "url": "https://music.youtube.com/watch?v=FBhW4_UPID4"
+            }
+          ]
         },
         {
           "artist": "Exile",
           "title": "Afflictions Of Pain EP",
           "notes": "Glasgow, Scotland",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_mqwrq058f4MRYNcUL_rKMcOweM6A44E4o",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "AFFLICTIONS OF PAIN",
+          "tracks": [
+            {
+              "artist": "EXILE",
+              "title": "EXILE",
+              "url": "https://music.youtube.com/watch?v=8cOL2AgM6GE"
+            },
+            {
+              "artist": "EXILE",
+              "title": "BURIED ALIVE (feat. Frayed Ends BC)",
+              "url": "https://music.youtube.com/watch?v=IbedyW4AwSA"
+            },
+            {
+              "artist": "EXILE",
+              "title": "AS FLESH DECAYS (feat. Bathed in Sin)",
+              "url": "https://music.youtube.com/watch?v=g-Mirz55a1E"
+            },
+            {
+              "artist": "EXILE",
+              "title": "INTENT",
+              "url": "https://music.youtube.com/watch?v=NpKsWmFVSEU"
+            }
+          ]
         },
         {
           "artist": "Torture Smile",
           "title": "Smile:Silenced Lament EP",
           "notes": "Kawasaki, Japan",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_mnkKbRQbGetkQTBraD07tQdZwx9Kb4dQQ",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Smile: Silenced Lament",
+          "tracks": [
+            {
+              "artist": "Torture Smile",
+              "title": "213.924.25",
+              "url": "https://music.youtube.com/watch?v=6LClKZxO-ps"
+            },
+            {
+              "artist": "Torture Smile",
+              "title": "Dirty Rat",
+              "url": "https://music.youtube.com/watch?v=N2DdeulmQYw"
+            },
+            {
+              "artist": "Torture Smile",
+              "title": "Invisible Scars",
+              "url": "https://music.youtube.com/watch?v=kzpLgOMpQ9E"
+            },
+            {
+              "artist": "Torture Smile",
+              "title": "Take or Pay",
+              "url": "https://music.youtube.com/watch?v=HNAidJyK7EQ"
+            }
+          ]
         },
         {
           "artist": "Violaine",
           "title": "Violaine Demo",
           "notes": "Brighton, UK",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_kdSIvmlA-sxirmm6IW-mIIwqKpgPYHPfc",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Ian Violaine",
+          "tracks": [
+            {
+              "artist": "Ian Violaine",
+              "title": "Stop Whispering",
+              "url": "https://music.youtube.com/watch?v=v82BMuSC2YI"
+            },
+            {
+              "artist": "Ian Violaine",
+              "title": "Breath",
+              "url": "https://music.youtube.com/watch?v=Fgzd76WalW4"
+            },
+            {
+              "artist": "Ian Violaine",
+              "title": "Heal",
+              "url": "https://music.youtube.com/watch?v=wiw_wHc7s8Q"
+            },
+            {
+              "artist": "Ian Violaine",
+              "title": "She Walks the Strett",
+              "url": "https://music.youtube.com/watch?v=FJWaZF49joU"
+            }
+          ]
         },
         {
           "artist": "Miserere",
           "title": "Detras De Nosotros Estamos Ustedes LP",
           "notes": "Buenos Aires, Argentina",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_lIILrw8GeUJ4Z4f2I04ilTj6SzQvCRxJ8",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Detras de Nosotros Estamos Ustedes",
+          "tracks": [
+            {
+              "artist": "Miserere",
+              "title": "Hacha y Machete",
+              "url": "https://music.youtube.com/watch?v=tJaCMMSh4hQ"
+            },
+            {
+              "artist": "Miserere",
+              "title": "Infección",
+              "url": "https://music.youtube.com/watch?v=wLXjxtXWoPQ"
+            },
+            {
+              "artist": "Miserere",
+              "title": "Desobediencia Civil (feat. León Pardo)",
+              "url": "https://music.youtube.com/watch?v=4Jc__AhNXz0"
+            },
+            {
+              "artist": "Miserere",
+              "title": "No Estamos Bien",
+              "url": "https://music.youtube.com/watch?v=3wDKPBzCtpw"
+            },
+            {
+              "artist": "Miserere",
+              "title": "Reza por Piedad",
+              "url": "https://music.youtube.com/watch?v=j20Fhaq1ZE8"
+            },
+            {
+              "artist": "Miserere",
+              "title": "La Palabra Como Arma",
+              "url": "https://music.youtube.com/watch?v=JgM95DkuClM"
+            },
+            {
+              "artist": "Miserere",
+              "title": "Kaputt Mundi",
+              "url": "https://music.youtube.com/watch?v=kK6FBwCTm_g"
+            },
+            {
+              "artist": "Miserere",
+              "title": "Estamos Ustedes",
+              "url": "https://music.youtube.com/watch?v=iHuT9oYfjOk"
+            }
+          ]
         },
         {
           "artist": "Mite",
           "title": "Beyond Repair LP",
           "notes": "Odense, Denmark",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_lWVqvcSNRZWZg7d1waRijh1r-qG9wr75s",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Beyond Repair",
+          "tracks": [
+            {
+              "artist": "MITE DK",
+              "title": "Intro",
+              "url": "https://music.youtube.com/watch?v=oKFnA_CtTkY"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Trauma Dealer",
+              "url": "https://music.youtube.com/watch?v=1PC480t0i9w"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Boot On My Neck",
+              "url": "https://music.youtube.com/watch?v=aTJ9trKdNKI"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "I Am War",
+              "url": "https://music.youtube.com/watch?v=4FkXo2QBwjw"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Death",
+              "url": "https://music.youtube.com/watch?v=9gDahtD8aFQ"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Predator",
+              "url": "https://music.youtube.com/watch?v=IZgj_b3_RKA"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Gas Station Heroin",
+              "url": "https://music.youtube.com/watch?v=wdHkwRUNrl8"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Wasted Time",
+              "url": "https://music.youtube.com/watch?v=U7O4CBf9unw"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Dumb As Shit",
+              "url": "https://music.youtube.com/watch?v=fwAh22I8Sjc"
+            },
+            {
+              "artist": "MITE DK",
+              "title": "Unborn",
+              "url": "https://music.youtube.com/watch?v=OIJ9FbylVYY"
+            }
+          ]
         },
         {
           "artist": "Still Cold",
           "title": "Torn Through By The Unbound Pains EP",
           "notes": "Budapest, Hungary",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_lI1uqnPTPu2E3oxtly3cM5G9aWZxBY5VY",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "TORN THROUGH BY THE UNBOUND PAINS",
+          "tracks": [
+            {
+              "artist": "STILL COLD",
+              "title": "TRUE TORTURE",
+              "url": "https://music.youtube.com/watch?v=or5FWK22njI"
+            },
+            {
+              "artist": "STILL COLD",
+              "title": "SIC ITUR AD ASTRA",
+              "url": "https://music.youtube.com/watch?v=H7iYnF9mWJg"
+            },
+            {
+              "artist": "STILL COLD",
+              "title": "D.D.M.",
+              "url": "https://music.youtube.com/watch?v=4NY0U_NfoyI"
+            }
+          ]
         },
         {
           "artist": "War Prison",
           "title": "Face The Fire EP",
           "notes": "Tucson, Arizona",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_lt_6sucCnrCpP0KqOeTxPxgNnnBfp8XZg",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Face The Fire",
+          "tracks": [
+            {
+              "artist": "War Prison",
+              "title": "Face The Fire",
+              "url": "https://music.youtube.com/watch?v=hJzNp1tritI"
+            },
+            {
+              "artist": "War Prison",
+              "title": "Sudden Death",
+              "url": "https://music.youtube.com/watch?v=sLtSdVWcVhM"
+            }
+          ]
         },
         {
           "artist": "Continued Suffering",
           "title": "Life Is Nothing But... EP",
           "notes": "Skåne County, Sweden",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "SFAsc7lyhkE",
+          "ytm_type": "song",
+          "ytm_matched_title": "CUMMED IN",
+          "tracks": [
+            {
+              "artist": "SUFFERING",
+              "title": "CUMMED IN",
+              "url": "https://music.youtube.com/watch?v=SFAsc7lyhkE"
+            }
+          ]
         },
         {
           "artist": "Ornament",
           "title": "Through The Sorrowfilled Summer Promo",
           "notes": "Indonesia",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_kFjFBLheOZHRUcRQBNvmSiAhWLLqsAzZA",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Through The Sorrowfilled Summer",
+          "tracks": [
+            {
+              "artist": "Ornament",
+              "title": "Signs of Jenova",
+              "url": "https://music.youtube.com/watch?v=IUUzzlU2d3U"
+            },
+            {
+              "artist": "Ornament",
+              "title": "An Astral Image of Disbelief",
+              "url": "https://music.youtube.com/watch?v=7X-1777ULzo"
+            }
+          ]
         },
         {
           "artist": "Dreadweight",
           "title": "Place Of Hate EP",
           "notes": "Las Vegas, Nevada",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_ma9dovP9fw61c65E5TZMvYwR_rtekNuuc",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "PLACE OF HATE",
+          "tracks": [
+            {
+              "artist": "DREADWEIGHT",
+              "title": "DROPKICK",
+              "url": "https://music.youtube.com/watch?v=nX5guK_GdwI"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "FILTH",
+              "url": "https://music.youtube.com/watch?v=f6Wbit2SYfU"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "ASYLUM",
+              "url": "https://music.youtube.com/watch?v=CgX8ojrUsK8"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "CTRL",
+              "url": "https://music.youtube.com/watch?v=Pd--RrepvF8"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "MINDLESS",
+              "url": "https://music.youtube.com/watch?v=VrycE0YI1cI"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "ONE TOO MANY (feat. Lunacy)",
+              "url": "https://music.youtube.com/watch?v=Oj6XyiVZxyU"
+            },
+            {
+              "artist": "DREADWEIGHT",
+              "title": "DREADWEIGHT",
+              "url": "https://music.youtube.com/watch?v=VV3JR0j3zI8"
+            }
+          ]
         },
         {
           "artist": "Bigbite",
           "title": "Wall Of Greed EP",
           "notes": "Indonesia",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "YfPAU9MUYv8",
+          "ytm_type": "video",
+          "ytm_matched_title": "[EGxHC] BIGBITE - Wall Of Greed - 2026 (Full Stream)",
+          "tracks": [
+            {
+              "artist": "XstekkahX",
+              "title": "[EGxHC] BIGBITE - Wall Of Greed - 2026 (Full Stream)",
+              "url": "https://music.youtube.com/watch?v=YfPAU9MUYv8"
+            }
+          ]
         },
         {
           "artist": "Tiger Uppercut",
           "title": "Demo",
           "notes": "NSW, Australia",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_mL8__3x-2Xs6iYJgsHi-YA2uw5HW6VrJs",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Demo 2026",
+          "tracks": [
+            {
+              "artist": "Tiger Uppercut",
+              "title": "Times Up",
+              "url": "https://music.youtube.com/watch?v=4TQLH0vcIec"
+            },
+            {
+              "artist": "Tiger Uppercut",
+              "title": "Tiger Style",
+              "url": "https://music.youtube.com/watch?v=p0EQpXfxLfM"
+            },
+            {
+              "artist": "Tiger Uppercut",
+              "title": "Freak",
+              "url": "https://music.youtube.com/watch?v=NUrjctvpq14"
+            },
+            {
+              "artist": "Tiger Uppercut",
+              "title": "Regret",
+              "url": "https://music.youtube.com/watch?v=KpLnEGLlmVU"
+            }
+          ]
         },
         {
           "artist": "Gnull",
           "title": "Imperial Degradation EP",
           "notes": "Salt Lake City, Utah",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_nHfZw_5R9ExItJMOSNiNdk1J1qE7bVC4E",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Imperial Degradation",
+          "tracks": [
+            {
+              "artist": "GNULL",
+              "title": "Knife Cycle",
+              "url": "https://music.youtube.com/watch?v=c7OwpJVC2Nc"
+            },
+            {
+              "artist": "GNULL",
+              "title": "Baptistry",
+              "url": "https://music.youtube.com/watch?v=C7TM43T8_3A"
+            },
+            {
+              "artist": "GNULL",
+              "title": "Faultline",
+              "url": "https://music.youtube.com/watch?v=-O9KcGTyaNw"
+            },
+            {
+              "artist": "GNULL",
+              "title": "Shovel",
+              "url": "https://music.youtube.com/watch?v=VffZUrjJ9HA"
+            },
+            {
+              "artist": "GNULL",
+              "title": "Zero Sum",
+              "url": "https://music.youtube.com/watch?v=Q60siwPRNc0"
+            }
+          ]
         },
         {
           "artist": "Figurine",
           "title": "Midwest Fuck You Promo",
           "notes": "Wichita, Kansas",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_kE6kcTCdi76eTQj_2Njn2l4ezxQMuLHn4",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Midwest Fuck You",
+          "tracks": [
+            {
+              "artist": "Figurine",
+              "title": "Against the Wall",
+              "url": "https://music.youtube.com/watch?v=rJtrT3i4dTk"
+            },
+            {
+              "artist": "Figurine",
+              "title": "Kiss the Ring",
+              "url": "https://music.youtube.com/watch?v=B4KuRAIuRsY"
+            },
+            {
+              "artist": "Figurine",
+              "title": "I.Q. 32",
+              "url": "https://music.youtube.com/watch?v=Lod5Eoa8E_w"
+            }
+          ]
         },
         {
           "artist": "Bangalore",
           "title": "Ain't War Hell EP",
           "notes": "Colorado",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "54DpFWs61vA",
+          "ytm_type": "video",
+          "ytm_matched_title": "Bangalore - Ain't War Hell 2026 (Full EP)",
+          "tracks": [
+            {
+              "artist": "xBrutalYouth666x",
+              "title": "Bangalore - Ain't War Hell 2026 (Full EP)",
+              "url": "https://music.youtube.com/watch?v=54DpFWs61vA"
+            }
+          ]
         },
         {
           "artist": "Bazooka",
           "title": "Bazooka 2 LP",
           "notes": "St. John's, Newfoundland and Labrador Canada",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_n4MYVM5KcgXaexdwmx7XWNeZKaCM_pl1Y",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "LIGA BAZOOKA JORNADA #2",
+          "tracks": [
+            {
+              "artist": "Liga Bazooka",
+              "title": "Replik - Round 1 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=pqDeJfJrI4k"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Stuart - Round 1 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=82ZlmfP5sKM"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Replik - Round 2 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=LGbVEp4wIJw"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Stuart - Round 2 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=yd6njG-Uq1A"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Replik - Round 3 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=g9VMwCqlx24"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Stuart - Round 3 (STUART VS REPLIK) (feat. Stuartinfk & Replik)",
+              "url": "https://music.youtube.com/watch?v=HPSYQT9BdkY"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "G-Sony - Round 1 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=ms_QcPWXSe0"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Brillante - Round 1 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=Sy9NCXFkGJk"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "G Sony - Round 2 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=8Hf4wB2ZG_c"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Brillante - Round 2 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=5MGo0KhXGW4"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "G-Sony - Round 3 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=bFDrdKFVbCA"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Brillante - Round 3 (BRILLANTE vs G-SONY) (feat. G Sony & Brillante)",
+              "url": "https://music.youtube.com/watch?v=4lHMqUJdf3Y"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Mecha - Round 1 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=VF3MAeh5hEc"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Markitos - Round 1 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=Y0fGb8cWPNw"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Mecha - Round 2 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=cKbs_iKNCLU"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Markitos - Round 2 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=m4YF2R_B7GE"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Mecha - Round 3 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=RsOp5cqkkzs"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Markitos - Round 3 (MARKITOS VS MECHA) (feat. Mecha Maturin & Markitos)",
+              "url": "https://music.youtube.com/watch?v=HhKfxJoJRDU"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Klan - Round 1 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=Nr5hyUagRlo"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Chili Parker - Round 1 (CHILLI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=gZaQHgNkVZY"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Klan - Round 2 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=PKDhNWHKNSc"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Chili Parker - Round 2 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=6Mt1bE9Rvvg"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Klan - Round 3 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=2uqtA55p87Y"
+            },
+            {
+              "artist": "Liga Bazooka",
+              "title": "Chili Parker - Round 3 (CHILI PARKER VS KLAN) (feat. Chili Parker & Klan)",
+              "url": "https://music.youtube.com/watch?v=HKiY15nKn3w"
+            }
+          ]
         },
         {
           "artist": "BroLoaf",
           "title": "Champions On Parade - Legacy Edition LP",
           "notes": "Scottsdale, Arizona",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_kQLXemva6F_2tPrlX7utkFz5JdM3uCxGw",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Champions on Parade - Legacy Edition",
+          "tracks": [
+            {
+              "artist": "Broloaf",
+              "title": "Champions On Parade",
+              "url": "https://music.youtube.com/watch?v=HKFwe-bRyCY"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Jock Juice",
+              "url": "https://music.youtube.com/watch?v=4Z0e0eLihjQ"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Haze Patrol",
+              "url": "https://music.youtube.com/watch?v=CnsfIvpzNwA"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Beer Bong",
+              "url": "https://music.youtube.com/watch?v=Od9DAFy9ozE"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Graduation Day",
+              "url": "https://music.youtube.com/watch?v=vkFYY7C_6a4"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "I'd Fuck Me",
+              "url": "https://music.youtube.com/watch?v=bi-tSYMRl2U"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "No Snow No Show",
+              "url": "https://music.youtube.com/watch?v=g9Bpn5qWw1Y"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Bro, Don't Call Me Bro",
+              "url": "https://music.youtube.com/watch?v=Z7_2sDU3GOo"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Motocross Dudes",
+              "url": "https://music.youtube.com/watch?v=CvPC9NlxDto"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Barely Legal",
+              "url": "https://music.youtube.com/watch?v=bXsNtINR0mc"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Hole in One",
+              "url": "https://music.youtube.com/watch?v=q6MJZpvS4PU"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Corporate Takeover",
+              "url": "https://music.youtube.com/watch?v=mIpcqppcSUg"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Broloaf Anthem",
+              "url": "https://music.youtube.com/watch?v=FbD_gB6y89c"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Rave Riot '08",
+              "url": "https://music.youtube.com/watch?v=kLGNTqzt4FE"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Beer Bong '07",
+              "url": "https://music.youtube.com/watch?v=S51u2NhDF7M"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Freedom Lover '07",
+              "url": "https://music.youtube.com/watch?v=omCsAg4EJl8"
+            },
+            {
+              "artist": "Broloaf",
+              "title": "Uncle Slam '08",
+              "url": "https://music.youtube.com/watch?v=t3bPYkDQ5js"
+            }
+          ]
         },
         {
           "artist": "Homeless",
           "title": "Extinción EP",
           "notes": "Ecuador",
           "browse_id": null,
-          "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "video_id": "TPt9qHi01UA",
+          "ytm_type": "song",
+          "ytm_matched_title": "Annabelle (Alternate Take)",
+          "tracks": [
+            {
+              "artist": "Homeless",
+              "title": "Annabelle (Alternate Take)",
+              "url": "https://music.youtube.com/watch?v=TPt9qHi01UA"
+            }
+          ]
         },
         {
           "artist": "Sworn Truth",
           "title": "Even If I Drown EP",
           "notes": "Southampton, UK",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_nTMxQpXaWS3PWYqqdFL6u5tMFFKWuYqZs",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Even If I Drown",
+          "tracks": [
+            {
+              "artist": "Sworn Truth",
+              "title": "Dead Skies",
+              "url": "https://music.youtube.com/watch?v=qpNynj5Q4Eg"
+            },
+            {
+              "artist": "Sworn Truth",
+              "title": "On The Surface",
+              "url": "https://music.youtube.com/watch?v=TTmpYFE63Lw"
+            },
+            {
+              "artist": "Sworn Truth",
+              "title": "Underwater",
+              "url": "https://music.youtube.com/watch?v=W8YYH_0rgUU"
+            },
+            {
+              "artist": "Sworn Truth",
+              "title": "Eternal Rain",
+              "url": "https://music.youtube.com/watch?v=7680n5FWzJ8"
+            }
+          ]
         },
         {
           "artist": "Feints",
           "title": "Puzzle EP",
           "notes": "Rouen, France",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_melJ9c4JoJwl4UnN8FdvqUFjeNWbUV7N8",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "PUZZLE",
+          "tracks": [
+            {
+              "artist": "Feints",
+              "title": "Parapluie",
+              "url": "https://music.youtube.com/watch?v=uNZt_p6NvUs"
+            },
+            {
+              "artist": "Feints",
+              "title": "Ozempic",
+              "url": "https://music.youtube.com/watch?v=jvJrfTsviJc"
+            },
+            {
+              "artist": "Feints",
+              "title": "Périphérique",
+              "url": "https://music.youtube.com/watch?v=otJqQFadp_I"
+            },
+            {
+              "artist": "Feints",
+              "title": "Everest",
+              "url": "https://music.youtube.com/watch?v=lRjK3nTAbZc"
+            },
+            {
+              "artist": "Feints",
+              "title": "Lido",
+              "url": "https://music.youtube.com/watch?v=yb6Mr8_MtH4"
+            },
+            {
+              "artist": "Feints",
+              "title": "Luigi",
+              "url": "https://music.youtube.com/watch?v=pl---KZaBt4"
+            },
+            {
+              "artist": "Feints",
+              "title": "P Spliff",
+              "url": "https://music.youtube.com/watch?v=ZxZW9Q9gvxw"
+            }
+          ]
         },
         {
           "artist": "Set The Bar Low",
           "title": "Then It Stops EP",
           "notes": "Nashua, New Hampshire",
-          "browse_id": null,
+          "browse_id": "OLAK5uy_mfpD3zVi4RCcMAGXARDsWtFcOAzlD83g8",
           "video_id": null,
-          "ytm_type": null,
-          "ytm_matched_title": null
+          "ytm_type": "album",
+          "ytm_matched_title": "Then it Stops",
+          "tracks": [
+            {
+              "artist": "Set The Bar Low",
+              "title": "Post Modern Superstore Tragedy",
+              "url": "https://music.youtube.com/watch?v=xIJEgNuZayU"
+            },
+            {
+              "artist": "Set The Bar Low",
+              "title": "Tall Buildings",
+              "url": "https://music.youtube.com/watch?v=g75CAxT_aUE"
+            },
+            {
+              "artist": "Set The Bar Low",
+              "title": "Downer",
+              "url": "https://music.youtube.com/watch?v=rwXi-Bk4Vmo"
+            },
+            {
+              "artist": "Set The Bar Low",
+              "title": "Notes From The Über",
+              "url": "https://music.youtube.com/watch?v=SJt5I-IqSa0"
+            }
+          ]
         }
       ]
     },
